@@ -18,6 +18,7 @@ async function startApolloServer() {
     resolvers,
     context: authMiddleware,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    cache: "bounded",
   });
 
   await server.start();
