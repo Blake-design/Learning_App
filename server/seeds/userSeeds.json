@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Developer",
+    "lastName": "One",
+    "userName": "Dev1",
+    "email": "developerOne@app.dev",
+    "password": "password01"
+  },
+  {
+    "firstName": "Developer",
+    "lastName": "Two",
+    "userName": "Dev2",
+    "email": "developerTwo@app.dev",
+    "password": "password01"
+  }
+]
