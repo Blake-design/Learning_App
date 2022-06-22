@@ -7,6 +7,7 @@ const db = require("./config/connection");
 const { ApolloServerPluginDrainHttpServer } = require("apollo-server-core");
 const http = require("http");
 const PORT = process.env.PORT || 3001;
+if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 async function startApolloServer() {
   const app = express();
