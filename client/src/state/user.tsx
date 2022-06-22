@@ -1,4 +1,10 @@
-import React, { createContext, useState, useReducer, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  useReducer,
+  useContext,
+  useEffect,
+} from "react";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -9,8 +15,9 @@ interface SignInForm {
 }
 
 interface UserCTX {
-  user: {};
+  user: object;
   handleSignIn?: (formState: SignInForm) => void;
+  handleLogout?: () => void;
 }
 
 const UserContext = createContext<UserCTX>({
@@ -18,14 +25,13 @@ const UserContext = createContext<UserCTX>({
 });
 
 const GetUserContext = () => {
-  const { user, handleSignIn } = useContext(UserContext);
-  return { user, handleSignIn };
+  const { user, handleSignIn, handleLogout } = useContext(UserContext);
+  return { user, handleSignIn, handleLogout };
 };
 
 const useLogin = () => {
   const [user, setUser] = useState({});
   const [login] = useMutation(LOGIN_USER);
-
   const handleSignIn = async (formState: SignInForm) => {
     try {
       const { data } = await login({ variables: { ...formState } });
@@ -35,8 +41,13 @@ const useLogin = () => {
       console.log(err);
     }
   };
+  useEffect(() => {}, []);
+  const handleLogout = () => {
+    Auth.logout();
+    setUser({});
+  };
 
-  return { user, handleSignIn };
+  return { user, handleSignIn, handleLogout };
 };
 
 const UserProvider = ({ children }: any) => {
