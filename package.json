@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A learning app",
   "main": "server/server.js",
+  "engines": {
+    "npm": "8.9.",
+    "node": "v18.2.0"
+  },
   "scripts": {
     "start": "node server/server.js",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\" ",
