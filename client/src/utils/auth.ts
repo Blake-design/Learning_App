@@ -2,6 +2,7 @@ import decode, { JwtPayload } from "jwt-decode";
 
 class AuthService {
   token: string | null;
+
   constructor() {
     this.token = localStorage.getItem("id_token");
   }
@@ -26,6 +27,7 @@ class AuthService {
 
   login(idToken: string): void {
     localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
   }
 
   logout(): void {

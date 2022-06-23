@@ -7,7 +7,7 @@ const LoginButton = () => {
   const navigate = useNavigate();
 
   if (Auth.loggedin()) {
-    return <button onClick={() => Auth.logout()}>LOG OUT</button>;
+    return <button onClick={Auth.logout}>LOG OUT</button>;
   } else {
     return (
       <div>
