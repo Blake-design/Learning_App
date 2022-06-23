@@ -1,14 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { GetUserContext } from "../state/user";
+
 import Auth from "../utils/auth";
 
 const LoginButton = () => {
-  const { user, handleLogout } = GetUserContext();
   const navigate = useNavigate();
-  console.log(user);
+
   if (Auth.loggedin()) {
-    return <button onClick={() => handleLogout}>LOG OUT</button>;
+    return <button onClick={() => Auth.logout()}>LOG OUT</button>;
   } else {
     return (
       <div>

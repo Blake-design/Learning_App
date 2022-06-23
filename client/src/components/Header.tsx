@@ -1,20 +1,12 @@
-import React, { useContext } from "react";
-import { darkModeContext } from "../state/theme";
+import { LoginButton, ThemeButton } from "./";
 
 const Header = () => {
-  const DarkModeContext = useContext(darkModeContext);
-  const { darkMode, setDarkMode } = DarkModeContext;
-  const handleClick = () => {
-    if (setDarkMode) {
-      setDarkMode(!darkMode);
-    }
-  };
-
   return (
     <header>
-      <h1>The Learning App</h1>
+      <h3>The Learning App</h3>
+      <ThemeButton />
 
-      <button onClick={handleClick}>Theme</button>
+      <LoginButton />
     </header>
   );
 };

@@ -51,6 +51,7 @@ const GetThemeContext = () => {
 
   useEffect(() => {
     const theme = localStorage.getItem("preferred-theme");
+
     if (setDarkMode) {
       if (theme && theme === "dark") {
         setDarkMode(true);
@@ -60,7 +61,16 @@ const GetThemeContext = () => {
       }
     }
   }, []);
-  return darkMode;
+
+  useEffect(() => {
+    if (darkMode) {
+      localStorage.setItem("preferred-theme", "dark");
+    } else {
+      localStorage.setItem("preferred-theme", "light");
+    }
+  }, [darkMode]);
+
+  return { darkMode, setDarkMode };
 };
 
 export { DarkModeState, GetThemeContext, darkModeContext };
