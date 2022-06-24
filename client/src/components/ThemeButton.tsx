@@ -8,7 +8,7 @@ const ThemeButton = () => {
     setDarkMode(!darkMode);
   };
 
-  return <button onClick={handleClick}>{darkMode ? "🌑" : "☀️"}</button>;
+  return <button onClick={handleClick}>{darkMode ? "Dark" : "Light"}</button>;
 };
 
 export default ThemeButton;

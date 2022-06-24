@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "../components/";
+
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USERS } from "../utils/queries";
 const Home = () => {
@@ -11,10 +11,9 @@ const Home = () => {
   console.log(data);
 
   return (
-    <div>
-      <Header />
+    <main className="container">
       <h1>Welcome to the Learning app!</h1>
-    </div>
+    </main>
   );
 };
 
