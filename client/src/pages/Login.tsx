@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import { GetUserContext } from "../state/user";
-
+import { useLogin } from "../hooks";
 const Login = () => {
   const navigate = useNavigate();
-  const { user, handleSignIn } = GetUserContext();
-
+  const [handleLogin, { error }] = useLogin();
   const [formState, setFormState] = useState({ email: "", password: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,16 +14,14 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (handleSignIn) handleSignIn(formState);
+    handleLogin(formState);
     setFormState({
       email: "",
       password: "",
     });
   };
-
-  return Object.keys(user).length ? (
-    <Navigate to="/" />
-  ) : (
+  console.log(error);
+  return (
     <div>
       <div className="form-card">
         <h4> Log In </h4>
@@ -48,6 +44,7 @@ const Login = () => {
           />
           <button type="submit">Submit</button>
         </form>
+        {error && <p>{error.message}</p>}
         <button className="form-back-btn" onClick={() => navigate(-1)}>
           &larr; BACK
         </button>
