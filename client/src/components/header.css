@@ -1,0 +1,20 @@
+/* header styles*/
+
+header {
+  display: flex;
+  flex: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 2rem;
+  background: lightblue;
+}
+.dark {
+  background-color: rgb(1, 42, 56);
+  color: rgb(225, 188, 85);
+}
+
+header h1 {
+  font-weight: 900;
+  font-size: 3rem;
+  color: white;
+}

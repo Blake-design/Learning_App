@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { DarkModeState } from "./state/theme";
-import { UserProvider } from "./state/user";
+import { cache } from "./cache";
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -28,7 +28,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache,
 });
 
 const root = ReactDOM.createRoot(
@@ -37,13 +37,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <DarkModeState>
-        <UserProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </UserProvider>
-      </DarkModeState>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>
 );

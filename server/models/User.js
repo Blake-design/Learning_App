@@ -31,6 +31,9 @@ const UserSchema = new Schema({
     min: [8, "Password must be >= 8 characters"],
     max: [25, "Password must be <= 25 characters"],
   },
+  joined: {
+    type: Date,
+  },
 });
 
 UserSchema.pre("save", async function (next) {

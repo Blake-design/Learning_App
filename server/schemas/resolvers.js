@@ -49,6 +49,7 @@ const resolvers = {
         userName,
         password,
         email,
+        joined: Date.now(),
       });
 
       const token = signToken(user);
