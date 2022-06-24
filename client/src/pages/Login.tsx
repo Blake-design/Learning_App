@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useLogin } from "../hooks";
+import auth from "../utils/auth";
+import Auth from "../utils/auth";
 const Login = () => {
   const navigate = useNavigate();
   const [handleLogin, { error }] = useLogin();
@@ -21,7 +23,9 @@ const Login = () => {
     });
   };
   console.log(error);
-  return (
+  return auth.loggedin() ? (
+    <div>ooops.... you're already logged in</div>
+  ) : (
     <div>
       <div className="form-card">
         <h4> Log In </h4>
