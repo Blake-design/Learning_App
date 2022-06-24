@@ -1,16 +1,44 @@
 [
   {
-    "firstName": "Developer",
-    "lastName": "One",
-    "userName": "Dev1",
-    "email": "developerOne@app.dev",
+    "firstName": "Blake",
+    "lastName": "McCarty",
+    "userName": "dev",
+    "email": "dev1@app.dev",
     "password": "password01"
   },
   {
-    "firstName": "Developer",
-    "lastName": "Two",
-    "userName": "Dev2",
-    "email": "developerTwo@app.dev",
+    "firstName": "Frank",
+    "lastName": "Bologna",
+    "userName": "SandwichKing",
+    "email": "dev2@app.dev",
+    "password": "password01"
+  },
+  {
+    "firstName": "Lisa",
+    "lastName": "Simpson",
+    "userName": "ReddVII",
+    "email": "dev3@app.dev",
+    "password": "password01"
+  },
+  {
+    "firstName": "Tyrannosaurus",
+    "lastName": "Rex",
+    "userName": "KingTheropod",
+    "email": "dev4@app.dev",
+    "password": "password01"
+  },
+  {
+    "firstName": "Evan",
+    "lastName": "Bacon",
+    "userName": "SwineTime",
+    "email": "dev5@app.dev",
+    "password": "password01"
+  },
+  {
+    "firstName": "Betty",
+    "lastName": "Draper",
+    "userName": "BoredAtHome",
+    "email": "dev6@app.dev",
     "password": "password01"
   }
 ]
