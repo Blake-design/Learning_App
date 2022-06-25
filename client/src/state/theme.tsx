@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const GetThemeContext = () => {
+const useSetTheme = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const GetThemeContext = () => {
   return [darkMode, setDarkMode] as const;
 };
 
-export { GetThemeContext };
+export { useSetTheme };

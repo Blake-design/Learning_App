@@ -1,8 +1,8 @@
 import React from "react";
-import { GetThemeContext } from "../state/theme";
+import { useSetTheme } from "../state/theme";
 
 const ThemeButton = () => {
-  const [darkMode, setDarkMode] = GetThemeContext();
+  const [darkMode, setDarkMode] = useSetTheme();
 
   const handleClick = () => {
     setDarkMode(!darkMode);

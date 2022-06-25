@@ -4,7 +4,8 @@
     "lastName": "McCarty",
     "userName": "dev",
     "email": "dev1@app.dev",
-    "password": "password01"
+    "password": "password01",
+    "joined": "2022-06-25 00:20:55.361Z"
   },
   {
     "firstName": "Frank",

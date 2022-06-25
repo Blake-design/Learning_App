@@ -34,6 +34,14 @@ const UserSchema = new Schema({
   joined: {
     type: Date,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
+  settings: {
+    type: Schema.Types.ObjectId,
+    ref: "Settings",
+  },
 });
 
 UserSchema.pre("save", async function (next) {

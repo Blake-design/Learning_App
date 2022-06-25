@@ -5,9 +5,12 @@ const Settings = () => {
   return (
     <main>
       <h1>this is the settings page</h1>
-      <div>
-        Theme style <ThemeButton />
-      </div>
+      <ul>
+        <li>
+          Theme style <ThemeButton />
+        </li>
+        <li>Show when active</li>
+      </ul>
     </main>
   );
 };

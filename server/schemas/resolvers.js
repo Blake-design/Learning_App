@@ -12,7 +12,7 @@ const resolvers = {
     },
 
     user: async (parent, { username }) => {
-      return User.findOne({ username });
+      return User.findOne({ username }).populate("Settings");
     },
 
     me: async (parent, args, context) => {

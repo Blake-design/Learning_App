@@ -1,0 +1,32 @@
+[
+  {
+    "theme": "light",
+    "showActive": true,
+    "shareEmail": true
+  },
+  {
+    "theme": "dark",
+    "showActive": true,
+    "shareEmail": true
+  },
+  {
+    "theme": "dark",
+    "showActive": true,
+    "shareEmail": false
+  },
+  {
+    "theme": "dark",
+    "showActive": true,
+    "shareEmail": true
+  },
+  {
+    "theme": "light",
+    "showActive": false,
+    "shareEmail": true
+  },
+  {
+    "theme": "light",
+    "showActive": true,
+    "shareEmail": true
+  }
+]

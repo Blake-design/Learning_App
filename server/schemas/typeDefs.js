@@ -8,6 +8,15 @@ const typeDefs = gql`
     userName: String
     email: String
     joined: String
+    active: Boolean
+    settings: Settings
+  }
+
+  type Settings {
+    _id: ID
+    theme: String
+    showActive: Boolean
+    shareEmail: Boolean
   }
 
   type Auth {
@@ -19,6 +28,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
+    settings: Settings
   }
 
   type Mutation {

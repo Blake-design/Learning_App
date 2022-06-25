@@ -24,6 +24,7 @@ export const QUERY_USERS = gql`
       lastName
       userName
       joined
+      active
     }
   }
 `;
