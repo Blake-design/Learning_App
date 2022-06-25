@@ -23,7 +23,7 @@ const Login = () => {
       password: "",
     });
   };
-  console.log(error);
+
   return Auth.loggedin() ? (
     <div>ooops.... you're already logged in</div>
   ) : (
@@ -48,7 +48,13 @@ const Login = () => {
             value={formState.password}
             onChange={handleChange}
           />
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className={formState.email.length < 3 ? "disabled" : ""}
+            disabled={formState.email.length < 3 ? true : false}
+          >
+            Submit
+          </button>
         </form>
 
         {!error ? (

@@ -13,6 +13,12 @@ export const QUERY_ME = gql`
       lastName
       userName
       email
+      joined
+      settings {
+        theme
+        showActive
+        shareEmail
+      }
     }
   }
 `;

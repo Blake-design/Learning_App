@@ -1,7 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { query } = require("express");
-const { ConnectionStates } = require("mongoose");
-const { user } = require("../config/connection");
+
 const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 
@@ -11,15 +9,16 @@ const resolvers = {
       return User.find();
     },
 
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("Settings");
+    user: async (parent, { userName }) => {
+      return User.findOne({ userName }).populate("settings");
     },
 
     me: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
         const user = await User.findOne({
           userName: context.user.userName,
-        });
+        }).populate("settings");
         return user;
       }
       throw new AuthenticationError("Please login to view your profile.");

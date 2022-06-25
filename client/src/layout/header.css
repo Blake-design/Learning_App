@@ -1,11 +1,4 @@
-/* header styles*/
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/* layout styles this pages holds css for generic elements*/
 
 header {
   display: flex;
@@ -24,9 +17,11 @@ header h1 {
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: ;
   background-color: var(--primary-bg-color);
 }
 
@@ -35,4 +30,8 @@ button {
   border: none;
   padding: 0.5em;
   margin: 1em;
+}
+
+ul {
+  list-style: none;
 }

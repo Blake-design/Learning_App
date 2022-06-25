@@ -1,5 +1,12 @@
 import decode, { JwtPayload } from "jwt-decode";
-
+interface userData {
+  token: string;
+  user: {
+    _id: string;
+    userName: string;
+    __typename: string;
+  };
+}
 class AuthService {
   token: string | null;
 
@@ -25,14 +32,15 @@ class AuthService {
     return false;
   }
 
-  login(idToken: string): void {
-    localStorage.setItem("id_token", idToken);
-    window.location.assign("/");
+  login(userData: userData): void {
+    console.log(JSON.stringify(userData));
+    localStorage.setItem("id_token", userData.token);
+    window.location.assign(`/${userData.user._id}`);
   }
 
   logout(): void {
     localStorage.removeItem("id_token");
-    window.location.reload();
+    window.location.assign("/");
   }
 }
 

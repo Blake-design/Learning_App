@@ -43,58 +43,60 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h4>Sign Up</h4>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="form-input"
-          placeholder="FIRST NAME"
-          name="firstName"
-          type="text"
-          value={formState.firstName}
-          onChange={handleChange}
-        />
-        <input
-          className="form-input"
-          placeholder="LAST NAME"
-          name="lastName"
-          type="text"
-          value={formState.lastName}
-          onChange={handleChange}
-        />
-        <input
-          className="form-input"
-          placeholder="USER NAME"
-          name="userName"
-          type="text"
-          value={formState.userName}
-          onChange={handleChange}
-        />
-        <input
-          className="form-input"
-          placeholder="EMAIL"
-          name="email"
-          type="text"
-          value={formState.email}
-          onChange={handleChange}
-        />
-        <input
-          className="form-input"
-          placeholder="PASSWORD"
-          name="password"
-          type="text"
-          value={formState.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <button className="form-back-btn" onClick={() => navigate(-1)}>
-        &larr; BACK
-      </button>
-      {error && (
-        <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
-      )}
-    </div>
+    <main>
+      <div className="form-card">
+        <h4>Sign Up</h4>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="form-input"
+            placeholder="FIRST NAME"
+            name="firstName"
+            type="text"
+            value={formState.firstName}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="LAST NAME"
+            name="lastName"
+            type="text"
+            value={formState.lastName}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="USER NAME"
+            name="userName"
+            type="text"
+            value={formState.userName}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="EMAIL"
+            name="email"
+            type="text"
+            value={formState.email}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            placeholder="PASSWORD"
+            name="password"
+            type="text"
+            value={formState.password}
+            onChange={handleChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <button className="form-back-btn" onClick={() => navigate(-1)}>
+          &larr; BACK
+        </button>
+        {error && (
+          <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+        )}
+      </div>
+    </main>
   );
 };
 

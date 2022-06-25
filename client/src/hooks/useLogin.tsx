@@ -15,8 +15,7 @@ const useLogin = () => {
     console.log("hit function");
     try {
       const { data } = await login({ variables: { ...formState } });
-      Auth.login(data.login.token);
-      console.log("completed");
+      Auth.login(data.login);
     } catch (err) {
       console.log(err);
     }
