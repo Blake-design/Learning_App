@@ -1,0 +1,64 @@
+/* css for login page */
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid white;
+  border-radius: 15px;
+  width: 500px;
+  height: 300px;
+  padding: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  background-color: var(--secondary-bg-color);
+}
+.form-input {
+  background-color: var(--primary-bg-color);
+  border: none;
+  margin: 1em;
+  padding: 0.5em;
+}
+
+.form-input:focus {
+  outline: ridge 1px var(--input-outline-color);
+  background-color: var(--input-focus-bg-color);
+
+  margin: 1em;
+  padding: 0.5em;
+}
+
+form button {
+  background-color: var(--primary-btn-color);
+}
+
+form button:hover,
+form button:focus {
+  background-color: var(--primary-btn-color);
+  box-shadow: var(--primary-btn-shadow);
+}
+
+.form-card h3 {
+  font-size: 2em;
+  color: var(--secondary-text-color);
+}
+
+.form-card hr {
+  border: 2px solid var(--primary-hr-color);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.form-card p {
+  padding: 1em;
+  border-top: 1px dotted var(--primary-hr-color);
+  border-bottom: 1px dotted var(--primary-hr-color);
+}
+
+.form-back-btn {
+  width: 100px;
+  align-self: start;
+}
+
+.error-placeholder {
+  visibility: hidden;
+}

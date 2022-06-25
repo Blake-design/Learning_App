@@ -8,7 +8,7 @@ import { Header } from "./layout";
 
 function App() {
   return (
-    <>
+    <div className="">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

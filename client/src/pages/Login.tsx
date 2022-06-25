@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useLogin } from "../hooks";
-import auth from "../utils/auth";
 import Auth from "../utils/auth";
+import "./login.css";
+
 const Login = () => {
   const navigate = useNavigate();
   const [handleLogin, { error }] = useLogin();
@@ -23,12 +24,13 @@ const Login = () => {
     });
   };
   console.log(error);
-  return auth.loggedin() ? (
+  return Auth.loggedin() ? (
     <div>ooops.... you're already logged in</div>
   ) : (
-    <div>
+    <main>
       <div className="form-card">
-        <h4> Log In </h4>
+        <h3> Log In </h3>
+        <hr />
         <form onSubmit={handleSubmit}>
           <input
             className="form-input"
@@ -48,12 +50,17 @@ const Login = () => {
           />
           <button type="submit">Submit</button>
         </form>
-        {error && <p>{error.message}</p>}
+
+        {!error ? (
+          <p className="error-placeholder">place holder error message</p>
+        ) : (
+          <p className="error">{error.message}</p>
+        )}
         <button className="form-back-btn" onClick={() => navigate(-1)}>
           &larr; BACK
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 

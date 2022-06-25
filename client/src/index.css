@@ -1,4 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,900;1,400;1,900&display=swap");
+@import-normalize;
+
+:root {
+  --primary-bg-color: whitesmoke;
+  --secondary-bg-color: lightblue;
+  --primary-text-color: rgb(43, 45, 47);
+  --secondary-text-color: whitesmoke;
+  --warning-color: rgb(210, 62, 62);
+  --primary-btn-color: rgb(157, 146, 229);
+  --primary-btn-shadow: 2px 0px 3px 0.5px rgba(71, 71, 71, 0.5);
+  --input-focus-bg-color: white;
+  --input-outline-color: lightgray;
+  --primary-outline-color: rgb(255, 255, 255);
+  --primary-hr-color: rgb(181 179 216);
+}
+
+.dark {
+  --primary-bg-color: rgb(31, 30, 30);
+  --secondary-bg-color: rgb(1, 42, 56);
+  --secondary-text-color: rgb(225, 188, 85);
+  --primary-btn-color: rgb(55, 159, 55);
+  --primary-outline-color: white;
+}
+
+.disabled {
+  --primary-btn-color: rgb(166, 164, 179);
+}
 
 .root,
 html,
@@ -10,4 +37,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+}
+
+.error {
+  color: var(--warning-color);
+}
+
+:focus {
+  outline: solid 2px var(--primary-outline-color);
 }
