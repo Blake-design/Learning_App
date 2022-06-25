@@ -8,7 +8,7 @@ db.once("open", async () => {
     await User.deleteMany({});
     await Settings.deleteMany({});
     const settings = await Settings.insertMany(settingsData);
-    const users = await User.insertMany(userData);
+    const users = await User.create(userData);
 
     for (let newUser of users) {
       newUser.joined = Date.now();
