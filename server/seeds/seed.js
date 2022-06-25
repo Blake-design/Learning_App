@@ -10,7 +10,7 @@ db.once("open", async () => {
     const settings = await Settings.insertMany(settingsData);
     const users = await User.insertMany(userData);
 
-    for (newUser of users) {
+    for (let newUser of users) {
       newUser.joined = Date.now();
       newUser.settings =
         settings[Math.floor(Math.random() * settings.length)]._id;
@@ -19,6 +19,6 @@ db.once("open", async () => {
     console.log("seed complete!");
     process.exit(0);
   } catch (err) {
-    throw err;
+    throw console.log(err);
   }
 });
