@@ -26,10 +26,7 @@ export const QUERY_ME = gql`
 export const QUERY_USERS = gql`
   query allUsers {
     users {
-      firstName
-      lastName
       userName
-      joined
       active
     }
   }
