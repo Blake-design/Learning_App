@@ -52,6 +52,10 @@
     {
       "name": "Negroni",
       "hex": "#ffe3c8"
+    },
+    {
+      "name": "white smoke",
+      "hex": "#efefef"
     }
   ]
 }

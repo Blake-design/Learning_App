@@ -1,11 +1,24 @@
 /* layout styles this pages holds css for generic elements*/
 
+.root,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif, -apple-system, BlinkMacSystemFont;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  background-color: var(--primary-bg-color);
+}
+
 header {
   display: flex;
   flex: row;
   justify-content: space-around;
   align-items: center;
-  padding-top: 2rem;
+  padding: 2rem;
   background: var(--secondary-bg-color);
 }
 
@@ -14,20 +27,21 @@ header h1 {
   font-size: 3rem;
   color: var(--secondary-text-color);
 }
+
 header a {
   color: var(--secondary-text-color);
 }
+
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: ;
-  background-color: var(--primary-bg-color);
 }
 
 button {
+  background-color: var(--primary-btn-color);
   border-radius: 5px;
   border: none;
   padding: 0.5em;

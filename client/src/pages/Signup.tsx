@@ -89,7 +89,7 @@ const Signup = () => {
           />
           <button type="submit">Submit</button>
         </form>
-        <button className="form-back-btn" onClick={() => navigate(-1)}>
+        <button className="form-back-btn" onClick={() => navigate("/")}>
           &larr; BACK
         </button>
         {error && (

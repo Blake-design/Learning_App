@@ -1,6 +1,6 @@
 import { LoginButton } from "../components";
 import { Link, NavLink } from "react-router-dom";
-import "./header.css";
+import "./layout.css";
 
 const Header = () => {
   return (

@@ -62,7 +62,7 @@ const Login = () => {
         ) : (
           <p className="error">{error.message}</p>
         )}
-        <button className="form-back-btn" onClick={() => navigate(-1)}>
+        <button className="form-back-btn" onClick={() => navigate("/")}>
           &larr; BACK
         </button>
       </div>
