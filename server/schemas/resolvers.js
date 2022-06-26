@@ -14,7 +14,6 @@ const resolvers = {
     },
 
     me: async (parent, args, context) => {
-      console.log(context.user);
       if (context.user) {
         const user = await User.findOne({
           userName: context.user.userName,

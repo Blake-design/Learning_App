@@ -48,3 +48,7 @@ body {
 :focus {
   outline: solid 2px var(--primary-outline-color);
 }
+
+a {
+  text-decoration: none;
+}

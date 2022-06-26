@@ -14,7 +14,9 @@ header h1 {
   font-size: 3rem;
   color: var(--secondary-text-color);
 }
-
+header a {
+  color: var(--secondary-text-color);
+}
 main {
   display: flex;
   flex-direction: column;

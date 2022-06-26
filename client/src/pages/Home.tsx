@@ -1,9 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USERS } from "../utils/queries";
 const Home = () => {
-  const { access: userParam } = useParams();
   const { loading: loading1, data: data } = useQuery(QUERY_USERS);
   const { loading: loading2, data: me } = useQuery(QUERY_ME);
 

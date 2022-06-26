@@ -1,10 +1,13 @@
 import { LoginButton } from "../components";
+import { Link, NavLink } from "react-router-dom";
 import "./header.css";
 
 const Header = () => {
   return (
     <header>
-      <h1>The Learning App</h1>
+      <h1>
+        <Link to="/">The Learning App</Link>
+      </h1>
 
       <LoginButton />
     </header>
