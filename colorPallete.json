@@ -1,0 +1,57 @@
+{
+  "name": "learning app",
+  "colors": [
+    {
+      "name": "Tacao",
+      "hex": "#efb777"
+    },
+    {
+      "name": "Roman",
+      "hex": "#db606d"
+    },
+    {
+      "name": "Lochinvar",
+      "hex": "#2f8d92"
+    },
+    {
+      "name": "Havelock Blue",
+      "hex": "#6781dd"
+    },
+    {
+      "name": "Merino",
+      "hex": "#f5efe2"
+    },
+    {
+      "name": "Soft Peach",
+      "hex": "#f5eaee"
+    },
+    {
+      "name": "Tiber",
+      "hex": "#092834"
+    },
+    {
+      "name": "Driftwood",
+      "hex": "#af7f47"
+    },
+    {
+      "name": "Pampas",
+      "hex": "#efede7"
+    },
+    {
+      "name": "Azalea",
+      "hex": "#f9d2d6"
+    },
+    {
+      "name": "Pattens Blue",
+      "hex": "#d4e4ff"
+    },
+    {
+      "name": "Tasman",
+      "hex": "#dae7db"
+    },
+    {
+      "name": "Negroni",
+      "hex": "#ffe3c8"
+    }
+  ]
+}

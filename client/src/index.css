@@ -4,17 +4,17 @@
 @import-normalize;
 
 :root {
-  --primary-bg-color: whitesmoke;
-  --secondary-bg-color: lightblue;
-  --primary-text-color: rgb(43, 45, 47);
-  --secondary-text-color: whitesmoke;
-  --warning-color: rgb(210, 62, 62);
-  --primary-btn-color: rgb(157, 146, 229);
+  --primary-bg-color: #f5efe2;
+  --secondary-bg-color: #6781dd;
+  --primary-text-color: #092834;
+  --secondary-text-color: #efede7;
+  --warning-color: #f9ebeb;
+  --primary-btn-color: #efb777;
   --primary-btn-shadow: 2px 0px 3px 0.5px rgba(71, 71, 71, 0.5);
   --input-focus-bg-color: white;
   --input-outline-color: lightgray;
   --primary-outline-color: rgb(255, 255, 255);
-  --primary-hr-color: rgb(181 179 216);
+  --primary-hr-color: #f9d2d6;
 }
 
 .dark {

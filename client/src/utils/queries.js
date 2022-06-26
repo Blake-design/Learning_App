@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const GET_THEME = gql`
+export const GET_THEME = gql`
   query GetTheme {
     theme @client
   }

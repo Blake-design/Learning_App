@@ -1,3 +1,17 @@
 import { InMemoryCache, ReactiveVar, makeVar } from "@apollo/client";
 
-export const cache: InMemoryCache = new InMemoryCache();
+export const themeVar = makeVar(localStorage.getItem("preferred-theme"));
+
+export const cache: InMemoryCache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        theme: {
+          read() {
+            return themeVar();
+          },
+        },
+      },
+    },
+  },
+});
