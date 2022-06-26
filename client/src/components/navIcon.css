@@ -1,0 +1,8 @@
+.nav-icons {
+  width: 50px;
+  transition: 0.3s ease;
+}
+
+.nav-icons:hover {
+  transform: scale(1.5);
+}

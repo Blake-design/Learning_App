@@ -39,6 +39,7 @@ export const QUERY_SINGLE_USERS = gql`
       lastName
       userName
       email
+      avatar
     }
   }
 `;

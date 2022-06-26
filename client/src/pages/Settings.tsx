@@ -5,7 +5,7 @@ import { ThemeButton } from "../components";
 const Settings = () => {
   const { loading: loading2, data: me } = useQuery(QUERY_ME);
   return (
-    <main>
+    <section>
       <h1>this is the settings page</h1>
       <ul>
         <li>
@@ -13,7 +13,7 @@ const Settings = () => {
         </li>
         <li>Show when active</li>
       </ul>
-    </main>
+    </section>
   );
 };
 

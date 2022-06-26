@@ -9,7 +9,7 @@ const LoginButton = () => {
   if (Auth.loggedin()) {
     return (
       <div>
-        <button onClick={() => navigate("/profile")}>Profile</button>
+        <button onClick={() => navigate("/settings")}>Profile</button>
         <button onClick={Auth.logout}>LOG OUT</button>
       </div>
     );

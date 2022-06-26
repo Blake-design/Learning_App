@@ -27,7 +27,7 @@ const Login = () => {
   return Auth.loggedin() ? (
     <div>ooops.... you're already logged in</div>
   ) : (
-    <main>
+    <section>
       <div className="form-card">
         <h3> Log In </h3>
         <hr />
@@ -66,7 +66,7 @@ const Login = () => {
           &larr; BACK
         </button>
       </div>
-    </main>
+    </section>
   );
 };
 

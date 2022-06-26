@@ -10,11 +10,11 @@ const Home = () => {
   }
   console.log(me);
   return (
-    <main>
+    <section>
       <h1>Welcome to the Learning app!</h1>
 
       <p> There are currently {data && data.users.length} users logged in. </p>
-    </main>
+    </section>
   );
 };
 

@@ -43,7 +43,7 @@ const Signup = () => {
   };
 
   return (
-    <main>
+    <section>
       <div className="form-card">
         <h4>Sign Up</h4>
         <form onSubmit={handleSubmit}>
@@ -96,7 +96,7 @@ const Signup = () => {
           <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
         )}
       </div>
-    </main>
+    </section>
   );
 };
 

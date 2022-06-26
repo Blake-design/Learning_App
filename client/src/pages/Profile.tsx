@@ -3,9 +3,9 @@ import { Header } from "../layout";
 import { Link } from "react-router-dom";
 const Profile = () => {
   return (
-    <main>
+    <section>
       <Link to="/settings">settings</Link>
-    </main>
+    </section>
   );
 };
 

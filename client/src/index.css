@@ -6,6 +6,8 @@
 :root {
   --primary-bg-color: #f5efe2;
   --secondary-bg-color: #6781dd;
+  --tertiary-bg-color: #d4e4ff;
+  --quaternary-bg-color: #092834;
   --primary-text-color: #092834;
   --secondary-text-color: #efede7;
   --warning-color: #f9ebeb;
