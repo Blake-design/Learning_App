@@ -80,3 +80,10 @@ footer {
   height: 10vh;
   background: var(--quaternary-bg-color);
 }
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}

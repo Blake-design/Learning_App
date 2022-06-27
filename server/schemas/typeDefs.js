@@ -9,6 +9,7 @@ const typeDefs = gql`
     email: String
     joined: String
     active: Boolean
+    avatar: String
     settings: Settings
   }
 

@@ -1,48 +1,54 @@
 const { model, Schema } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const UserSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true,
+const UserSchema = new Schema(
+  {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    userName: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      min: [8, "Password must be >= 8 characters"],
+      max: [25, "Password must be <= 25 characters"],
+    },
+
+    avatar: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    active: {
+      type: Boolean,
+      default: false,
+    },
+    settings: {
+      type: Schema.Types.ObjectId,
+      ref: "Settings",
+    },
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  userName: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-    min: [8, "Password must be >= 8 characters"],
-    max: [25, "Password must be <= 25 characters"],
-  },
-  joined: {
-    type: Date,
-  },
-  active: {
-    type: Boolean,
-    default: true,
-  },
-  settings: {
-    type: Schema.Types.ObjectId,
-    ref: "Settings",
-  },
-});
+  { timestamps: true }
+);
 
 UserSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {

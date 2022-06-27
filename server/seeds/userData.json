@@ -5,41 +5,46 @@
     "userName": "dev",
     "email": "dev1@app.dev",
     "password": "password01",
-    "joined": "2022-06-25 00:20:55.361Z"
+    "avatar": "goldfish.png"
   },
   {
     "firstName": "Frank",
     "lastName": "Bologna",
     "userName": "SandwichKing",
     "email": "dev2@app.dev",
-    "password": "password01"
+    "password": "password01",
+    "avatar": "snake.png"
   },
   {
     "firstName": "Lisa",
     "lastName": "Simpson",
     "userName": "ReddVII",
     "email": "dev3@app.dev",
-    "password": "password01"
+    "password": "password01",
+    "avatar": "elephant.png"
   },
   {
     "firstName": "Tyrannosaurus",
     "lastName": "Rex",
     "userName": "KingTheropod",
     "email": "dev4@app.dev",
-    "password": "password01"
+    "password": "password01",
+    "avatar": "caterpillar.png"
   },
   {
     "firstName": "Evan",
     "lastName": "Bacon",
     "userName": "SwineTime",
     "email": "dev5@app.dev",
-    "password": "password01"
+    "password": "password01",
+    "avatar": "goldfish.png"
   },
   {
     "firstName": "Betty",
     "lastName": "Draper",
     "userName": "BoredAtHome",
     "email": "dev6@app.dev",
-    "password": "password01"
+    "password": "password01",
+    "avatar": "toucan.png"
   }
 ]

@@ -11,7 +11,6 @@ db.once("open", async () => {
     const users = await User.create(userData);
 
     for (let newUser of users) {
-      newUser.joined = Date.now();
       newUser.settings =
         settings[Math.floor(Math.random() * settings.length)]._id;
       await newUser.save();

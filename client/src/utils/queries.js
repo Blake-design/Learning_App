@@ -13,7 +13,7 @@ export const QUERY_ME = gql`
       lastName
       userName
       email
-      joined
+      avatar
       settings {
         theme
         showActive

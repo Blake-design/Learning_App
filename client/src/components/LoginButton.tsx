@@ -1,17 +1,25 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { NavIcon } from ".";
 
 import Auth from "../utils/auth";
+import { QUERY_ME } from "../utils/queries";
 
 const LoginButton = () => {
   const navigate = useNavigate();
+  const { loading, data } = useQuery(QUERY_ME);
 
-  if (Auth.loggedin()) {
+  if (Auth.loggedin() && data) {
     return (
-      <div>
-        <button onClick={() => navigate("/settings")}>Profile</button>
+      <nav>
+        <NavIcon
+          icon={`/avatars/${data.me.avatar}`}
+          alt={"Settings"}
+          to="/settings"
+        />
         <button onClick={Auth.logout}>LOG OUT</button>
-      </div>
+      </nav>
     );
   } else {
     return (
