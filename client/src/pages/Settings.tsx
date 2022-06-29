@@ -6,9 +6,13 @@ import { REMOVE_USER } from "../utils/mutations";
 import auth from "../utils/auth";
 
 const Settings = () => {
-  const { loading: loading2, data: me } = useQuery(QUERY_ME);
+  const {
+    loading,
+    data: {
+      me: { settings },
+    },
+  } = useQuery(QUERY_ME);
 
-  console.log(me);
   const [removeUser, { error }] = useMutation(REMOVE_USER);
 
   const handleClick = async () => {
@@ -16,7 +20,7 @@ const Settings = () => {
     auth.logout();
   };
 
-  return me ? (
+  return settings ? (
     <section>
       <h1>this is the settings page</h1>
       <ul>

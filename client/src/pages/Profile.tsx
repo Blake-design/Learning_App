@@ -43,7 +43,7 @@ const Profile = () => {
         <label>Name</label>
         <input
           className="form-input"
-          name="bio"
+          name="name"
           type="name"
           placeholder={formState.name}
           value={formState.name}
@@ -63,7 +63,14 @@ const Profile = () => {
           {bio}
         </textarea>
 
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          disabled={
+            formState.bio === bio && formState.name === name ? true : false
+          }
+        >
+          Submit
+        </button>
       </form>
 
       <div>you currently have friends friend s </div>
