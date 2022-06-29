@@ -20,9 +20,19 @@ const typeDefs = gql`
     shareEmail: Boolean
   }
 
+  type Message {
+    text: String!
+    senderId: ID!
+    receiverId: ID!
+  }
+
   type Auth {
     token: ID!
     user: User!
+  }
+
+  type Subscription {
+    messageCreated: Message
   }
 
   type Query {
@@ -43,6 +53,8 @@ const typeDefs = gql`
 
     login(email: String!, password: String!): Auth
     removeUser: User
+
+    createMessage(text: String!, receiverId: ID!): Message
   }
 `;
 

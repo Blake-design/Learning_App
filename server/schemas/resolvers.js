@@ -1,7 +1,10 @@
 const { AuthenticationError } = require("apollo-server-express");
-
+const { PubSub, withFilter } = require("graphql-subscriptions");
 const { User } = require("../models");
+const Message = require("../models/Message");
 const { signToken } = require("../utils/auth");
+
+const pubsub = new PubSub();
 
 const resolvers = {
   Query: {
@@ -58,6 +61,22 @@ const resolvers = {
         return User.findOneAndDelete({ userName: context.user.userName });
       }
       throw new AuthenticationError("Please log in");
+    },
+    createMessage: (parent, { text, receiverId }, context) => {
+      pubsub.publish("MESSAGE_CREATED", {
+        messageCreated: { text, receiverId },
+      });
+      return Message.create(text, receiverId, { senderId: context.user._id });
+    },
+  },
+  Subscription: {
+    messageCreated: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("MESSAGE_CREATED"),
+        (payload, variables) => {
+          return payload.messageCreated.receiverId === variables.receiverId;
+        }
+      ),
     },
   },
 };

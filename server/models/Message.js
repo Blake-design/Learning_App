@@ -7,7 +7,7 @@ const MessageSchema = new Schema({
     trim: true,
   },
   senderId: mongoose.ObjectId,
-  timeSent: Date,
+  recieverId: mongoose.ObjectId,
 });
 
 const Message = model("Message", MessageSchema);

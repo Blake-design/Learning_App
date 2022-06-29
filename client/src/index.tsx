@@ -6,12 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { cache } from "./cache";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, ApolloProvider, createHttpLink } from "@apollo/client";
+
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({ uri: "http://localhost:3001/graphql" });
