@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-
 import Auth from "../utils/auth";
+import "./form.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -80,12 +79,14 @@ const Signup = () => {
           />
           <button type="submit">Submit</button>
         </form>
+        {!error ? (
+          <p className="error-placeholder">place holder error message</p>
+        ) : (
+          <p className="error">{error.message}</p>
+        )}
         <button className="form-back-btn" onClick={() => navigate("/")}>
           &larr; BACK
         </button>
-        {error && (
-          <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
-        )}
       </div>
     </section>
   );

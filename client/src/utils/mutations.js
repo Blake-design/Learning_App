@@ -44,10 +44,11 @@ export const REMOVE_USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation updateUser($bio: String) {
-    updateUser(bio: $bio) {
+  mutation updateUser($bio: String, $name: String) {
+    updateUser(bio: $bio, name: $name) {
       _id
       bio
+      name
     }
   }
 `;

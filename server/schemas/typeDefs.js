@@ -52,7 +52,7 @@ const typeDefs = gql`
 
     login(email: String!, password: String!): Auth
     removeUser: User
-    updateUser(bio: String!): User
+    updateUser(bio: String, name: String): User
     createMessage(text: String!, receiverId: ID!): Message
   }
 `;

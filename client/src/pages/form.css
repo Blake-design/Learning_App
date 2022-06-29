@@ -11,12 +11,19 @@
   margin-top: 2em;
   margin-bottom: 2em;
   background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
 }
 .form-input {
   background-color: var(--primary-bg-color);
   border: none;
   margin: 1em;
   padding: 0.5em;
+}
+
+form label {
+  display: flex;
+  justify-content: left;
+  margin-left: 1em;
 }
 
 .form-input:focus {
@@ -39,7 +46,6 @@ form button:focus {
 
 .form-card h3 {
   font-size: 2em;
-  color: var(--secondary-text-color);
 }
 
 .form-card hr {

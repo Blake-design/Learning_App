@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useLogin } from "../hooks";
 import Auth from "../utils/auth";
-import "./login.css";
 
 const Login = () => {
   const navigate = useNavigate();

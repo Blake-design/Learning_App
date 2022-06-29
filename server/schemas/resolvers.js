@@ -41,7 +41,6 @@ const resolvers = {
     },
 
     addUser: async (parent, { name, userName, email, password }) => {
-      console.log(name, userName, password, email);
       const user = await User.create({
         name,
         userName,
@@ -60,11 +59,12 @@ const resolvers = {
       throw new AuthenticationError("Please log in");
     },
 
-    updateUser: async (parent, { bio }, context) => {
+    updateUser: async (parent, { bio, name }, context) => {
+      console.log(name, bio);
       if (context.user) {
         return User.findOneAndUpdate(
           { userName: context.user.userName },
-          { bio },
+          { bio, name },
           { new: true }
         );
       }
