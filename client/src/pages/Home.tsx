@@ -4,11 +4,11 @@ import { QUERY_ME, QUERY_USERS } from "../utils/queries";
 const Home = () => {
   const { loading: loading1, data: data } = useQuery(QUERY_USERS);
   const { loading: loading2, data: me } = useQuery(QUERY_ME);
-  console.log(data);
+
   if (loading1) {
     <div>...loading</div>;
   }
-  console.log(me);
+
   return (
     <section>
       <h1>Welcome to the Learning app!</h1>

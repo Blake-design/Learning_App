@@ -10,8 +10,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     userName: "",
     email: "",
     password: "",
@@ -34,8 +33,7 @@ const Signup = () => {
     }
 
     setFormState({
-      firstName: "",
-      lastName: "",
+      name: "",
       userName: "",
       email: "",
       password: "",
@@ -49,20 +47,13 @@ const Signup = () => {
         <form onSubmit={handleSubmit}>
           <input
             className="form-input"
-            placeholder="FIRST NAME"
-            name="firstName"
+            placeholder="FULL NAME"
+            name="name"
             type="text"
-            value={formState.firstName}
+            value={formState.name}
             onChange={handleChange}
           />
-          <input
-            className="form-input"
-            placeholder="LAST NAME"
-            name="lastName"
-            type="text"
-            value={formState.lastName}
-            onChange={handleChange}
-          />
+
           <input
             className="form-input"
             placeholder="USER NAME"

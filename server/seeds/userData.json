@@ -1,50 +1,50 @@
 [
   {
-    "firstName": "Blake",
-    "lastName": "McCarty",
+    "name": "Blake McCarty",
     "userName": "dev",
     "email": "dev1@app.dev",
     "password": "password01",
-    "avatar": "goldfish.png"
+    "avatar": "goldfish.png",
+    "bio": "South philidelphia born and raised. On the playground is where I spent most of my days, playing ninja turtles and acting all cool fighting the foot clan outside of school."
   },
   {
-    "firstName": "Frank",
-    "lastName": "Bologna",
+    "name": "Frank Bologna",
     "userName": "SandwichKing",
     "email": "dev2@app.dev",
     "password": "password01",
-    "avatar": "snake.png"
+    "avatar": "snake.png",
+    "bio": "It takes a strong man to hold it together and but a even stronger bread to keep from falling apart."
   },
   {
-    "firstName": "Lisa",
-    "lastName": "Simpson",
+    "name": "Lisa Simpson",
     "userName": "ReddVII",
     "email": "dev3@app.dev",
     "password": "password01",
-    "avatar": "elephant.png"
+    "avatar": "elephant.png",
+    "bio": "Be the change you want to see in the world www.sierraclub.org"
   },
   {
-    "firstName": "Tyrannosaurus",
-    "lastName": "Rex",
+    "name": "Tyrannosaurus Rex",
     "userName": "KingTheropod",
     "email": "dev4@app.dev",
     "password": "password01",
-    "avatar": "caterpillar.png"
+    "avatar": "caterpillar.png",
+    "bio": "Last of my kind, but first to read!"
   },
   {
-    "firstName": "Evan",
-    "lastName": "Bacon",
+    "name": "Evan Bacon",
     "userName": "SwineTime",
     "email": "dev5@app.dev",
     "password": "password01",
-    "avatar": "goldfish.png"
+    "avatar": "goldfish.png",
+    "bio": "oink oink oink oink"
   },
   {
-    "firstName": "Betty",
-    "lastName": "Draper",
+    "name": "Betty Draper",
     "userName": "BoredAtHome",
     "email": "dev6@app.dev",
     "password": "password01",
-    "avatar": "toucan.png"
+    "avatar": "toucan.png",
+    "bio": "Just put the kids to sleep now its time to learn"
   }
 ]

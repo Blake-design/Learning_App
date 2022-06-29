@@ -3,12 +3,7 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastName: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -32,11 +27,15 @@ const UserSchema = new Schema(
       min: [8, "Password must be >= 8 characters"],
       max: [25, "Password must be <= 25 characters"],
     },
-
+    bio: {
+      type: String,
+      trim: true,
+    },
     avatar: {
       type: String,
       required: true,
       trim: true,
+      default: "goldfish.png",
     },
     active: {
       type: Boolean,

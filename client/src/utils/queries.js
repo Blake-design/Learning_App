@@ -9,11 +9,11 @@ export const GET_THEME = gql`
 export const QUERY_ME = gql`
   query me {
     me {
-      firstName
-      lastName
+      name
       userName
       email
       avatar
+      bio
       settings {
         theme
         showActive
@@ -35,8 +35,7 @@ export const QUERY_USERS = gql`
 export const QUERY_SINGLE_USERS = gql`
   query user($userName: String!) {
     user(userName: $userName) {
-      firstName
-      lastName
+      name
       userName
       email
       avatar

@@ -40,30 +40,37 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (
-      parent,
-      { firstName, lastName, userName, email, password }
-    ) => {
+    addUser: async (parent, { name, userName, email, password }) => {
+      console.log(name, userName, password, email);
       const user = await User.create({
-        firstName,
-        lastName,
+        name,
         userName,
         password,
         email,
-        joined: Date.now(),
       });
 
       const token = signToken(user);
       return { token, user };
     },
-    removeUser: async (parent, args, context) => {
-      console.log(context.user);
 
+    removeUser: async (parent, args, context) => {
       if (context.user) {
         return User.findOneAndDelete({ userName: context.user.userName });
       }
       throw new AuthenticationError("Please log in");
     },
+
+    updateUser: async (parent, { bio }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { userName: context.user.userName },
+          { bio },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("Please log in");
+    },
+
     createMessage: (parent, { text, receiverId }, context) => {
       pubsub.publish("MESSAGE_CREATED", {
         messageCreated: { text, receiverId },
