@@ -57,6 +57,8 @@ const resolvers = {
       return { token, user };
     },
     removeUser: async (parent, args, context) => {
+      console.log(context.user);
+
       if (context.user) {
         return User.findOneAndDelete({ userName: context.user.userName });
       }

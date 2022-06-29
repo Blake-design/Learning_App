@@ -12,7 +12,6 @@ const useLogin = () => {
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleLogin = async (formState: LoginForm) => {
-    console.log("hit function");
     try {
       const { data } = await login({ variables: { ...formState } });
       Auth.login(data.login.token);

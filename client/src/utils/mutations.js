@@ -38,10 +38,11 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const REMOVE_USER = `gql
-mutation removeUser($user:String!){
-    removeUser(user:$user){
-        _id
-        userName
+export const REMOVE_USER = gql`
+  mutation removeUser {
+    removeUser {
+      _id
+      userName
     }
-}`;
+  }
+`;
