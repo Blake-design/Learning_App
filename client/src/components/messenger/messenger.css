@@ -1,0 +1,21 @@
+.messenger-container {
+  display: flex;
+  border: 2px solid black;
+  width: 100%;
+}
+
+.chat-sidebar {
+  background-color: white;
+}
+
+.chat-main {
+  background: whitesmoke;
+}
+.chat-main h3 {
+  background: whitesmoke;
+  border-bottom: 3px solid black;
+}
+
+.messages {
+  font-weight: 200;
+}

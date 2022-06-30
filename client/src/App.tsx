@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, Signup, Profile, Settings } from "./pages/";
+import { Home, Login, Signup, Profile, Settings, Messenger } from "./pages/";
 import "./App.css";
 import { Footer, Header, Sidebar } from "./layout";
 import { themeVar } from "./cache";
@@ -18,6 +18,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/:userID" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/messenger" element={<Messenger />} />
         </Routes>
       </main>
       <Footer />
