@@ -1,5 +1,5 @@
 import React from "react";
-import { ActiveChat } from "./Active Chat";
+import { ActiveChat } from "./ActiveChat";
 import { ChatSidebar } from "./ChatSidebar";
 import "./messenger.css";
 
