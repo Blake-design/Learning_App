@@ -36,19 +36,12 @@ header a {
 main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 80vh;
+  height: 70vh;
+  width: 100vw;
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 90vw;
+  width: 90%;
   height: 100%;
 }
 
@@ -59,7 +52,7 @@ aside {
   align-items: center;
   text-align: center;
 
-  width: 10vw;
+  width: 10%;
   height: 100%;
   background-color: var(--tertiary-bg-color);
 }
