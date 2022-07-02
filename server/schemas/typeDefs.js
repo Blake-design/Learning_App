@@ -32,7 +32,8 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    messageCreated: Message
+    messages: [Message]
+    userActive: [User]
   }
 
   type Query {
@@ -51,6 +52,7 @@ const typeDefs = gql`
     ): Auth
 
     login(email: String!, password: String!): Auth
+    logout: User
     removeUser: User
     updateUser(bio: String, name: String): User
     createMessage(text: String!, receiverId: ID!): Message

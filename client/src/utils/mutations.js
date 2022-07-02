@@ -34,6 +34,14 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const LOGOUT_USER = gql`
+  mutation logout {
+    logout {
+      _id
+      userName
+    }
+  }
+`;
 
 export const REMOVE_USER = gql`
   mutation removeUser {

@@ -42,3 +42,11 @@ export const QUERY_SINGLE_USERS = gql`
     }
   }
 `;
+
+export const GET_USER_ACTIVE = gql`
+  subscription Subscription {
+    userActive {
+      userName
+    }
+  }
+`;

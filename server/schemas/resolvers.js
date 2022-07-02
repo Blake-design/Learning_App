@@ -5,6 +5,7 @@ const Message = require("../models/Message");
 const { signToken } = require("../utils/auth");
 
 const pubsub = new PubSub();
+let activeUsers = [];
 
 const resolvers = {
   Query: {
@@ -37,7 +38,22 @@ const resolvers = {
         throw new AuthenticationError("Oops you entered the wrong credentials");
       }
       const token = signToken(user);
+      activeUsers.push(user);
+      pubsub.publish("USER_ACTIVE", {
+        userActive: activeUsers,
+      });
+
       return { token, user };
+    },
+    logout: async (parents, args, context) => {
+      const filteredUsers = activeUsers.filter((user) => {
+        user.UserName !== context.user.userName;
+      });
+
+      activeUsers = filteredUsers;
+      pubsub.publish("USER_ACTIVE", {
+        userActive: activeUsers,
+      });
     },
 
     addUser: async (parent, { name, userName, email, password }) => {
@@ -73,13 +89,16 @@ const resolvers = {
 
     createMessage: (parent, { text, receiverId }, context) => {
       pubsub.publish("MESSAGE_CREATED", {
-        messageCreated: { text, receiverId },
+        messages: { text, receiverId },
       });
       return Message.create(text, receiverId, { senderId: context.user._id });
     },
   },
   Subscription: {
-    messageCreated: {
+    userActive: {
+      subscribe: () => pubsub.asyncIterator("USER_ACTIVE"),
+    },
+    messages: {
       subscribe: withFilter(
         () => pubsub.asyncIterator("MESSAGE_CREATED"),
         (payload, variables) => {

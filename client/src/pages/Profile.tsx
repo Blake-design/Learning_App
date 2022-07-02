@@ -10,7 +10,7 @@ const Profile = () => {
   const {
     loading,
     error: error1,
-    data: { me: { name, bio } } = {},
+    data: { me: { bio, name } } = {},
   } = useQuery(QUERY_ME);
 
   const [updateUser, { error }] = useMutation(UPDATE_USER);

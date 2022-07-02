@@ -1,14 +1,22 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NavIcon } from ".";
 
 import Auth from "../utils/auth";
 import { QUERY_ME } from "../utils/queries";
+import { LOGOUT_USER } from "../utils/mutations";
+import auth from "../utils/auth";
 
 const LoginButton = () => {
   const navigate = useNavigate();
   const { loading, data } = useQuery(QUERY_ME);
+  const [logout, { error }] = useMutation(LOGOUT_USER);
+
+  const handleLogout = async () => {
+    await logout();
+    auth.logout();
+  };
 
   if (Auth.loggedin() && data) {
     return (
@@ -18,7 +26,7 @@ const LoginButton = () => {
           alt={"Settings"}
           to="/settings"
         />
-        <button onClick={Auth.logout}>LOG OUT</button>
+        <button onClick={handleLogout}>LOG OUT</button>
       </nav>
     );
   } else {
