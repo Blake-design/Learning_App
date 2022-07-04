@@ -7,7 +7,7 @@ const Messenger = () => {
   const { data } = useSubscription(GET_USER_ACTIVE);
   console.log(data);
   return (
-    <section>
+    <section className="page-container">
       <MessengerApp />
     </section>
   );

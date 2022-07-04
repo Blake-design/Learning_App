@@ -26,7 +26,7 @@ const Login = () => {
   return Auth.loggedin() ? (
     <div>ooops.... you're already logged in</div>
   ) : (
-    <section>
+    <section className="page-container">
       <div className="form-card">
         <h3> Log In </h3>
         <hr />

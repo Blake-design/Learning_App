@@ -36,7 +36,7 @@ const Profile = () => {
   };
 
   return bio ? (
-    <section>
+    <section className="page-container">
       <h2>{name} profile page</h2>
 
       <form className="form-card" onSubmit={handleSubmit}>

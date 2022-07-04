@@ -40,9 +40,10 @@ const Signup = () => {
   };
 
   return (
-    <section>
+    <section className="page-container">
       <div className="form-card">
-        <h4>Sign Up</h4>
+        <h3>Sign Up</h3>
+        <hr />
         <form onSubmit={handleSubmit}>
           <input
             className="form-input"

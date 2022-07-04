@@ -80,3 +80,11 @@ nav {
   align-items: center;
   gap: 1em;
 }
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}

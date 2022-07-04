@@ -46,6 +46,8 @@ form button:focus {
 
 .form-card h3 {
   font-size: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 0;
 }
 
 .form-card hr {

@@ -21,7 +21,7 @@ const Settings = () => {
   };
 
   return settings ? (
-    <section>
+    <section className="page-container">
       <h1>this is the settings page</h1>
       <ul>
         <li>

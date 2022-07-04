@@ -10,7 +10,7 @@ const Home = () => {
   }
 
   return (
-    <section>
+    <section className="page-container">
       <h1>Welcome to the Learning app!</h1>
 
       <p> There are currently {data && data.users.length} users logged in. </p>
