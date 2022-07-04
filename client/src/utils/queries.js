@@ -43,7 +43,7 @@ export const QUERY_SINGLE_USERS = gql`
   }
 `;
 
-export const GET_USER_ACTIVE = gql`
+export const GET_ACTIVE_USERS = gql`
   subscription Subscription {
     userActive {
       userName

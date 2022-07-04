@@ -1,7 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { PubSub, withFilter } = require("graphql-subscriptions");
-const { User } = require("../models");
-const Message = require("../models/Message");
+const { User, Message, Conversation } = require("../models");
+
 const { signToken } = require("../utils/auth");
 
 const pubsub = new PubSub();
@@ -39,7 +39,7 @@ const resolvers = {
       }
       const token = signToken(user);
       activeUsers.push(user);
-      pubsub.publish("USER_ACTIVE", {
+      pubsub.publish("ACTIVE_USERS", {
         userActive: activeUsers,
       });
 
@@ -51,7 +51,7 @@ const resolvers = {
       });
 
       activeUsers = filteredUsers;
-      pubsub.publish("USER_ACTIVE", {
+      pubsub.publish("ACTIVE_USERS", {
         userActive: activeUsers,
       });
     },
@@ -76,7 +76,6 @@ const resolvers = {
     },
 
     updateUser: async (parent, { bio, name }, context) => {
-      console.log(name, bio);
       if (context.user) {
         return User.findOneAndUpdate(
           { userName: context.user.userName },
@@ -87,16 +86,24 @@ const resolvers = {
       throw new AuthenticationError("Please log in");
     },
 
-    createMessage: (parent, { text, receiverId }, context) => {
+    createMessage: async (parent, { text, receiverId }, context) => {
       pubsub.publish("MESSAGE_CREATED", {
         messages: { text, receiverId },
       });
       return Message.create(text, receiverId, { senderId: context.user._id });
     },
+    createConvo: async (parent, args, context) => {
+      /// find a conversation with the logged in users id
+
+      const convo = Conversation.findOne({ participants: context.user._id }); /// perhaps this should search for all participants
+
+      /// if the conversation doesnt not exist create one
+      return convo;
+    },
   },
   Subscription: {
     userActive: {
-      subscribe: () => pubsub.asyncIterator("USER_ACTIVE"),
+      subscribe: () => pubsub.asyncIterator("ACTIVE_USERS"),
     },
     messages: {
       subscribe: withFilter(

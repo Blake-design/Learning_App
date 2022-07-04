@@ -17,7 +17,7 @@ const UpdateForm = ({ bio, name }: UpdateFormType) => {
     e.preventDefault();
     updateUser({ variables: { ...formState } });
   };
-
+  console.log(bio);
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {

@@ -5,16 +5,15 @@ import { UpdateForm } from "../components/forms";
 import { userInfo } from "os";
 
 const Profile = () => {
-  const { loading, data: me } = useQuery(QUERY_ME);
-
+  const { loading, data } = useQuery(QUERY_ME);
   if (loading) {
     <div>loading</div>;
   }
 
-  return me ? (
+  return data ? (
     <section className="page-container">
-      <h2>{me.name} profile page</h2>
-      <UpdateForm bio={me.bio} name={me.name} />
+      <h2>{data.me.name} profile page</h2>
+      <UpdateForm bio={data.me.bio} name={data.me.name} />
       <div>you currently have friends friend s </div>
       <div>your Hi score is currently</div>
     </section>

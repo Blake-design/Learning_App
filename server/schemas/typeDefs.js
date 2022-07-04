@@ -23,7 +23,9 @@ const typeDefs = gql`
   type Message {
     text: String!
     senderId: ID!
-    receiverId: ID!
+  }
+  type Conversation {
+    participants: [ID]
   }
 
   type Auth {
@@ -56,6 +58,7 @@ const typeDefs = gql`
     removeUser: User
     updateUser(bio: String, name: String): User
     createMessage(text: String!, receiverId: ID!): Message
+    createConvo: [ID]
   }
 `;
 
