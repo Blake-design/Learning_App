@@ -1,8 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
-import auth from "../utils/auth";
 import { UpdateForm } from "../components/forms";
-import { userInfo } from "os";
 
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME);
