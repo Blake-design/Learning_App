@@ -1,21 +1,17 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 import "./form.css";
+import { useSignup } from "../hooks";
 
 const Signup = () => {
   const navigate = useNavigate();
-
+  const [handleSignup, { error }] = useSignup();
   const [formState, setFormState] = useState({
     name: "",
     userName: "",
     email: "",
     password: "",
   });
-
-  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -24,13 +20,7 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const { data } = await addUser({ variables: { ...formState } });
-      Auth.login(data.addUser.token);
-    } catch (err) {
-      console.log(err);
-    }
-
+    handleSignup(formState);
     setFormState({
       name: "",
       userName: "",

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-interface LoginForm {
+interface LoginFormType {
   email: string;
   password: string;
 }
@@ -11,7 +10,7 @@ interface LoginForm {
 const useLogin = () => {
   const [login, { error }] = useMutation(LOGIN_USER);
 
-  const handleLogin = async (formState: LoginForm) => {
+  const handleLogin = async (formState: LoginFormType) => {
     try {
       const { data } = await login({ variables: { ...formState } });
       Auth.login(data.login.token);
