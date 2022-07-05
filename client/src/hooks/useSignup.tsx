@@ -4,7 +4,7 @@ import Auth from "../utils/auth";
 
 interface SignupFormType {
   name: string;
-  userName: string;
+  username: string;
   email: string;
   password: string;
 }

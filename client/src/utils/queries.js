@@ -33,8 +33,8 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_SINGLE_USERS = gql`
-  query user($userName: String!) {
-    user(userName: $userName) {
+  query user($username: String!) {
+    user(username: $username) {
       name
       username
       email

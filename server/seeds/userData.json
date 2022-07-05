@@ -1,50 +1,56 @@
 [
   {
     "name": "Blake McCarty",
-    "userName": "dev",
+    "username": "dev",
     "email": "dev1@app.dev",
     "password": "password01",
     "avatar": "goldfish.png",
-    "bio": "South philidelphia born and raised. On the playground is where I spent most of my days, playing ninja turtles and acting all cool fighting the foot clan outside of school."
+    "bio": "South philidelphia born and raised. On the playground is where I spent most of my days, playing ninja turtles and acting all cool fighting the foot clan outside of school.",
+    "active": false
   },
   {
     "name": "Frank Bologna",
-    "userName": "SandwichKing",
+    "username": "SandwichKing",
     "email": "dev2@app.dev",
     "password": "password01",
     "avatar": "snake.png",
-    "bio": "It takes a strong man to hold it together and but a even stronger bread to keep from falling apart."
+    "bio": "It takes a strong man to hold it together and but a even stronger bread to keep from falling apart.",
+    "active": false
   },
   {
     "name": "Lisa Simpson",
-    "userName": "ReddVII",
+    "username": "ReddVII",
     "email": "dev3@app.dev",
     "password": "password01",
     "avatar": "elephant.png",
-    "bio": "Be the change you want to see in the world www.sierraclub.org"
+    "bio": "Be the change you want to see in the world www.sierraclub.org",
+    "active": false
   },
   {
     "name": "Tyrannosaurus Rex",
-    "userName": "KingTheropod",
+    "username": "KingTheropod",
     "email": "dev4@app.dev",
     "password": "password01",
     "avatar": "caterpillar.png",
-    "bio": "Last of my kind, but first to read!"
+    "bio": "Last of my kind, but first to read!",
+    "active": false
   },
   {
     "name": "Evan Bacon",
-    "userName": "SwineTime",
+    "username": "SwineTime",
     "email": "dev5@app.dev",
     "password": "password01",
     "avatar": "goldfish.png",
-    "bio": "oink oink oink oink"
+    "bio": "oink oink oink oink",
+    "active": false
   },
   {
     "name": "Betty Draper",
-    "userName": "BoredAtHome",
+    "username": "BoredAtHome",
     "email": "dev6@app.dev",
     "password": "password01",
     "avatar": "toucan.png",
-    "bio": "Just put the kids to sleep now its time to learn"
+    "bio": "Just put the kids to sleep now its time to learn",
+    "active": false
   }
 ]

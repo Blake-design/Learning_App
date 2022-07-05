@@ -16,7 +16,7 @@ const resolvers = {
 
     // find a specific user
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("settings"); // TODO: use settings to determin if email is shared or not //TODO: limit user to not return password
+      return User.findOne({ username }).populate("settings"); // TODO: use settings to determine if email is shared or not //TODO: limit user to not return password
     },
 
     // returns logged in user with settings model
@@ -31,9 +31,15 @@ const resolvers = {
     },
   },
   Mutation: {
-    // login in user by authenticating credentials
+    // login in user by authenticating credentials and update model to active
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOneAndUpdate(
+        { email },
+        { active: true },
+        { new: true }
+      );
+
+      // authorization
       if (!user) {
         throw new AuthenticationError("Oops you entered the wrong credentials");
       }
@@ -42,20 +48,31 @@ const resolvers = {
         throw new AuthenticationError("Oops you entered the wrong credentials");
       }
       const token = signToken(user);
+
+      // emit event for active users
+      //TODO: replace array with user model search
       activeUsers.push(user);
       pubsub.publish("ACTIVE_USERS", {
         userActive: activeUsers,
       });
-      //TODO: add users from activeUsers model
+
       return { token, user }; //TODO: check if i need to send back a user
     },
 
-    // logout user   //TODO: remove user from activeUsers model
+    // logout user
     logout: async (parents, args, context) => {
+      if (context.user) {
+        await User.findOneAndUpdate(
+          { username: context.user.username },
+          { active: false },
+          { new: true }
+        );
+      }
+      // emit event for active users
+      //TODO: replace array with user model search
       const filteredUsers = activeUsers.filter((user) => {
         user.username !== context.user.username;
       });
-
       activeUsers = filteredUsers;
       pubsub.publish("ACTIVE_USERS", {
         userActive: activeUsers,

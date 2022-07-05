@@ -1,6 +1,10 @@
 import React from "react";
 
-const ActiveChatHeader = ({ userName, online }) => {
+interface ACHeaderProps {
+  username: string;
+  online: boolean;
+}
+const ActiveChatHeader = ({ username, online }: ACHeaderProps) => {
   return (
     <div className="chat-header">
       <div className="container">

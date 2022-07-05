@@ -5,7 +5,7 @@ import "./activeChat.css";
 const ActiveChat = () => {
   return (
     <section className="chat-wrapper">
-      <ActiveChatHeader userName={""} online={""} />
+      <ActiveChatHeader username={""} online={true} />
       <div className="messages-container">
         <Messages messages={""} otherUser={""} userId={""} />
         <Input otherUser={""} conversationId={""} user={""} postMessage={""} />

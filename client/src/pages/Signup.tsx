@@ -8,7 +8,7 @@ const Signup = () => {
   const [handleSignup, { error }] = useSignup();
   const [formState, setFormState] = useState({
     name: "",
-    userName: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -23,7 +23,7 @@ const Signup = () => {
     handleSignup(formState);
     setFormState({
       name: "",
-      userName: "",
+      username: "",
       email: "",
       password: "",
     });
@@ -47,9 +47,9 @@ const Signup = () => {
           <input
             className="form-input"
             placeholder="USER NAME"
-            name="userName"
+            name="username"
             type="text"
-            value={formState.userName}
+            value={formState.username}
             onChange={handleChange}
           />
           <input
