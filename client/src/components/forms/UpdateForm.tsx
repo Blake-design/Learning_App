@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { UPDATE_USER } from "../..//utils/mutations";
 import { useMutation } from "@apollo/client";
-
-interface UpdateFormType {
-  bio: string;
-  name: string;
-}
+import { UpdateFormType } from "../../types";
 
 const UpdateForm = ({ bio, name }: UpdateFormType) => {
   const [updateUser, { error }] = useMutation(UPDATE_USER);

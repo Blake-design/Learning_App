@@ -11,12 +11,14 @@ const resolvers = {
   Query: {
     // find all user models
     users: async () => {
-      return User.find(); // TODO: limit data returned
+      return User.find({}, "username active");
     },
 
     // find a specific user
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("settings"); // TODO: use settings to determine if email is shared or not //TODO: limit user to not return password
+      return User.findOne({ username })
+        .select("-password")
+        .populate("settings"); // TODO: use settings to determine if email is shared or not
     },
 
     // returns logged in user with settings model

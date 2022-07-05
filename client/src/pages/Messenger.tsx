@@ -1,11 +1,9 @@
-import { useSubscription } from "@apollo/client";
 import React from "react";
 import { MessengerApp } from "../components/messenger";
-import { GET_ACTIVE_USERS } from "../utils/queries";
+import { UsersQueryProp } from "../types";
 
-const Messenger = () => {
-  const { data } = useSubscription(GET_ACTIVE_USERS);
-  console.log(data);
+const Messenger = ({ users }: UsersQueryProp) => {
+  console.log(users);
   return (
     <section className="page-container">
       <MessengerApp />

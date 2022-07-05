@@ -1,13 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-
-interface SignupFormType {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-}
+import { SignupFormType } from "../types";
 
 const useSignup = () => {
   const [addUser, { error }] = useMutation(ADD_USER);

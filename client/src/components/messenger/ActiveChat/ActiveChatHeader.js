@@ -1,9 +1,6 @@
 import React from "react";
+import { ACHeaderProps } from "../../../types";
 
-interface ACHeaderProps {
-  username: string;
-  online: boolean;
-}
 const ActiveChatHeader = ({ username, online }: ACHeaderProps) => {
   return (
     <div className="chat-header">
