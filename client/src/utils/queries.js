@@ -10,7 +10,7 @@ export const QUERY_ME = gql`
   query me {
     me {
       name
-      userName
+      username
       email
       avatar
       bio
@@ -26,7 +26,7 @@ export const QUERY_ME = gql`
 export const QUERY_USERS = gql`
   query allUsers {
     users {
-      userName
+      username
       active
     }
   }
@@ -36,7 +36,7 @@ export const QUERY_SINGLE_USERS = gql`
   query user($userName: String!) {
     user(userName: $userName) {
       name
-      userName
+      username
       email
       avatar
     }
@@ -46,7 +46,7 @@ export const QUERY_SINGLE_USERS = gql`
 export const GET_ACTIVE_USERS = gql`
   subscription Subscription {
     userActive {
-      userName
+      username
     }
   }
 `;

@@ -8,7 +8,7 @@ const UserSchema = new Schema(
       required: true,
       trim: true,
     },
-    userName: {
+    user: {
       type: String,
       required: true,
       trim: true,
@@ -45,6 +45,12 @@ const UserSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Settings",
     },
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );

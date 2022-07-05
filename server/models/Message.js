@@ -1,4 +1,4 @@
-const { model, Schema, default: mongoose } = require("mongoose");
+const { model, Schema } = require("mongoose");
 
 const MessageSchema = new Schema(
   {
@@ -7,7 +7,7 @@ const MessageSchema = new Schema(
       required: true,
       trim: true,
     },
-    senderId: mongoose.ObjectId,
+    senderId: Schema.Types.ObjectId,
   },
   { timestamps: true }
 );

@@ -4,7 +4,7 @@ const typeDefs = gql`
   type User {
     _id: ID
     name: String
-    userName: String
+    username: String
     email: String
     joined: String
     bio: String
@@ -24,8 +24,13 @@ const typeDefs = gql`
     text: String!
     senderId: ID!
   }
+
   type Conversation {
     participants: [ID]
+  }
+
+  type ActiveUsers {
+    active: [User]
   }
 
   type Auth {
@@ -48,7 +53,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(
       name: String!
-      userName: String!
+      user: String!
       email: String!
       password: String!
     ): Auth
@@ -57,6 +62,7 @@ const typeDefs = gql`
     logout: User
     removeUser: User
     updateUser(bio: String, name: String): User
+    addFriend(username: String!): User
     createMessage(text: String!, receiverId: ID!): Message
     createConvo: [ID]
   }
