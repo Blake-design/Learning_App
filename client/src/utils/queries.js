@@ -40,6 +40,7 @@ export const QUERY_SINGLE_USER = gql`
       email
       avatar
       bio
+      createdAt
       settings {
         showActive
         shareEmail

@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String
     username: String
     email: String
-    joined: String
+    createdAt: String
     bio: String
     active: Boolean
     avatar: String
