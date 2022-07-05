@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { PubSub, withFilter } = require("graphql-subscriptions");
-const { User, Message, Conversation, ActiveUsers } = require("../models");
+const { User, Message, Conversation } = require("../models");
 
 const { signToken } = require("../utils/auth");
 
@@ -58,7 +58,7 @@ const resolvers = {
         userActive: activeUsers,
       });
 
-      return { token, user }; //TODO: check if i need to send back a user
+      return { token, user };
     },
 
     // logout user
@@ -88,10 +88,11 @@ const resolvers = {
         username,
         password,
         email,
+        active: true,
       });
 
       const token = signToken(user);
-      return { token, user }; //TODO: check if i  need to send back a user
+      return { token, user };
     },
 
     // removes user from database (if logged in)
@@ -113,6 +114,10 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in");
     },
+
+    //TODO: create add friend resolver
+
+    //TODO: create remove friend resolver
 
     /// creates a new message using sender id and emits MESSAGE CREATED event
     createMessage: async (parent, { text, receiverId }, context) => {
