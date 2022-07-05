@@ -32,13 +32,18 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const QUERY_SINGLE_USERS = gql`
+export const QUERY_SINGLE_USER = gql`
   query user($username: String!) {
     user(username: $username) {
       name
       username
       email
       avatar
+      bio
+      settings {
+        showActive
+        shareEmail
+      }
     }
   }
 `;

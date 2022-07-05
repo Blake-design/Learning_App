@@ -6,12 +6,7 @@ import { REMOVE_USER } from "../utils/mutations";
 import auth from "../utils/auth";
 
 const Settings = () => {
-  const {
-    loading,
-    data: {
-      me: { settings },
-    },
-  } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME);
 
   const [removeUser, { error }] = useMutation(REMOVE_USER);
 
@@ -20,7 +15,7 @@ const Settings = () => {
     auth.logout();
   };
 
-  return settings ? (
+  return data ? (
     <section className="page-container">
       <h1>this is the settings page</h1>
       <ul>

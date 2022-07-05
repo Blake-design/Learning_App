@@ -1,17 +1,21 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 import { UpdateForm } from "../components/forms";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  let { username } = useParams();
+  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    variables: { username },
+  });
   if (loading) {
     <div>loading</div>;
   }
-
+  console.log(data);
   return data ? (
     <section className="page-container">
-      <h2>{data.me.name}'s profile page</h2>
-      <UpdateForm bio={data.me.bio} name={data.me.name} />
+      <h2>{data.user.name}</h2>
+      <UpdateForm bio={data.user.bio} name={data.user.name} />
       <div>you currently have friends friend s </div>
       <div>your Hi score is currently</div>
     </section>
