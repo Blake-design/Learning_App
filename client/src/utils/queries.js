@@ -14,6 +14,10 @@ export const QUERY_ME = gql`
       email
       avatar
       bio
+      friends {
+        pending
+        accepted
+      }
       settings {
         theme
         showActive

@@ -45,12 +45,10 @@ const UserSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Settings",
     },
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    friends: {
+      pending: [{ type: String }],
+      accepted: [{ type: String }],
+    },
   },
   { timestamps: true }
 );

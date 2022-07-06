@@ -115,7 +115,31 @@ const resolvers = {
       throw new AuthenticationError("Please log in");
     },
 
-    //TODO: create add friend resolver
+    // sends friend request to pending
+    sendFriendRequest: async (parent, { username }, context) => {
+      console.log(context.user.username);
+      // TODO: is this code pattern safe?
+      if (context.user) {
+        const reciever = await User.findOne({ username });
+        reciever.friends.pending.push(context.user.username);
+        reciever.save();
+      }
+    },
+
+    // moves fiend request from pending to active
+    acceptFriendRequest: async (parent, { username }, context) => {
+      if (context.user) {
+        const acceptor = await User.findOne({
+          username: context.user.username,
+        });
+        const pendingArray = acceptor.friends.pending.filter(
+          (req) => req !== username
+        );
+        acceptor.friends.pending = pendingArray;
+        acceptor.friends.accepted.push(username);
+        acceptor.save();
+      }
+    },
 
     //TODO: create remove friend resolver
 

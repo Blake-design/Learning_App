@@ -2,19 +2,24 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ThemeButton } from "../components";
-import { REMOVE_USER } from "../utils/mutations";
+import { ACCEPT_REQUEST, REMOVE_USER } from "../utils/mutations";
 import auth from "../utils/auth";
 
 const Settings = () => {
   const { loading, data } = useQuery(QUERY_ME);
 
   const [removeUser, { error }] = useMutation(REMOVE_USER);
+  const [acceptRequest, { error: error2 }] = useMutation(ACCEPT_REQUEST);
 
-  const handleClick = async () => {
+  const handleRemove = async () => {
     await removeUser();
     auth.logout();
   };
 
+  const handleAccept = async (e: any) => {
+    acceptRequest({ variables: { username: e.target.name } });
+  };
+  console.log(data);
   return data ? (
     <section className="page-container">
       <h1>this is the settings page</h1>
@@ -24,7 +29,25 @@ const Settings = () => {
         </li>
         <li>Show when active</li>
         <li>
-          Remove account <button onClick={handleClick}>Delete Data</button>
+          Remove account <button onClick={handleRemove}>Delete Data</button>
+        </li>
+        <li>
+          friend requests pending
+          {data?.me.friends?.pending ? (
+            data?.me.friends?.pending.map((request: any) => {
+              return (
+                <button
+                  key={request}
+                  onClick={(e) => handleAccept(e)}
+                  name={request}
+                >
+                  {request}
+                </button>
+              );
+            })
+          ) : (
+            <button> none </button>
+          )}
         </li>
       </ul>
     </section>
