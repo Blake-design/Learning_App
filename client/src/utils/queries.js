@@ -45,6 +45,10 @@ export const QUERY_SINGLE_USER = gql`
       avatar
       bio
       createdAt
+      friends {
+        pending
+        accepted
+      }
       settings {
         showActive
         shareEmail

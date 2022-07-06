@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 
@@ -6,6 +7,7 @@ import { SEND_REQUEST } from "../utils/mutations";
 
 const Profile = () => {
   let { username } = useParams();
+  const [resMessage, setResMessage] = useState("");
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { username },
   });
@@ -23,8 +25,11 @@ const Profile = () => {
     date.getDate(),
   ];
 
-  const handleClick = () => {
-    if (username) sendRequest({ variables: { username } });
+  const handleClick = async () => {
+    if (username) {
+      const res = await sendRequest({ variables: { username } });
+      setResMessage(res?.data?.sendFriendRequest);
+    }
   };
 
   return data ? (
@@ -39,7 +44,10 @@ const Profile = () => {
       <div>has # friends friend s </div>
       <div>Hi score is #</div>
       <p>Joined {`${month} ${day}, ${year}`} </p>
-      <button onClick={handleClick}>Send Friend Request</button>
+      {!data.user?.friends?.pending?.includes(data.me?.username) &&
+        !data.me?.friends?.active?.includes(data.me?.username)(
+          <button onClick={handleClick}>Send Friend Request</button>
+        )}
     </section>
   ) : (
     <section className="page-container">

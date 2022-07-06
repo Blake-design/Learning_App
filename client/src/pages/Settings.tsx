@@ -17,7 +17,8 @@ const Settings = () => {
   };
 
   const handleAccept = async (e: any) => {
-    acceptRequest({ variables: { username: e.target.name } });
+    const res = await acceptRequest({ variables: { username: e.target.name } });
+    console.log(res);
   };
   console.log(data);
   return data ? (

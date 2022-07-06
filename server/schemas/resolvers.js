@@ -117,18 +117,20 @@ const resolvers = {
 
     // sends friend request to pending
     sendFriendRequest: async (parent, { username }, context) => {
-      console.log(context.user.username);
       // TODO: is this code pattern safe?
       if (context.user) {
         const reciever = await User.findOne({ username });
         reciever.friends.pending.push(context.user.username);
         reciever.save();
       }
+
+      return `request sent to ${username}`;
     },
 
     // moves fiend request from pending to active
     acceptFriendRequest: async (parent, { username }, context) => {
       if (context.user) {
+        // the logged in user
         const acceptor = await User.findOne({
           username: context.user.username,
         });
@@ -138,6 +140,12 @@ const resolvers = {
         acceptor.friends.pending = pendingArray;
         acceptor.friends.accepted.push(username);
         acceptor.save();
+        // The person who sent the friend request
+        const sender = await User.findOne({ username });
+        sender.friends.accepted.push(context.user.username);
+        sender.save();
+
+        return `${username} add to friends`;
       }
     },
 

@@ -62,16 +62,14 @@ export const UPDATE_USER = gql`
 `;
 export const SEND_REQUEST = gql`
   mutation sendFriendRequest($username: String!) {
-    sendFriendRequest(username: $username) {
-      name
-    }
+    sendFriendRequest(username: $username)
   }
 `;
 
 export const ACCEPT_REQUEST = gql`
   mutation acceptFriendRequest($username: String!) {
     acceptFriendRequest(username: $username) {
-      name
+      String
     }
   }
 `;
