@@ -7,7 +7,14 @@ const MessageSchema = new Schema(
       required: true,
       trim: true,
     },
-    senderId: Schema.Types.ObjectId,
+    senderId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    convo: {
+      type: Schema.Types.ObjectId,
+      ref: "Conversation",
+    },
   },
   { timestamps: true }
 );

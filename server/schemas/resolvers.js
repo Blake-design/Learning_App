@@ -117,35 +117,37 @@ const resolvers = {
 
     // sends friend request to pending
     sendFriendRequest: async (parent, { username }, context) => {
-      // TODO: is this code pattern safe?
+      // TODO: stop double request from being sent
       if (context.user) {
-        const reciever = await User.findOne({ username });
-        reciever.friends.pending.push(context.user.username);
-        reciever.save();
+        return User.findOneAndUpdate(
+          { username },
+          { $push: { "friends.pending": context.user._id } },
+          { new: true }
+        );
       }
-
-      return `request sent to ${username}`;
+      throw new AuthenticationError("Please log in");
     },
 
     // moves fiend request from pending to active
     acceptFriendRequest: async (parent, { username }, context) => {
       if (context.user) {
         // the logged in user
-        const acceptor = await User.findOne({
-          username: context.user.username,
-        });
-        const pendingArray = acceptor.friends.pending.filter(
-          (req) => req !== username
+        await User.findOneAndUpdate(
+          {
+            username: context.user.username,
+          },
+          { $pull: { "friends.pending": context.user._id } },
+          { new: true }
         );
-        acceptor.friends.pending = pendingArray;
-        acceptor.friends.accepted.push(username);
-        acceptor.save();
-        // The person who sent the friend request
-        const sender = await User.findOne({ username });
-        sender.friends.accepted.push(context.user.username);
-        sender.save();
 
-        return `${username} add to friends`;
+        // The person who sent the friend request
+        const user = await User.findOneAndUpdate(
+          { username },
+          { $push: { "friends.accepted": context.user._id } },
+          { new: true }
+        );
+
+        return user;
       }
     },
 
@@ -160,11 +162,13 @@ const resolvers = {
     },
 
     // finds a convo with participants or creates one
-    createConvo: async (parent, args, context) => {
+    createConvo: async (parent, { username }, context) => {
       // find a conversation with the logged in users id
 
-      const convo = Conversation.findOne({ participants: context.user._id }); // TODO:perhaps this should search for all participants
-
+      const convo = Conversation.findOne({ participants: username }); // TODO:perhaps this should search for all participants
+      if (!convo) {
+        Conversation.create({ participants: username });
+      }
       // if the conversation doesnt not exist create one
       return convo;
     },

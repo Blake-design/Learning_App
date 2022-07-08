@@ -32,7 +32,11 @@ const typeDefs = gql`
   }
 
   type Conversation {
-    participants: [ID]
+    roomName: String
+    participants: [String]
+    lastMessage: Message
+    groupAdmin: User
+    isGroupChat: Boolean
   }
 
   type ActiveUsers {
@@ -68,10 +72,10 @@ const typeDefs = gql`
     logout: User
     removeUser: User
     updateUser(bio: String, name: String): User
-    sendFriendRequest(username: String!): String
-    acceptFriendRequest(username: String!): String
+    sendFriendRequest(username: String!): User
+    acceptFriendRequest(username: String!): User
     createMessage(text: String!, receiverId: ID!): Message
-    createConvo: [ID]
+    createConvo(username: String!): Conversation
   }
 `;
 

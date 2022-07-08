@@ -1,7 +1,29 @@
-const { model, Schema, mongoose } = require("mongoose");
+const { model, Schema } = require("mongoose");
 
 const ConversationSchema = new Schema({
-  participants: [mongoose.ObjectId],
+  roomName: {
+    type: String,
+    trim: true,
+  },
+
+  participants: [
+    {
+      type: String,
+      ref: "User",
+    },
+  ],
+  lastMessage: {
+    type: Schema.Types.ObjectId,
+    ref: "Message",
+  },
+  groupAdmin: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  isGroupchat: {
+    type: Boolean,
+    deafault: false,
+  },
 });
 
 const Conversation = model("Conversation", ConversationSchema);

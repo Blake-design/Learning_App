@@ -9,12 +9,17 @@ const ChatSidebar = ({ users }: UsersQueryProp) => {
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
   return (
-    <div className="sb-wrapper">
-      <CurrentUser />
-      <h3 className="sb-title">Chats</h3>
-      <Search />
-      <Chat />
-    </div>
+    data && (
+      <div className="sb-wrapper">
+        {data?.me?.friends?.accepted?.map((friend: string) => (
+          <CurrentUser key={friend} friend={friend} />
+        ))}
+
+        <h3 className="sb-title">Chats</h3>
+        <Search />
+        <Chat />
+      </div>
+    )
   );
 };
 

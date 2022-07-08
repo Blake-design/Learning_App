@@ -62,14 +62,29 @@ export const UPDATE_USER = gql`
 `;
 export const SEND_REQUEST = gql`
   mutation sendFriendRequest($username: String!) {
-    sendFriendRequest(username: $username)
+    sendFriendRequest(username: $username) {
+      _id
+      username
+    }
   }
 `;
 
 export const ACCEPT_REQUEST = gql`
   mutation acceptFriendRequest($username: String!) {
     acceptFriendRequest(username: $username) {
-      String
+      _id
+      username
+    }
+  }
+`;
+export const CREATE_CONVO = gql`
+  mutation createConvo($username: String!) {
+    createConvo(username: $username) {
+      roomName
+      participants
+      lastMessage
+      groupAdmin
+      isGroupChat
     }
   }
 `;
