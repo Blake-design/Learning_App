@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { PubSub, withFilter } = require("graphql-subscriptions");
-const { User, Message, Conversation } = require("../models");
+const { User, Message, Conversation, Request } = require("../models");
 
 const { signToken } = require("../utils/auth");
 
@@ -18,7 +18,8 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select("-password")
-        .populate("settings"); // TODO: use settings to determine if email is shared or not
+        .populate("settings")
+        .populate("requests"); // TODO: use settings to determine if email is shared or not
     },
 
     // returns logged in user with settings model
@@ -26,7 +27,9 @@ const resolvers = {
       if (context.user) {
         const user = await User.findOne({
           username: context.user.username,
-        }).populate("settings");
+        })
+          .populate("settings")
+          .populate("requests");
         return user;
       }
       throw new AuthenticationError("Please login to view your profile.");
@@ -116,14 +119,40 @@ const resolvers = {
     },
 
     // sends friend request to pending
-    sendFriendRequest: async (parent, { username }, context) => {
+    sendFriendRequest: async (parent, { _id }, context) => {
       // TODO: stop double request from being sent
+
+      console.log(context.user);
       if (context.user) {
-        return User.findOneAndUpdate(
-          { username },
-          { $push: { "friends.pending": context.user._id } },
-          { new: true }
+        const request = await Request.create({
+          sender: context.user._id,
+          receiver: _id,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: {
+              requests: request._id,
+            },
+          },
+          {
+            new: true,
+          }
         );
+        const user = await User.findByIdAndUpdate(
+          { _id },
+          {
+            $push: {
+              requests: request._id,
+            },
+          },
+          {
+            new: true,
+          }
+        );
+
+        return user;
       }
       throw new AuthenticationError("Please log in");
     },
@@ -136,7 +165,8 @@ const resolvers = {
           {
             username: context.user.username,
           },
-          { $pull: { "friends.pending": context.user._id } },
+          { $pull: { "friends.pending": username } },
+          { $push: { "friends.accepted": username } },
           { new: true }
         );
 

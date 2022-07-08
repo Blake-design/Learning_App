@@ -11,12 +11,13 @@ const typeDefs = gql`
     active: Boolean
     avatar: String
     settings: Settings
-    friends: Friends
+    friends: [User]
+    requests: [Request]
   }
 
-  type Friends {
-    pending: [String]
-    accepted: [String]
+  type Request {
+    sender: User
+    receiver: User
   }
 
   type Settings {
@@ -72,8 +73,8 @@ const typeDefs = gql`
     logout: User
     removeUser: User
     updateUser(bio: String, name: String): User
-    sendFriendRequest(username: String!): User
-    acceptFriendRequest(username: String!): User
+    sendFriendRequest(_id: ID!): User
+    acceptFriendRequest(_id: ID!): User
     createMessage(text: String!, receiverId: ID!): Message
     createConvo(username: String!): Conversation
   }

@@ -24,13 +24,13 @@ const Profile = () => {
     date.toLocaleString("default", { month: "long" }),
     date.getDate(),
   ];
-
+  console.log(data);
   const handleClick = async () => {
     if (username) {
-      const res = await sendRequest({ variables: { username } });
+      const res = await sendRequest({ variables: { _id: data?.user?._id } });
       // setResMessage(res?.data?.sendFriendRequest);
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   return data ? (

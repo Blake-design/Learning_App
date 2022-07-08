@@ -15,9 +15,19 @@ export const QUERY_ME = gql`
       email
       avatar
       bio
+      requests {
+        sender {
+          _id
+          username
+        }
+        receiver {
+          _id
+          username
+        }
+      }
       friends {
-        pending
-        accepted
+        _id
+        username
       }
       settings {
         theme
@@ -40,15 +50,26 @@ export const QUERY_USERS = gql`
 export const QUERY_SINGLE_USER = gql`
   query user($username: String!) {
     user(username: $username) {
+      _id
       name
       username
       email
       avatar
       bio
       createdAt
+      requests {
+        sender {
+          _id
+          username
+        }
+        receiver {
+          _id
+          username
+        }
+      }
       friends {
-        pending
-        accepted
+        _id
+        username
       }
       settings {
         showActive

@@ -45,10 +45,18 @@ const UserSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Settings",
     },
-    friends: {
-      pending: [{ type: String }],
-      accepted: [{ type: String }],
-    },
+    requests: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Request",
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );

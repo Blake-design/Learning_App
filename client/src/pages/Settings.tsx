@@ -38,11 +38,11 @@ const Settings = () => {
             data?.me.friends?.pending.map((request: any) => {
               return (
                 <button
-                  key={request}
+                  key={request.id}
                   onClick={(e) => handleAccept(e)}
-                  name={request}
+                  name={request.id}
                 >
-                  {request}
+                  {request.username}
                 </button>
               );
             })
