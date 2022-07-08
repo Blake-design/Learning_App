@@ -71,8 +71,8 @@ export const SEND_REQUEST = gql`
 `;
 
 export const ACCEPT_REQUEST = gql`
-  mutation acceptFriendRequest($_id: ID!) {
-    acceptFriendRequest(_id: $_id) {
+  mutation acceptFriendRequest($userId: ID!, $requestId: ID!) {
+    acceptFriendRequest(userId: $userId, requestId: $requestId) {
       _id
       username
     }

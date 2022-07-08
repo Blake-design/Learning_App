@@ -18,19 +18,21 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select("-password")
-        .populate("settings")
-        .populate("requests"); // TODO: use settings to determine if email is shared or not
+        .populate("settings") // TODO: use settings to determine if email is shared or not
+        .populate([{ path: "requests", populate: { path: "reciever" } }]);
     },
 
     // returns logged in user with settings model
     me: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findOne({
+        return User.findOne({
           username: context.user.username,
         })
           .populate("settings")
-          .populate("requests");
-        return user;
+          .populate({
+            path: "requests",
+            populate: { path: "sender" },
+          });
       }
       throw new AuthenticationError("Please login to view your profile.");
     },
@@ -122,8 +124,6 @@ const resolvers = {
     sendFriendRequest: async (parent, { _id }, context) => {
       // TODO: stop double request from being sent
 
-      console.log(context.user);
-
       if (context.user) {
         const request = await Request.create({
           sender: context.user._id,
@@ -159,22 +159,22 @@ const resolvers = {
     },
 
     // moves fiend request from pending to active
-    acceptFriendRequest: async (parent, { username }, context) => {
+    acceptFriendRequest: async (parent, { userId, requestId }, context) => {
       if (context.user) {
         // the logged in user
-        await User.findOneAndUpdate(
-          {
-            username: context.user.username,
-          },
-          { $pull: { "friends.pending": username } },
-          { $push: { "friends.accepted": username } },
+        const user = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { requests: requestId }, $push: { friends: userId } },
           { new: true }
         );
 
         // The person who sent the friend request
-        const user = await User.findOneAndUpdate(
-          { username },
-          { $push: { "friends.accepted": context.user._id } },
+        await User.findOneAndUpdate(
+          { _id: userId },
+          {
+            $pull: { requests: requestId },
+            $push: { friends: context.user._id },
+          },
           { new: true }
         );
 

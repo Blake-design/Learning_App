@@ -75,7 +75,7 @@ const typeDefs = gql`
     removeUser: User
     updateUser(bio: String, name: String): User
     sendFriendRequest(_id: ID!): User
-    acceptFriendRequest(_id: ID!): User
+    acceptFriendRequest(userId: ID!, requestId: ID!): User
     createMessage(text: String!, receiverId: ID!): Message
     createConvo(username: String!): Conversation
   }

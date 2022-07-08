@@ -16,9 +16,11 @@ export const QUERY_ME = gql`
       avatar
       bio
       requests {
+        _id
         sender {
           _id
           username
+          email
         }
         receiver {
           _id
@@ -61,6 +63,7 @@ export const QUERY_SINGLE_USER = gql`
         _id
         sender {
           _id
+          username
         }
         receiver {
           _id

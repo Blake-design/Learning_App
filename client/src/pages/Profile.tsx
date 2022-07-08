@@ -50,7 +50,7 @@ const Profile = () => {
       <div>has # friends friend s </div>
       <div>Hi score is #</div>
       <p>Joined {`${month} ${day}, ${year}`} </p>
-      {!userRequests.includes(data2?.me?._id) && (
+      {!userRequests.includes(data2?.me?._id) && data2 && (
         <button onClick={handleClick}>Send Friend Request</button>
       )}
     </section>

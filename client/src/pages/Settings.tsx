@@ -17,10 +17,15 @@ const Settings = () => {
   };
 
   const handleAccept = async (e: any) => {
-    const res = await acceptRequest({ variables: { username: e.target.name } });
+    const res = await acceptRequest({
+      variables: { userId: e.target.value, requestId: e.target.name },
+    });
     console.log(res);
   };
-  console.log(data);
+  const myRequests = data?.me?.requests?.map((request: any) => {
+    return request;
+  });
+
   return data ? (
     <section className="page-container">
       <h1>this is the settings page</h1>
@@ -34,15 +39,16 @@ const Settings = () => {
         </li>
         <li>
           friend requests pending
-          {data?.me.friends?.pending ? (
-            data?.me.friends?.pending.map((request: any) => {
+          {!myRequests.includes(null) ? (
+            myRequests?.map((request: any, i: number) => {
               return (
                 <button
-                  key={request.id}
+                  key={i}
                   onClick={(e) => handleAccept(e)}
-                  name={request.id}
+                  name={request?._id}
+                  value={request?.sender?._id}
                 >
-                  {request.username}
+                  {request?.sender.username}
                 </button>
               );
             })
