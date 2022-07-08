@@ -4,6 +4,7 @@ import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 
 import { useParams } from "react-router-dom";
 import { SEND_REQUEST } from "../utils/mutations";
+import { request } from "http";
 
 const Profile = () => {
   let { username } = useParams();
@@ -33,6 +34,10 @@ const Profile = () => {
     // window.location.reload();
   };
 
+  const userRequests = data?.user?.requests?.map((request: any) => {
+    return request.sender._id;
+  });
+
   return data ? (
     <section className="page-container">
       <div>
@@ -45,10 +50,9 @@ const Profile = () => {
       <div>has # friends friend s </div>
       <div>Hi score is #</div>
       <p>Joined {`${month} ${day}, ${year}`} </p>
-      {!data.user?.friends?.pending?.includes(data2?.me?._id) &&
-        !data2?.me?.friends?.active?.includes(data2?.me?._id) && (
-          <button onClick={handleClick}>Send Friend Request</button>
-        )}
+      {!userRequests.includes(data2?.me?._id) && (
+        <button onClick={handleClick}>Send Friend Request</button>
+      )}
     </section>
   ) : (
     <section className="page-container">

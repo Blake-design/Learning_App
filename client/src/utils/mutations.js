@@ -65,6 +65,7 @@ export const SEND_REQUEST = gql`
     sendFriendRequest(_id: $_id) {
       _id
       username
+      email
     }
   }
 `;

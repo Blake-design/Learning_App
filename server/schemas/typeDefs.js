@@ -16,6 +16,7 @@ const typeDefs = gql`
   }
 
   type Request {
+    _id: ID
     sender: User
     receiver: User
   }

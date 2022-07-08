@@ -123,6 +123,7 @@ const resolvers = {
       // TODO: stop double request from being sent
 
       console.log(context.user);
+
       if (context.user) {
         const request = await Request.create({
           sender: context.user._id,

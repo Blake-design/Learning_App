@@ -58,9 +58,9 @@ export const QUERY_SINGLE_USER = gql`
       bio
       createdAt
       requests {
+        _id
         sender {
           _id
-          username
         }
         receiver {
           _id
