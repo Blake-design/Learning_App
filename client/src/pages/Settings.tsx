@@ -25,7 +25,7 @@ const Settings = () => {
   const myRequests = data?.me?.requests?.map((request: any) => {
     return request;
   });
-
+  console.log(data);
   return data ? (
     <section className="page-container">
       <h1>this is the settings page</h1>
@@ -42,14 +42,16 @@ const Settings = () => {
           {!myRequests.includes(null) ? (
             myRequests?.map((request: any, i: number) => {
               return (
-                <button
-                  key={i}
-                  onClick={(e) => handleAccept(e)}
-                  name={request?._id}
-                  value={request?.sender?._id}
-                >
-                  {request?.sender.username}
-                </button>
+                request.sender._id !== data.me._id && (
+                  <button
+                    key={i}
+                    onClick={(e) => handleAccept(e)}
+                    name={request?._id}
+                    value={request?.sender?._id}
+                  >
+                    {request?.sender?.username}
+                  </button>
+                )
               );
             })
           ) : (

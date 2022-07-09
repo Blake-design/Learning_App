@@ -32,6 +32,7 @@ export const QUERY_ME = gql`
         username
       }
       settings {
+        _id
         theme
         showActive
         shareEmail

@@ -19,10 +19,12 @@ const resolvers = {
       return User.findOne({ username })
         .select("-password")
         .populate("settings") // TODO: use settings to determine if email is shared or not
-        .populate([{ path: "requests", populate: { path: "reciever" } }]);
+        .populate("requests");
     },
 
     // returns logged in user with settings model
+
+    //TODO: populate needs to be reworked based off user ids
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({
