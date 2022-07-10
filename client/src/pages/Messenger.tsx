@@ -3,8 +3,6 @@ import { MessengerApp } from "../components/messenger";
 import { UsersQueryProp } from "../types";
 import auth from "../utils/auth";
 const Messenger = ({ users }: UsersQueryProp) => {
-  console.log(auth.loggedin());
-
   return (
     <section className="page-container">
       {auth.loggedin() ? <MessengerApp users={users} /> : <p>please log in</p>}

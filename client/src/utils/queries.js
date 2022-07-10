@@ -30,6 +30,7 @@ export const QUERY_ME = gql`
       friends {
         _id
         username
+        avatar
       }
       settings {
         _id

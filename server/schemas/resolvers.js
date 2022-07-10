@@ -30,6 +30,7 @@ const resolvers = {
         return User.findOne({
           username: context.user.username,
         })
+          .populate("friends")
           .populate("settings")
           .populate({
             path: "requests",

@@ -34,3 +34,15 @@ export interface UsersQueryProp {
     }
   ];
 }
+
+export interface FriendType {
+  username: string;
+  _id: string;
+  avatar: string;
+  _typename?: string;
+}
+
+export interface BadgeAvatarType {
+  src: string;
+  alt: string;
+}

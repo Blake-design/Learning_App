@@ -1,18 +1,22 @@
 import React from "react";
 import { Chat, CurrentUser, Search } from ".";
 import "./msg-sidebar.css";
-import { UsersQueryProp } from "../../../types";
-import { QUERY_ME } from "../../../utils/queries";
-import { useQuery, useMutation } from "@apollo/client";
+import { FriendType, UsersQueryProp } from "../../../types";
 
-const ChatSidebar = ({ users }: UsersQueryProp) => {
-  const { loading, data } = useQuery(QUERY_ME);
+import { useMutation } from "@apollo/client";
+
+const ChatSidebar = ({ users, data }: any) => {
   console.log(data);
   return (
     data && (
       <div className="sb-wrapper">
-        {data?.me?.friends?.accepted?.map((friend: string) => (
-          <CurrentUser key={friend} friend={friend} />
+        {data?.me?.friends?.map((friend: FriendType) => (
+          <CurrentUser
+            key={friend?._id}
+            username={friend.username}
+            _id={friend._id}
+            avatar={friend.avatar}
+          />
         ))}
 
         <h3 className="sb-title">Chats</h3>
