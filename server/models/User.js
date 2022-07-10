@@ -57,6 +57,7 @@ const UserSchema = new Schema(
         ref: "User",
       },
     ],
+    convos: [{ type: Schema.Types.ObjectId, ref: "Conversation" }],
   },
   { timestamps: true }
 );

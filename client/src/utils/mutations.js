@@ -79,12 +79,17 @@ export const ACCEPT_REQUEST = gql`
   }
 `;
 export const CREATE_CONVO = gql`
-  mutation createConvo($username: String!) {
-    createConvo(username: $username) {
+  mutation createConvo($_id: ID!) {
+    createConvo(_id: $_id) {
       roomName
-      participants
-      lastMessage
-      groupAdmin
+      participants {
+        _id
+        username
+      }
+      groupAdmin {
+        _id
+        username
+      }
       isGroupChat
     }
   }

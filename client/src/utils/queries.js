@@ -38,6 +38,10 @@ export const QUERY_ME = gql`
         showActive
         shareEmail
       }
+      convos {
+        _id
+        roomName
+      }
     }
   }
 `;

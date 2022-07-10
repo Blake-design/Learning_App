@@ -10,7 +10,7 @@ const CurrentUser = ({ _id, username, avatar }: FriendType) => {
     //TODO: on click this will add user to conversation
 
     const convo = await createConvo({
-      variables: { username: e.target.value },
+      variables: { _id: e.target.value },
     });
   };
 

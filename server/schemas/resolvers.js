@@ -196,17 +196,27 @@ const resolvers = {
     },
 
     // finds a convo with participants or creates one
-    createConvo: async (parent, { username }, context) => {
+    createConvo: async (parent, { _id }, context) => {
       // find a conversation with the logged in users id
 
-      const convo = Conversation.findOne({ participants: username }); // TODO:perhaps this should search for all participants
-      if (!convo) {
-        Conversation.create({ participants: username });
-      }
+      //TODO:  try to find convo first
+
+      const convo = await Conversation.create({
+        groupAdmin: context.user._id,
+        participants: [_id, context.user._id],
+      });
+
       // if the conversation doesnt not exist create one
+      await User.findByIdAndUpdate(
+        {
+          _id: context.user._id,
+        },
+        { $push: { convos: convo._id } }
+      );
       return convo;
     },
   },
+
   Subscription: {
     userActive: {
       subscribe: () => pubsub.asyncIterator("ACTIVE_USERS"),

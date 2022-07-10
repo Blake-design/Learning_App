@@ -8,7 +8,7 @@ const ConversationSchema = new Schema({
 
   participants: [
     {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
   ],
@@ -22,7 +22,7 @@ const ConversationSchema = new Schema({
   },
   isGroupchat: {
     type: Boolean,
-    deafault: false,
+    default: false,
   },
 });
 

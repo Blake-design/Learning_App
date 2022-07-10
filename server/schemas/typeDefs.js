@@ -1,5 +1,7 @@
 const { gql } = require("apollo-server-express");
 
+//TODO: create fragments to clean up redundancies
+//TODO:modularize queries
 const typeDefs = gql`
   type User {
     _id: ID
@@ -13,6 +15,7 @@ const typeDefs = gql`
     settings: Settings
     friends: [User]
     requests: [Request]
+    convos: [Conversation]
   }
 
   type Request {
@@ -34,8 +37,9 @@ const typeDefs = gql`
   }
 
   type Conversation {
+    _id: ID
     roomName: String
-    participants: [String]
+    participants: [User]
     lastMessage: Message
     groupAdmin: User
     isGroupChat: Boolean
@@ -77,7 +81,7 @@ const typeDefs = gql`
     sendFriendRequest(_id: ID!): User
     acceptFriendRequest(userId: ID!, requestId: ID!): User
     createMessage(text: String!, receiverId: ID!): Message
-    createConvo(username: String!): Conversation
+    createConvo(_id: ID!): Conversation
   }
 `;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { ActiveChatHeader, Messages, Input } from ".";
 import "./activeChat.css";
 
-const ActiveChat = () => {
+const ActiveChat = ({ currentConvo }: any) => {
   return (
     <section className="chat-wrapper">
       <ActiveChatHeader username={""} online={true} />
