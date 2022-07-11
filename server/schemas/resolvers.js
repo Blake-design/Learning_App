@@ -24,11 +24,11 @@ const resolvers = {
 
     // returns logged in user with settings model
 
-    //TODO: populate needs to be reworked based off user ids
+    //TODO: use $lookup and sub docs
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({
-          username: context.user.username,
+        return User.findById({
+          _id: context.user._id,
         })
           .populate("friends")
           .populate("settings")
@@ -38,6 +38,18 @@ const resolvers = {
           });
       }
       throw new AuthenticationError("Please login to view your profile.");
+    },
+
+    friends: async (parent, args, context) => {
+      if (context.user) {
+        return User.findById({ _id: context.user._id }).populate("friends");
+      }
+    },
+
+    requests: async (parent, args, context) => {
+      if (context.user) {
+        return Request.find({ receiver: context.user._id }).populate("sender");
+      }
     },
   },
   Mutation: {

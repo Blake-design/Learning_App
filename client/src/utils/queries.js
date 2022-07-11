@@ -15,18 +15,7 @@ export const QUERY_ME = gql`
       email
       avatar
       bio
-      requests {
-        _id
-        sender {
-          _id
-          username
-          email
-        }
-        receiver {
-          _id
-          username
-        }
-      }
+
       friends {
         _id
         username
@@ -83,6 +72,22 @@ export const QUERY_SINGLE_USER = gql`
       settings {
         showActive
         shareEmail
+      }
+    }
+  }
+`;
+
+export const QUERY_REQUESTS = gql`
+  query Requests {
+    requests {
+      _id
+      sender {
+        _id
+        username
+      }
+      receiver {
+        _id
+        username
       }
     }
   }
