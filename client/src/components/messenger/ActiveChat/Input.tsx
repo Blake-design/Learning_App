@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { SEND_MESSAGE } from "../../../utils/mutations";
 
-const Input = ({ otherUser, conversationId, user, postMessage }: any) => {
-  const [inputValue, setInputValue] = useState("");
+const Input = ({ currentConvo }: any) => {
+  const [formState, setFormState] = useState("");
 
+  const [sendMessage, { error }] = useMutation(SEND_MESSAGE);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    setFormState(e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const formElements = form.elements;
-    setInputValue("");
+
+    sendMessage({
+      variables: { text: formState, convoId: currentConvo },
+    });
+    setFormState("");
   };
 
   return (
@@ -19,7 +24,7 @@ const Input = ({ otherUser, conversationId, user, postMessage }: any) => {
       <input
         className="input"
         placeholder="type something..."
-        value={inputValue}
+        value={formState}
         name="text"
         onChange={handleChange}
       />

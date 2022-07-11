@@ -53,9 +53,9 @@ const resolvers = {
         return Conversation.find({ participants: context.user._id });
       }
     },
-    messages: async (parent, _id, context) => {
+    messages: async (parent, { convoId }, context) => {
       if (context.user) {
-        return Message.find({ convo_id: _id });
+        return Message.find({ convoId }).sort({ createdAt: "asc" });
       }
     },
   },
@@ -207,11 +207,11 @@ const resolvers = {
     //TODO: create remove friend resolver
 
     /// creates a new message using sender id and emits MESSAGE CREATED event
-    createMessage: async (parent, { text, receiverId }, context) => {
+    sendMessage: async (parent, { text, convoId }, context) => {
       pubsub.publish("MESSAGE_CREATED", {
-        messages: { text, receiverId },
+        messages: { text, convoId },
       });
-      return Message.create(text, receiverId, { senderId: context.user._id }); //TODO: this resolver had not been tested
+      return Message.create({ text, convoId, senderId: context.user._id });
     },
 
     // finds a convo with participants or creates one

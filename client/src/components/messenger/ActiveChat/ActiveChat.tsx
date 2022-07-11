@@ -5,10 +5,10 @@ import "./activeChat.css";
 const ActiveChat = ({ currentConvo }: any) => {
   return (
     <section className="chat-wrapper">
-      <ActiveChatHeader username={""} online={true} />
+      <ActiveChatHeader currentConvo={currentConvo} />
       <div className="messages-container">
-        <Messages messages={""} otherUser={""} userId={""} />
-        <Input otherUser={""} conversationId={""} user={""} postMessage={""} />
+        <Messages currentConvo={currentConvo} />
+        <Input currentConvo={currentConvo} />
       </div>
     </section>
   );

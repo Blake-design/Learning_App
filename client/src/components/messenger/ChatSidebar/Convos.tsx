@@ -13,7 +13,7 @@ const Convos = ({ convos, handleClick }: any) => {
           >
             <h4>roomName: {convo.roomName}</h4>
             <div className="sb-chat-content-subContainer">
-              <LastMessage />
+              <LastMessage convo={convo} />
             </div>
           </div>
         );

@@ -99,8 +99,8 @@ export const QUERY_CONVOS = gql`
 `;
 
 export const QUERY_MESSAGES = gql`
-  query Messages {
-    messages {
+  query Messages($convoId: ID!) {
+    messages(convoId: $convoId) {
       text
       senderId
       convoId

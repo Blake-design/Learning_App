@@ -68,7 +68,7 @@ const typeDefs = gql`
     friends: User
     requests: [Request]
     convos: [Conversation]
-    messages: [Message]
+    messages(convoId: ID!): [Message]
   }
 
   type Mutation {
@@ -85,7 +85,7 @@ const typeDefs = gql`
     updateUser(bio: String, name: String): User
     sendFriendRequest(_id: ID!): User
     acceptFriendRequest(userId: ID!, requestId: ID!): User
-    createMessage(text: String!, receiverId: ID!): Message
+    sendMessage(text: String!, convoId: ID!): Message
     createConvo(_id: ID!): Conversation
   }
 `;

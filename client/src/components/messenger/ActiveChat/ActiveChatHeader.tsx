@@ -1,7 +1,7 @@
 import React from "react";
 import { ACHeaderProps } from "../../../types";
 
-const ActiveChatHeader = ({ username, online }: ACHeaderProps) => {
+const ActiveChatHeader = ({ currentConvo }: any) => {
   return (
     <div className="chat-header">
       <div className="container">

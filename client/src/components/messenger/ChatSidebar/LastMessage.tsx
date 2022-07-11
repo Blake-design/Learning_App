@@ -5,19 +5,21 @@ import { QUERY_MESSAGES } from "../../../utils/queries";
 const LastMessage = ({ convo, handleClick }: any) => {
   const { loading, data } = useQuery(QUERY_MESSAGES, {
     variables: {
-      _id: convo?._id,
+      convoId: convo?._id,
     },
   });
 
-  console.log(data);
-  return (
-    data && (
-      <div>
-        <h4 className="sb-chat-username">data</h4>
-        <p className="sb-chat-preview">you still there?</p>
-      </div>
-    )
-  );
+  const lastMessage = data?.messages?.length
+    ? data?.messages[data?.messages?.length - 1].text
+    : null;
+
+  console.log(lastMessage);
+  return data?.messages?.length && lastMessage ? (
+    <div>
+      <h4 className="sb-chat-username">username</h4>
+      <p className="sb-chat-preview">{lastMessage}</p>
+    </div>
+  ) : null;
 };
 
 export default LastMessage;
