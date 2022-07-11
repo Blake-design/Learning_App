@@ -1,17 +1,18 @@
 import React from "react";
-import { Chat, CurrentUser, Search } from ".";
+import { Convos, CurrentUser, Search } from ".";
 import "./msg-sidebar.css";
 import { FriendType, UsersQueryProp } from "../../../types";
+import { QUERY_CONVOS } from "../../../utils/queries";
+import { useQuery } from "@apollo/client";
 
-import { useMutation } from "@apollo/client";
+const ChatSidebar = ({ me, selectConvo }: any) => {
+  const { loading, data } = useQuery(QUERY_CONVOS);
 
-const ChatSidebar = ({ users, data, selectConvo }: any) => {
-  console.log(data);
-  const convos = data?.me?.convos;
   return (
+    me &&
     data && (
       <div className="sb-wrapper">
-        {data?.me?.friends?.map((friend: FriendType) => (
+        {me.friends?.map((friend: FriendType) => (
           <CurrentUser
             key={friend?._id}
             username={friend?.username}
@@ -20,9 +21,9 @@ const ChatSidebar = ({ users, data, selectConvo }: any) => {
           />
         ))}
 
-        <h3 className="sb-title">Open Chats - {convos?.length}</h3>
+        <h3 className="sb-title">Open Chats - {data.convos?.length}</h3>
         <Search />
-        <Chat data={data} selectConvo={selectConvo} />
+        <Convos convos={data.convos} handleClick={selectConvo} />
       </div>
     )
   );

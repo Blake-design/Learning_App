@@ -34,6 +34,7 @@ const typeDefs = gql`
   type Message {
     text: String!
     senderId: ID!
+    convoId: ID!
   }
 
   type Conversation {
@@ -66,6 +67,8 @@ const typeDefs = gql`
     settings: Settings
     friends: User
     requests: [Request]
+    convos: [Conversation]
+    messages: [Message]
   }
 
   type Mutation {

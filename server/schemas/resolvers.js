@@ -31,11 +31,7 @@ const resolvers = {
           _id: context.user._id,
         })
           .populate("friends")
-          .populate("settings")
-          .populate({
-            path: "requests",
-            populate: { path: "sender" },
-          });
+          .populate("settings");
       }
       throw new AuthenticationError("Please login to view your profile.");
     },
@@ -49,6 +45,17 @@ const resolvers = {
     requests: async (parent, args, context) => {
       if (context.user) {
         return Request.find({ receiver: context.user._id }).populate("sender");
+      }
+    },
+
+    convos: async (parent, args, context) => {
+      if (context.user) {
+        return Conversation.find({ participants: context.user._id });
+      }
+    },
+    messages: async (parent, _id, context) => {
+      if (context.user) {
+        return Message.find({ convo_id: _id });
       }
     },
   },

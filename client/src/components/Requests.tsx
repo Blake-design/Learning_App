@@ -6,14 +6,13 @@ import { ACCEPT_REQUEST } from "../utils/mutations";
 function Requests({ me }: any) {
   const { loading, data } = useQuery(QUERY_REQUESTS);
   const [acceptRequest, { error }] = useMutation(ACCEPT_REQUEST);
-  console.log(data);
+
   const handleAccept = async (e: any) => {
     const res = await acceptRequest({
       variables: { userId: e.target.value, requestId: e.target.name },
     });
     console.log(res);
   };
-  console.log(me);
 
   return (
     data && (

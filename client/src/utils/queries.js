@@ -27,10 +27,6 @@ export const QUERY_ME = gql`
         showActive
         shareEmail
       }
-      convos {
-        _id
-        roomName
-      }
     }
   }
 `;
@@ -89,6 +85,25 @@ export const QUERY_REQUESTS = gql`
         _id
         username
       }
+    }
+  }
+`;
+
+export const QUERY_CONVOS = gql`
+  query Convos {
+    convos {
+      _id
+      roomName
+    }
+  }
+`;
+
+export const QUERY_MESSAGES = gql`
+  query Messages {
+    messages {
+      text
+      senderId
+      convoId
     }
   }
 `;

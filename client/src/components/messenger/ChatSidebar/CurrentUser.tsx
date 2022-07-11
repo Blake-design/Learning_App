@@ -6,23 +6,20 @@ import { FriendType } from "../../../types";
 
 const CurrentUser = ({ _id, username, avatar }: FriendType) => {
   const [createConvo, { error }] = useMutation(CREATE_CONVO);
-  const handleClick = async (e: any) => {
+  const handleClick = async () => {
     //TODO: on click this will add user to conversation
 
     const convo = await createConvo({
-      variables: { _id: e.target.value },
+      variables: { _id },
     });
   };
 
-  console.log(_id);
   return (
     <div className="sb-currentUser-container">
       <BadgeAvatar src={`./avatars/${avatar}`} alt={"avatar"} />
       <div className="sb-currentUser-subContainer">
         <h3>{username}</h3>
-        <button value={_id} onClick={(e) => handleClick(e)}>
-          start chat
-        </button>
+        <button onClick={handleClick}>start chat</button>
       </div>
     </div>
   );
