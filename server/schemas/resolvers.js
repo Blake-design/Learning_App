@@ -244,7 +244,7 @@ const resolvers = {
       subscribe: withFilter(
         () => pubsub.asyncIterator("MESSAGE_CREATED"),
         (payload, variables) => {
-          return payload.messageCreated.receiverId === variables.receiverId;
+          return payload.messageCreated.convoId === variables.convoId;
         }
       ),
     },
