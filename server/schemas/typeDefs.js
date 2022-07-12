@@ -35,6 +35,7 @@ const typeDefs = gql`
     text: String!
     senderId: ID!
     convoId: ID!
+    createdAt: String
   }
 
   type Conversation {

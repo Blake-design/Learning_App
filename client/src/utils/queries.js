@@ -104,6 +104,7 @@ export const QUERY_MESSAGES = gql`
       text
       senderId
       convoId
+      createdAt
     }
   }
 `;

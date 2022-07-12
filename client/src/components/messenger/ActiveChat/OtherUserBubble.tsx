@@ -1,13 +1,13 @@
 import React from "react";
 
-const OtherUserBubble = () => {
+const OtherUserBubble = ({ text, time, formatTime }: any) => {
   return (
     <div style={{ display: "flex" }}>
       <div className="msg-avatar">🙂</div>
       <div>
-        <p className="msg-date"> username 12.00PM</p>
+        <p className="msg-date">{formatTime(time)}</p>
         <div className="res-bubble">
-          <p className="msg-content response">Hellooo!</p>
+          <p className="msg-content response">{text}</p>
         </div>
       </div>
     </div>
