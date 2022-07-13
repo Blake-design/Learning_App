@@ -110,9 +110,18 @@ export const QUERY_MESSAGES = gql`
 `;
 
 export const GET_ACTIVE_USERS = gql`
-  subscription Subscription {
+  subscription UserActive {
     userActive {
       username
+    }
+  }
+`;
+
+export const SUBSCRIBE_MESSAGES = gql`
+  subscription Messages($convoId: ID!) {
+    messages(convoID: $convoID) {
+      text
+      convoId
     }
   }
 `;

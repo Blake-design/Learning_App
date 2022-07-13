@@ -18,8 +18,6 @@ const Messages = ({ currentConvo, me }: any) => {
     data && (
       <div>
         {data.messages?.map((message: any) => {
-          console.log(message.senderId);
-          console.log(me?._id);
           return message.senderId === me?._id ? (
             <SenderBubble
               text={message.text}

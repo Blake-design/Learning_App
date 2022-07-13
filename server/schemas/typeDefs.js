@@ -35,7 +35,7 @@ const typeDefs = gql`
     text: String!
     senderId: ID!
     convoId: ID!
-    createdAt: String
+    createdAt: String!
   }
 
   type Conversation {
@@ -57,7 +57,7 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    messages: [Message]
+    messages: Message
     userActive: [User]
   }
 
