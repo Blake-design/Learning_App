@@ -57,7 +57,7 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    messages: Message
+    message: Message
     userActive: [User]
   }
 

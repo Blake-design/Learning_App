@@ -14,9 +14,9 @@ const Login = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleLogin(formState);
+    await handleLogin(formState);
     setFormState({
       email: "",
       password: "",

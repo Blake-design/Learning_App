@@ -209,8 +209,7 @@ const resolvers = {
     /// creates a new message using sender id and emits MESSAGE CREATED event
     sendMessage: async (parent, { text, convoId }, context) => {
       pubsub.publish("MESSAGE_SENT", {
-        text,
-        convoId,
+        message: { text, convoId },
       });
 
       return Message.create({ text, convoId, senderId: context.user._id });
@@ -242,7 +241,7 @@ const resolvers = {
     userActive: {
       subscribe: () => pubsub.asyncIterator("ACTIVE_USERS"),
     },
-    messages: {
+    message: {
       subscribe: () => pubsub.asyncIterator("MESSAGE_SENT"),
       // (payload, variables) => {
       //   console.log("payload " + payload);
