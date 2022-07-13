@@ -13,7 +13,6 @@ const LastMessage = ({ convo, handleClick }: any) => {
     ? data?.messages[data?.messages?.length - 1].text
     : null;
 
-  console.log(lastMessage);
   return data?.messages?.length && lastMessage ? (
     <div>
       <h4 className="sb-chat-username">username</h4>

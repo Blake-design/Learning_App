@@ -118,10 +118,12 @@ export const GET_ACTIVE_USERS = gql`
 `;
 
 export const SUBSCRIBE_MESSAGES = gql`
-  subscription Messages($convoId: ID!) {
-    messages(convoID: $convoID) {
+  subscription Message($convoId: ID!) {
+    message(convoId: $convoId) {
       text
+      senderId
       convoId
+      createdAt
     }
   }
 `;

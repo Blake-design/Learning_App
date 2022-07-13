@@ -57,7 +57,7 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    message: Message
+    message(convoId: ID!): Message
     userActive: [User]
   }
 

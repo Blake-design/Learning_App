@@ -208,11 +208,21 @@ const resolvers = {
 
     /// creates a new message using sender id and emits MESSAGE CREATED event
     sendMessage: async (parent, { text, convoId }, context) => {
-      pubsub.publish("MESSAGE_SENT", {
-        message: { text, convoId },
+      const message = await Message.create({
+        text,
+        convoId,
+        senderId: context.user._id,
+      });
+      pubsub.publish("MESSAGE_CREATED", {
+        message: {
+          text,
+          convoId,
+          senderId: context.user._id,
+          createdAt: message.createdAt,
+        },
       });
 
-      return Message.create({ text, convoId, senderId: context.user._id });
+      return message;
     },
 
     // finds a convo with participants or creates one
@@ -220,6 +230,7 @@ const resolvers = {
       // find a conversation with the logged in users id
 
       //TODO:  try to find convo first
+      //TODO:  set room name index by default
 
       const convo = await Conversation.create({
         groupAdmin: context.user._id,
@@ -242,12 +253,12 @@ const resolvers = {
       subscribe: () => pubsub.asyncIterator("ACTIVE_USERS"),
     },
     message: {
-      subscribe: () => pubsub.asyncIterator("MESSAGE_SENT"),
-      // (payload, variables) => {
-      //   console.log("payload " + payload);
-      //   console.log("variables " + variables.convoId);
-      //   return payload.sendMessage.convoId === variables.convoId;
-      // }
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("MESSAGE_CREATED"),
+        (payload, variables) => {
+          return payload.message.convoId === variables.convoId;
+        }
+      ),
     },
   },
 };

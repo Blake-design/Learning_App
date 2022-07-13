@@ -100,6 +100,7 @@ export const SEND_MESSAGE = gql`
       text
       senderId
       convoId
+      createdAt
     }
   }
 `;
