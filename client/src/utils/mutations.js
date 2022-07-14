@@ -61,11 +61,12 @@ export const UPDATE_USER = gql`
   }
 `;
 export const SEND_REQUEST = gql`
-  mutation sendFriendRequest($_id: ID!) {
-    sendFriendRequest(_id: $_id) {
+  mutation sendRequest($_id: ID!) {
+    sendRequest(_id: $_id) {
       _id
-      username
-      email
+      requests {
+        _id
+      }
     }
   }
 `;

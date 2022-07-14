@@ -142,7 +142,7 @@ const resolvers = {
     },
 
     // sends friend request to pending
-    sendFriendRequest: async (parent, { _id }, context) => {
+    sendRequest: async (parent, { _id }, context) => {
       // TODO: stop double request from being sent
 
       if (context.user) {
@@ -172,7 +172,7 @@ const resolvers = {
           {
             new: true,
           }
-        );
+        ).select("-password");
 
         return user;
       }
@@ -252,11 +252,11 @@ const resolvers = {
       subscribe: () => {
         // return an interator that is "primed" with the existing users
         return (async function* () {
-          yield ({ userActive: activeUsers });
+          yield { userActive: activeUsers };
           for await (const val of pubsub.asyncIterator("ACTIVE_USERS")) {
             yield val;
           }
-        })()
+        })();
       },
     },
     message: {

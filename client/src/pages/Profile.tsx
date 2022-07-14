@@ -8,28 +8,26 @@ import { request } from "http";
 
 const Profile = () => {
   let { username } = useParams();
-  const [resMessage, setResMessage] = useState("");
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { username },
   });
   const { loading: loading2, data: data2 } = useQuery(QUERY_ME);
-  const [sendRequest, { error }] = useMutation(SEND_REQUEST);
+  const [sendRequest, { data: res, error }] = useMutation(SEND_REQUEST);
 
   if (loading || loading2) {
     <div>loading</div>;
   }
-
+  console.log(res && res);
   const date = new Date(+data?.user?.createdAt);
   const [year, month, day] = [
     date.getFullYear(),
     date.toLocaleString("default", { month: "long" }),
     date.getDate(),
   ];
-  console.log(data);
+
   const handleClick = async () => {
     if (username) {
       const res = await sendRequest({ variables: { _id: data?.user?._id } });
-      // setResMessage(res?.data?.sendFriendRequest);
     }
     // window.location.reload();
   };
@@ -50,7 +48,7 @@ const Profile = () => {
       <div>has # friends friend s </div>
       <div>Hi score is #</div>
       <p>Joined {`${month} ${day}, ${year}`} </p>
-      {!userRequests.includes(data2?.me?._id) && data2 && (
+      {!userRequests.includes(data2?.me?._id) && (
         <button onClick={handleClick}>Send Friend Request</button>
       )}
     </section>
