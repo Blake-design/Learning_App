@@ -1,0 +1,1 @@
+This dir stores mongo data, but everything execpt this file is gitignored so you don't muck up the repository :) 
