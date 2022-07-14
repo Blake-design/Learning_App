@@ -29,7 +29,6 @@ const Profile = () => {
     if (username) {
       const res = await sendRequest({ variables: { _id: data?.user?._id } });
     }
-    // window.location.reload();
   };
 
   const userRequests = data?.user?.requests?.map((request: any) => {
