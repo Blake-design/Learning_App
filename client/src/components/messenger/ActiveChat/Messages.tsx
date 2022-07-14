@@ -6,7 +6,8 @@ import SenderBubble from "./SenderBubble";
 const Messages = ({ messages, me, subscribeToMessages }: any) => {
   useEffect(() => {
     subscribeToMessages();
-  });
+    console.log("useEffect is running");
+  }, []);
 
   const formatTime = (time: number) =>
     new Date(time * 1000).toLocaleTimeString();

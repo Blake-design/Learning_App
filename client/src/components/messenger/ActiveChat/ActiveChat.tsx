@@ -11,19 +11,6 @@ const ActiveChat = ({ currentConvo, me }: any) => {
     },
   });
 
-  const {
-    loading,
-    data: data2,
-    error,
-  } = useSubscription(SUBSCRIBE_MESSAGES, {
-    variables: {
-      convoId: currentConvo,
-    },
-  });
-  // console.log(data && data);
-
-  console.log(loading || data2 || error);
-
   return (
     <section className="chat-wrapper">
       <ActiveChatHeader currentConvo={currentConvo} />
@@ -32,16 +19,21 @@ const ActiveChat = ({ currentConvo, me }: any) => {
           messages={data.messages}
           me={me}
           subscribeToMessages={() => {
+            console.log("function running");
             subscribeToMore({
               document: SUBSCRIBE_MESSAGES,
               variables: { convoId: currentConvo },
               updateQuery: (prev, { subscriptionData }) => {
                 if (!subscriptionData.data) return prev;
                 const newMessage = subscriptionData.data.message;
-                console.log("hit");
-                return Object.assign({}, prev, {
-                  messages: [newMessage, ...prev.messages],
-                });
+                console.log(newMessage);
+                console.log([...prev.messages]);
+                return Object.assign(
+                  {},
+                  {
+                    messages: [newMessage, ...prev.messages],
+                  }
+                );
               },
             });
           }}
