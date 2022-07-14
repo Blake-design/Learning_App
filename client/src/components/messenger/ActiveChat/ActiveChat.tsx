@@ -12,7 +12,7 @@ const ActiveChat = ({ currentConvo, me }: any) => {
   });
 
   return (
-    <section className="chat-wrapper">
+    <section className="chat-window-wrapper">
       <ActiveChatHeader currentConvo={currentConvo} />
       <div className="messages-container">
         <Messages

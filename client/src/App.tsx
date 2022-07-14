@@ -8,15 +8,11 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USERS, GET_ACTIVE_USERS } from "./utils/queries";
 import { useSubscription } from "@apollo/client";
 
-
 function App() {
   const { loading, data } = useQuery(QUERY_USERS);
 
-
-  const { data: activeUsers, loading: activeUsersLoading } = useSubscription(
-    GET_ACTIVE_USERS,
-    // { variables: { postID } }
-  );
+  const { data: activeUsers, loading: activeUsersLoading } =
+    useSubscription(GET_ACTIVE_USERS);
 
   if (loading) {
     return <div>...loading</div>;
@@ -28,7 +24,15 @@ function App() {
       <main>
         <Sidebar />
         <Routes>
-          <Route path="/" element={<Home users={data?.users} activeUsers={activeUsers?.userActive || []} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                users={data?.users}
+                activeUsers={activeUsers?.userActive || []}
+              />
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/:username" element={<Profile />} />

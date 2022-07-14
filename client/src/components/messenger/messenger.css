@@ -1,7 +1,8 @@
-.messenger-container {
+.messenger-app-wrapper {
   display: flex;
   height: 100%;
   width: 100%;
+  overflow-y: hidden;
 }
 
 .chat-sidebar {
@@ -10,8 +11,4 @@
 
 .chat-main {
   background: whitesmoke;
-}
-
-.messages {
-  font-weight: 200;
 }

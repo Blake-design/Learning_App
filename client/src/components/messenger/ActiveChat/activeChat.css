@@ -1,16 +1,24 @@
-.chat-wrapper {
+.chat-window-wrapper {
   display: flex;
   flex-grow: 8;
   flex-direction: column;
   background-color: white;
+  height: 100%;
 }
+
 .messages-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
-  margin-left: 41px;
-  margin-right: 41px;
+  padding-left: 21px;
+  padding-right: 21px;
+  height: 100%;
+}
+.messages {
+  font-weight: 200;
+  overflow: auto;
+  flex-direction: column-reverse;
 }
 
 .chat-header {

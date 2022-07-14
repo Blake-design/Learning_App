@@ -15,7 +15,7 @@ const MessengerApp = ({ users }: UsersQueryProp) => {
   const { loading, data } = useQuery(QUERY_ME);
 
   return (
-    <div className="messenger-container">
+    <div className="messenger-app-wrapper">
       <ChatSidebar me={data?.me} selectConvo={selectConvo} />
       {currentConvo.length ? (
         <ActiveChat currentConvo={currentConvo} me={data?.me} />

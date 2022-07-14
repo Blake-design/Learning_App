@@ -14,7 +14,7 @@ const Messages = ({ messages, me, subscribeToMessages }: any) => {
 
   return (
     messages && (
-      <div>
+      <div className="messages">
         {messages.map((message: any, i: number) => {
           return message.senderId === me?._id ? (
             <SenderBubble
