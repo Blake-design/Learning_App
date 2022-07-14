@@ -3,7 +3,6 @@ const { PubSub, withFilter } = require("graphql-subscriptions");
 const { User, Message, Conversation, Request } = require("../models");
 
 const { signToken } = require("../utils/auth");
-
 const pubsub = new PubSub();
 let activeUsers = [];
 
@@ -250,7 +249,15 @@ const resolvers = {
 
   Subscription: {
     userActive: {
-      subscribe: () => pubsub.asyncIterator("ACTIVE_USERS"),
+      subscribe: () => {
+        // return an interator that is "primed" with the existing users
+        return (async function* () {
+          yield ({ userActive: activeUsers });
+          for await (const val of pubsub.asyncIterator("ACTIVE_USERS")) {
+            yield val;
+          }
+        })()
+      },
     },
     message: {
       subscribe: withFilter(
