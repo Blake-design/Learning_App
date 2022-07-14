@@ -32,6 +32,9 @@ export interface UsersQueryProp {
       username: string;
       active: boolean;
     }
+  ],
+  activeUsers?: [
+    { username: string }
   ];
 }
 
