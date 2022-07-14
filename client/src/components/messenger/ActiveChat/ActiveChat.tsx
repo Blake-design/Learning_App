@@ -31,7 +31,7 @@ const ActiveChat = ({ currentConvo, me }: any) => {
                 return Object.assign(
                   {},
                   {
-                    messages: [newMessage, ...prev.messages],
+                    messages: [...prev.messages, newMessage],
                   }
                 );
               },
