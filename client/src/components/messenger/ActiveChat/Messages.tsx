@@ -1,31 +1,31 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_MESSAGES } from "../../../utils/queries";
+import React, { useEffect } from "react";
+
 import OtherUserBubble from "./OtherUserBubble";
 import SenderBubble from "./SenderBubble";
 
-const Messages = ({ currentConvo, me }: any) => {
-  const { loading, data } = useQuery(QUERY_MESSAGES, {
-    variables: {
-      convoId: currentConvo,
-    },
-  });
+const Messages = ({ messages, me, subscribeToMessages }: any) => {
+  useEffect(() => {
+    subscribeToMessages();
+    console.log("useEffect is running");
+  }, []);
 
   const formatTime = (time: number) =>
     new Date(time * 1000).toLocaleTimeString();
 
   return (
-    data && (
+    messages && (
       <div>
-        {data.messages?.map((message: any) => {
+        {messages.map((message: any, i: number) => {
           return message.senderId === me?._id ? (
             <SenderBubble
+              key={i}
               text={message.text}
               time={message.createdAt}
               formatTime={formatTime}
             />
           ) : (
             <OtherUserBubble
+              key={i}
               text={message.text}
               time={message.createdAt}
               formatTime={formatTime}

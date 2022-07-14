@@ -13,6 +13,7 @@ const MessengerApp = ({ users }: UsersQueryProp) => {
     setCurrentConvo(convo._id);
   };
   const { loading, data } = useQuery(QUERY_ME);
+
   return (
     <div className="messenger-container">
       <ChatSidebar me={data?.me} selectConvo={selectConvo} />
