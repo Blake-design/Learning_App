@@ -22,7 +22,7 @@ const LoginButton = () => {
     return (
       <nav>
         <NavIcon
-          icon={`/avatars/${data.me.avatar}`}
+          icon={`/avatars/${data?.me?.avatar}`}
           alt={"Settings"}
           to="/settings"
         />
