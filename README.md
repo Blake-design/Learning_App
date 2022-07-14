@@ -11,7 +11,7 @@ The goal is to create a program where others can contribute to further thier own
 
 1. then you can run install with `npm run install`
 
-1. to launch your dev instance run `npm run install`
+1. to launch your dev instance run `npm run dev`
 
 ## Contributions
 
