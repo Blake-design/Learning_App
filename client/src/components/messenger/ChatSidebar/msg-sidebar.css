@@ -78,3 +78,12 @@
   font-size: 12px;
   color: #9cadc8;
 }
+
+.chat-friends {
+  display: flex;
+  flex-direction: columm;
+  height: 200px;
+  width: 300px;
+  overflow-y: auto;
+  border: 2px solid black;
+}

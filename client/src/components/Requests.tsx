@@ -17,7 +17,7 @@ function Requests({ me }: any) {
       variables: { userId: e.target.value, requestId: e.target.name },
     });
   };
-
+  console.log(data);
   return (
     <li>
       friend requests pending

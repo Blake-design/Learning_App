@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 
 import { useParams } from "react-router-dom";
 import { SEND_REQUEST } from "../utils/mutations";
-import { request } from "http";
 
 const Profile = () => {
   let { username } = useParams();
@@ -18,6 +17,7 @@ const Profile = () => {
     <div>loading</div>;
   }
 
+  //  format date of account creation
   const date = new Date(+data?.user?.createdAt);
   const [year, month, day] = [
     date.getFullYear(),
@@ -25,15 +25,20 @@ const Profile = () => {
     date.getDate(),
   ];
 
+  //  send a friend request
   const handleClick = async () => {
     if (username) {
       await sendRequest({ variables: { _id: data?.user?._id } });
     }
   };
 
-  const userRequests = data?.user?.requests?.map((request: any) => {
-    return request.sender._id;
-  });
+  // destructure info from request senders
+  const userRequests = data?.user?.requests?.map(
+    (request: any) => request.sender._id
+  );
+
+  // destructure info from friends
+  const friends = data2?.me?.friends?.map((friend: any) => friend._id);
 
   return data ? (
     <section className="page-container">
@@ -47,9 +52,10 @@ const Profile = () => {
       <div>has # friends friend s </div>
       <div>Hi score is #</div>
       <p>Joined {`${month} ${day}, ${year}`} </p>
-      {!userRequests?.includes(data2?.me?._id) && (
-        <button onClick={handleClick}>Send Friend Request</button>
-      )}
+      {!userRequests?.includes(data2?.me?._id) && // remove button if you sent request or if already friends
+        !friends?.includes(data.user?._id) && (
+          <button onClick={handleClick}>Send Friend Request</button>
+        )}
     </section>
   ) : (
     <section className="page-container">

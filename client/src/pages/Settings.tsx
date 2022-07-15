@@ -11,7 +11,7 @@ const Settings = () => {
   const { loading, data } = useQuery(QUERY_ME);
 
   const [removeUser, { error }] = useMutation(REMOVE_USER);
-  console.log(data);
+
   const handleRemove = async () => {
     await removeUser();
     auth.logout();
