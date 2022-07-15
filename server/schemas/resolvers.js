@@ -199,6 +199,7 @@ const resolvers = {
           { new: true }
         );
 
+        // delete request
         await Request.findOneAndDelete({ requestId });
 
         return user;
