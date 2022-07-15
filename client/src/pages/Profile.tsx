@@ -6,10 +6,12 @@ import { useParams } from "react-router-dom";
 import { SEND_REQUEST } from "../utils/mutations";
 
 const Profile = () => {
+  // params are used to query for user
   let { username } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { username },
   });
+
   const { loading: loading2, data: data2 } = useQuery(QUERY_ME);
   const [sendRequest, { error }] = useMutation(SEND_REQUEST);
 
