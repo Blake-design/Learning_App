@@ -246,7 +246,6 @@ const resolvers = {
         },
         { $push: { convos: convo._id } }
       );
-      return convo;
     },
   },
 

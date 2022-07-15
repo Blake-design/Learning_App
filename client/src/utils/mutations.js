@@ -90,11 +90,9 @@ export const CREATE_CONVO = gql`
       roomName
       participants {
         _id
-        username
       }
       groupAdmin {
         _id
-        username
       }
       isGroupChat
     }

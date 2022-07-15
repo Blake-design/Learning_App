@@ -1,15 +1,18 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_CONVO } from "../../../utils/mutations";
+import { QUERY_CONVOS } from "../../../utils/queries";
 import BadgeAvatar from "./BadgeAvatar";
 import { FriendType } from "../../../types";
 
 const CurrentUser = ({ _id, username, avatar }: FriendType) => {
-  const [createConvo, { error }] = useMutation(CREATE_CONVO);
+  const [createConvo, { error, data }] = useMutation(CREATE_CONVO, {
+    refetchQueries: [{ query: QUERY_CONVOS }, "Convos"],
+  });
   const handleClick = async () => {
     //TODO: on click this will add user to conversation
 
-    const convo = await createConvo({
+    await createConvo({
       variables: { _id },
     });
   };

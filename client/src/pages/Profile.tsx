@@ -13,6 +13,7 @@ const Profile = () => {
   });
 
   const { loading: loading2, data: data2 } = useQuery(QUERY_ME);
+
   const [sendRequest, { error }] = useMutation(SEND_REQUEST);
 
   if (loading || loading2) {
