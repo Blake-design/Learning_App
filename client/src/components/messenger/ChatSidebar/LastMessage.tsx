@@ -9,14 +9,16 @@ const LastMessage = ({ convo, handleClick }: any) => {
     },
   });
 
+  console.log(data);
+
   const lastMessage = data?.messages?.length
-    ? data?.messages[data?.messages?.length - 1].text
+    ? data?.messages[data?.messages?.length - 1]
     : null;
 
   return data?.messages?.length && lastMessage ? (
     <div>
-      <h4 className="sb-chat-username">username</h4>
-      <p className="sb-chat-preview">{lastMessage}</p>
+      <h5 className="sb-chat-username">{lastMessage.senderId?.username}</h5>
+      <p className="sb-chat-preview">{lastMessage.text}</p>
     </div>
   ) : null;
 };

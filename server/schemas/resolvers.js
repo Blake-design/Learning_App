@@ -54,7 +54,9 @@ const resolvers = {
     },
     messages: async (parent, { convoId }, context) => {
       if (context.user) {
-        return Message.find({ convoId }).sort({ createdAt: "asc" });
+        return Message.find({ convoId })
+          .sort({ createdAt: "asc" })
+          .populate("senderId");
       }
     },
   },

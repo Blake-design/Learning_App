@@ -4,8 +4,8 @@ import { FriendType } from "../../../types";
 
 const Friends = ({ friends }: any) => {
   return (
-    <div>
-      <h4 className="chat-friends-title">
+    <div className="chat-friends-wrapper">
+      <h4 className="sb-title">
         Friends - <span>{friends?.length}</span>
       </h4>
       <div className="chat-friends">

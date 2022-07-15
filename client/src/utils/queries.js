@@ -102,7 +102,9 @@ export const QUERY_MESSAGES = gql`
   query Messages($convoId: ID!) {
     messages(convoId: $convoId) {
       text
-      senderId
+      senderId {
+        username
+      }
       convoId
       createdAt
     }

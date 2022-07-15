@@ -33,7 +33,7 @@ const typeDefs = gql`
 
   type Message {
     text: String!
-    senderId: ID!
+    senderId: User
     convoId: ID!
     createdAt: String!
   }

@@ -11,7 +11,7 @@ const Convos = ({ convos, handleClick }: any) => {
             className="sb-chat-content-container"
             onClick={() => handleClick(convo)}
           >
-            <h4>roomName: {convo.roomName}</h4>
+            <h5>roomName: {convo.roomName}</h5>
             <div className="sb-chat-content-subContainer">
               <LastMessage convo={convo} />
             </div>

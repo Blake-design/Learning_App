@@ -1,14 +1,32 @@
 .sb-wrapper {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding-left: 21px;
   padding-right: 21px;
   background: whitesmoke;
+  width: 300px;
 }
+
+.sb-convos-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid black;
+}
+
+.chat-friends-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+}
+
 .sb-title {
   font-size: 20px;
   font-weight: 600;
   margin-top: 32px;
   margin-bottom: 15px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .sb-currentUser-container {
@@ -47,7 +65,6 @@
 .sb-chat-container {
   display: flex;
   align-items: center;
-  text-align: center;
 }
 
 .sb-chat-content-container {
@@ -56,20 +73,19 @@
   text-align: center;
   flex-direction: column;
   background: wheat;
-  flex-grow: 1;
   border-radius: 8px;
   margin: 0;
   padding: 0;
 }
-.sb-chat-content-container h4 {
+.sb-chat-content-container h5 {
   width: 100%;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 .sb-chat-content-subContainer {
   width: 100%;
-  flex-grow: 1;
   border-radius: 0px 0px 8px 8px;
   background-image: linear-gradient(225deg, #92fade 0%, #33f7c3 100%);
-  box-shadow: 0 2px 10px 0 rgba(88, 133, 196, 0.05);
 }
 .sb-chat-username {
   font-weight: 600;
@@ -82,8 +98,6 @@
 .chat-friends {
   display: flex;
   flex-direction: column;
-  height: 200px;
-  width: 300px;
   overflow-y: auto;
 }
 
