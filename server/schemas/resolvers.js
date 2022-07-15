@@ -172,7 +172,7 @@ const resolvers = {
           {
             new: true,
           }
-        ).select("-password");
+        );
 
         return user;
       }
@@ -180,7 +180,7 @@ const resolvers = {
     },
 
     // moves fiend request from pending to active
-    acceptFriendRequest: async (parent, { userId, requestId }, context) => {
+    acceptRequest: async (parent, { userId, requestId }, context) => {
       if (context.user) {
         // the logged in user
         const user = await User.findByIdAndUpdate(
@@ -198,6 +198,8 @@ const resolvers = {
           },
           { new: true }
         );
+
+        await Request.findOneAndDelete({ requestId });
 
         return user;
       }
