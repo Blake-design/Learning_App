@@ -81,9 +81,12 @@
 
 .chat-friends {
   display: flex;
-  flex-direction: columm;
+  flex-direction: column;
   height: 200px;
   width: 300px;
   overflow-y: auto;
-  border: 2px solid black;
+}
+
+.badge-avatar {
+  width: 40px;
 }
