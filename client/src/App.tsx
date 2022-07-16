@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 import {
   Home,
   Login,
@@ -23,7 +23,7 @@ function App() {
     useSubscription(GET_ACTIVE_USERS);
 
   if (loading) {
-    return <div>...loading</div>;
+    return <div>loading...</div>;
   }
 
   return (

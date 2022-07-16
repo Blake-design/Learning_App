@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import App from "./App";
+import { Header } from ".";
+import { render, screen, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { MockedProvider } from "@apollo/client/testing";
-import { GET_THEME, QUERY_ME, QUERY_USERS } from "./utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
 const mocks = [
   {
@@ -36,39 +36,16 @@ const mocks = [
       },
     },
   },
-  {
-    request: {
-      query: QUERY_USERS,
-    },
-    result: {
-      data: {
-        users: {
-          username: "username",
-          active: "true",
-        },
-      },
-    },
-  },
-  {
-    request: {
-      query: GET_THEME,
-    },
-    result: {
-      data: {
-        theme: "light",
-      },
-    },
-  },
 ];
 
-test("renders", () => {
+afterEach(cleanup);
+
+test("Header render with App Name", () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <BrowserRouter>
-        <App />
+        <Header />
       </BrowserRouter>
     </MockedProvider>
   );
-
-  expect(screen.getByText("loading...")).toBeInTheDocument();
 });
