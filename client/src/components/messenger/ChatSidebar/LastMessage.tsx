@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_MESSAGES } from "../../../utils/queries";
+import BadgeAvatar from "./BadgeAvatar";
 
 const LastMessage = ({ convo, handleClick }: any) => {
   const { loading, data } = useQuery(QUERY_MESSAGES, {
@@ -14,9 +15,12 @@ const LastMessage = ({ convo, handleClick }: any) => {
     : null;
 
   return data?.messages?.length && lastMessage ? (
-    <div>
-      <h5 className="sb-chat-username">{lastMessage.senderId?.username}</h5>
-      <p className="sb-chat-preview">{lastMessage.text}</p>
+    <div className="sb-chat-preview">
+      <BadgeAvatar src={`./avatars/${lastMessage.senderId?.avatar}`} />
+      <p className="sb-chat-preview-username">
+        {lastMessage.senderId?.username}:{" "}
+      </p>
+      <p className="sb-chat-preview-text">{lastMessage.text}</p>
     </div>
   ) : null;
 };

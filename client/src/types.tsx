@@ -68,5 +68,4 @@ export interface FriendType {
 
 export interface BadgeAvatarType {
   src: string;
-  alt: string;
 }

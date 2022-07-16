@@ -236,18 +236,17 @@ const resolvers = {
       //TODO:  try to find convo first
       //TODO:  set room name index by default
 
-      const convo = await Conversation.create({
+      await Conversation.create({
         groupAdmin: context.user._id,
         participants: [_id, context.user._id],
       });
+    },
 
-      // if the conversation doesnt not exist create one
-      await User.findByIdAndUpdate(
-        {
-          _id: context.user._id,
-        },
-        { $push: { convos: convo._id } }
-      );
+    // deletes conversation
+
+    deleteConvo: async (parent, { _id }) => {
+      const convo = await Conversation.findOneAndDelete({ _id });
+      await Message.deleteMany({ convoId: convo.convoId });
     },
   },
 

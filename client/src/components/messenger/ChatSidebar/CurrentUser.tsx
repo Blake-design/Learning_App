@@ -19,7 +19,7 @@ const CurrentUser = ({ _id, username, avatar }: FriendType) => {
 
   return (
     <div className="sb-currentUser-container">
-      <BadgeAvatar src={`./avatars/${avatar}`} alt={"avatar"} />
+      <BadgeAvatar src={`./avatars/${avatar}`} />
       <div className="sb-currentUser-subContainer">
         <h3>{username}</h3>
         <button onClick={handleClick}>start chat</button>

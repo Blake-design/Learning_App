@@ -98,11 +98,21 @@ export const CREATE_CONVO = gql`
     }
   }
 `;
+export const DELETE_CONVO = gql`
+  mutation DeleteConvo($_id: ID!) {
+    deleteConvo(_id: $_id) {
+      _id
+    }
+  }
+`;
 export const SEND_MESSAGE = gql`
   mutation SendMessage($convoId: ID!, $text: String!) {
     sendMessage(convoId: $convoId, text: $text) {
       text
-      senderId
+      senderId {
+        _id
+        username
+      }
       convoId
       createdAt
     }

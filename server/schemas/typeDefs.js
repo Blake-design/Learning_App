@@ -15,7 +15,6 @@ const typeDefs = gql`
     settings: Settings
     friends: [User]
     requests: [Request]
-    convos: [Conversation]
   }
 
   type Request {
@@ -88,6 +87,7 @@ const typeDefs = gql`
     acceptRequest(userId: ID!, requestId: ID!): User
     sendMessage(text: String!, convoId: ID!): Message
     createConvo(_id: ID!): Conversation
+    deleteConvo(_id: ID!): Conversation
   }
 `;
 

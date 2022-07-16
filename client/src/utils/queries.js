@@ -103,7 +103,9 @@ export const QUERY_MESSAGES = gql`
     messages(convoId: $convoId) {
       text
       senderId {
+        _id
         username
+        avatar
       }
       convoId
       createdAt
@@ -123,7 +125,10 @@ export const SUBSCRIBE_MESSAGES = gql`
   subscription Message($convoId: ID!) {
     message(convoId: $convoId) {
       text
-      senderId
+      senderId {
+        _id
+        username
+      }
       convoId
       createdAt
     }
