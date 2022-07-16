@@ -41,7 +41,6 @@ main {
 }
 
 section {
-  width: 90%;
   height: 100%;
 }
 
@@ -52,7 +51,7 @@ aside {
   align-items: center;
   text-align: center;
 
-  width: 10%;
+  width: 100px;
   height: 100%;
   background-color: var(--tertiary-bg-color);
 }

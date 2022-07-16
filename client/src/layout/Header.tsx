@@ -1,15 +1,16 @@
 import { LoginButton } from "../components";
 import { Link, NavLink } from "react-router-dom";
+import { MeQueryProps } from "../types";
 import "./layout.css";
 
-const Header = () => {
+const Header = ({ me }: MeQueryProps) => {
   return (
     <header>
       <h1>
         <Link to="/">The Learning App</Link>
       </h1>
 
-      <LoginButton />
+      <LoginButton me={me} />
     </header>
   );
 };

@@ -1,17 +1,18 @@
 .sb-wrapper {
   display: flex;
   flex-direction: column;
-  padding-left: 21px;
-  padding-right: 21px;
+  padding: 0px 21px 21px 21px;
   background: whitesmoke;
   width: 300px;
+  max-height: 100%;
 }
 
 .sb-convos-wrapper {
   display: flex;
   flex-direction: column;
-
   border: 2px solid black;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .chat-friends-wrapper {
@@ -64,7 +65,9 @@
 
 .sb-chat-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
+  overflow-y: auto;
 }
 
 .sb-chat-content-container {
@@ -74,13 +77,13 @@
   flex-direction: column;
   background: wheat;
   border-radius: 8px;
-  margin: 0;
+
   padding: 0;
 }
 .sb-chat-content-container h5 {
   width: 100%;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 4px;
+  margin: 0;
 }
 .sb-chat-content-subContainer {
   width: 100%;

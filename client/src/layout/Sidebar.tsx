@@ -6,13 +6,14 @@ import {
   leaderboardIcon,
 } from "../assets/icons";
 import { NavIcon } from "../components";
+import { MeQueryProps } from "../types";
 
-const Sidebar = () => {
+const Sidebar = ({ me }: MeQueryProps) => {
   return (
     <aside>
       <NavIcon to="/" icon={dashboardIcon} alt="dashboard" />
 
-      <NavIcon to="/profile" icon={profileIcon} alt="profile" />
+      <NavIcon to={`/${me?.username}`} icon={profileIcon} alt="profile" />
 
       <NavIcon to="/messenger" icon={convoIcon} alt="messenger" />
 

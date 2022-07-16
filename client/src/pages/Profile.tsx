@@ -1,22 +1,21 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
-
+import { QUERY_SINGLE_USER } from "../utils/queries";
+import { MeQueryProps } from "../types";
 import { useParams } from "react-router-dom";
 import { SEND_REQUEST } from "../utils/mutations";
+import { LoggedIn } from ".";
 
-const Profile = () => {
+const Profile = ({ me }: MeQueryProps) => {
   // params are used to query for user
   let { username } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { username },
   });
 
-  const { loading: loading2, data: data2 } = useQuery(QUERY_ME);
-
   const [sendRequest, { error }] = useMutation(SEND_REQUEST);
 
-  if (loading || loading2) {
+  if (loading) {
     <div>loading</div>;
   }
 
@@ -41,28 +40,29 @@ const Profile = () => {
   );
 
   // destructure info from friends
-  const friends = data2?.me?.friends?.map((friend: any) => friend._id);
+  const friends = me?.friends?.map((friend: any) => friend._id);
 
-  return data ? (
+  return username !== "undefined" ? (
     <section className="page-container">
       <div>
-        <img src={`/avatars/${data.user?.avatar}`} alt="avatar" />
+        <img src={`/avatars/${data?.user?.avatar}`} alt="avatar" />
       </div>
-      <h2>{data.user?.name}</h2>
-      <h4>{data.user?.username}</h4>
+      <h2>{data?.user?.name}</h2>
+      <h4>{data?.user?.username}</h4>
 
-      <p>{data.user?.bio}</p>
+      <p>{data?.user?.bio}</p>
       <div>has # friends friend s </div>
       <div>Hi score is #</div>
       <p>Joined {`${month} ${day}, ${year}`} </p>
-      {!userRequests?.includes(data2?.me?._id) && // remove button if you sent request or if already friends
-        !friends?.includes(data.user?._id) && (
-          <button onClick={handleClick}>Send Friend Request</button>
+      {me && // if user loggged in
+        !userRequests?.includes(me?._id) && // if user has not already sent request
+        !friends?.includes(data?.user?._id) && ( // if user not already friends
+          <button onClick={handleClick}>Send Friend Request</button> // show buttom
         )}
     </section>
   ) : (
     <section className="page-container">
-      <div>you are not logged in</div>
+      <LoggedIn />
     </section>
   );
 };

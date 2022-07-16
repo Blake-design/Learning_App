@@ -2,8 +2,9 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_REQUESTS } from "../utils/queries";
 import { ACCEPT_REQUEST } from "../utils/mutations";
+import { MeQueryProps } from "../types";
 
-function Requests({ me }: any) {
+function Requests({ me }: MeQueryProps) {
   const { loading, data } = useQuery(QUERY_REQUESTS);
   const [acceptRequest, { error }] = useMutation(ACCEPT_REQUEST, {
     refetchQueries: [
@@ -17,7 +18,7 @@ function Requests({ me }: any) {
       variables: { userId: e.target.value, requestId: e.target.name },
     });
   };
-  console.log(data);
+
   return (
     <li>
       friend requests pending

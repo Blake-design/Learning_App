@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 import { useSignup } from "../hooks";
+import Auth from "../utils/auth";
+import { LoggedIn } from ".";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ const Signup = () => {
     });
   };
 
-  return (
+  return !Auth.loggedin() ? (
     <section className="page-container">
       <div className="form-card">
         <h3>Sign Up</h3>
@@ -80,6 +82,8 @@ const Signup = () => {
         </button>
       </div>
     </section>
+  ) : (
+    <LoggedIn />
   );
 };
 

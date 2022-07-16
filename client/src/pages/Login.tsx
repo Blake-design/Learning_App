@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useLogin } from "../hooks";
 import Auth from "../utils/auth";
+import { LoggedIn } from ".";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Login = () => {
   };
 
   return Auth.loggedin() ? (
-    <div>ooops.... you're already logged in</div>
+    <LoggedIn />
   ) : (
     <section className="page-container">
       <div className="form-card">

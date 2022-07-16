@@ -4,3 +4,6 @@ export { default as Signup } from "./Signup";
 export { default as Profile } from "./Profile";
 export { default as Settings } from "./Settings";
 export { default as Messenger } from "./Messenger";
+export { default as LoggedIn } from "./LoggedIn";
+export { default as Leaderboard } from "./Leaderboard";
+export { default as UnderConstruction } from "./UnderConstruction";

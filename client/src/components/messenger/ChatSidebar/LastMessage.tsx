@@ -9,8 +9,6 @@ const LastMessage = ({ convo, handleClick }: any) => {
     },
   });
 
-  console.log(data);
-
   const lastMessage = data?.messages?.length
     ? data?.messages[data?.messages?.length - 1]
     : null;
