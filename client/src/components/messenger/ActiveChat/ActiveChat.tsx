@@ -19,15 +19,12 @@ const ActiveChat = ({ currentConvo, me }: any) => {
           messages={data.messages}
           me={me}
           subscribeToMessages={() => {
-            console.log("function running");
             subscribeToMore({
               document: SUBSCRIBE_MESSAGES,
               variables: { convoId: currentConvo },
               updateQuery: (prev, { subscriptionData }) => {
                 if (!subscriptionData.data) return prev;
                 const newMessage = subscriptionData.data.message;
-                console.log(newMessage);
-                console.log([...prev.messages]);
                 return Object.assign(
                   {},
                   {

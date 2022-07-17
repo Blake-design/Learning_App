@@ -6,21 +6,21 @@ import SenderBubble from "./SenderBubble";
 const Messages = ({ messages, me, subscribeToMessages }: any) => {
   useEffect(() => {
     subscribeToMessages();
-    console.log("useEffect is running");
   }, []);
 
-  const formatTime = (time: number) =>
-    new Date(time * 1000).toLocaleTimeString();
-
+  const formatTime = (time: number) => {
+    console.log(time);
+    return new Date(time).toLocaleTimeString("en-US");
+  };
   return (
     messages && (
       <div className="messages">
         {messages.map((message: any, i: number) => {
-          return message.senderId === me?._id ? (
+          return message.senderId._id === me?._id ? (
             <SenderBubble
               key={i}
               text={message.text}
-              time={message.createdAt}
+              time={+message.createdAt}
               formatTime={formatTime}
             />
           ) : (

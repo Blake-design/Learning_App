@@ -8,7 +8,7 @@ const ChatRooms = ({ selectConvo }: any) => {
   return (
     <div className="sb-convos-wrapper">
       <h3 className="sb-title">Chat Rooms - {data?.convos?.length}</h3>
-      <Search />
+
       <Convos convos={data?.convos} handleClick={selectConvo} />
     </div>
   );

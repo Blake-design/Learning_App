@@ -15,7 +15,6 @@ const Convos = ({ convos, handleClick }: any) => {
   return (
     <div className="sb-chat-container">
       {convos?.map((convo: any) => {
-        console.log(convo);
         return (
           <div className="sb-chat-item-container">
             <div
