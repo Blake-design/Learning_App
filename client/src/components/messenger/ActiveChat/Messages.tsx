@@ -9,9 +9,9 @@ const Messages = ({ messages, me, subscribeToMessages }: any) => {
   }, []);
 
   const formatTime = (time: number) => {
-    console.log(time);
-    return new Date(time).toLocaleTimeString("en-US");
+    return new Date(time).toLocaleTimeString();
   };
+
   return (
     messages && (
       <div className="messages">
