@@ -15,7 +15,6 @@ import { themeVar } from "./cache";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS, GET_ACTIVE_USERS, QUERY_ME } from "./utils/queries";
 import { useSubscription } from "@apollo/client";
-import { QueryMeData } from "./types/types";
 
 function App() {
   const { loading, data } = useQuery(QUERY_USERS);
