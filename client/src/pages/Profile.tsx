@@ -13,7 +13,7 @@ const Profile = ({ me }: MeQueryProps) => {
     variables: { username },
   });
 
-  const [sendRequest, { error }] = useMutation(SEND_REQUEST);
+  const [sendRequest] = useMutation(SEND_REQUEST);
 
   if (loading) {
     <div>loading</div>;

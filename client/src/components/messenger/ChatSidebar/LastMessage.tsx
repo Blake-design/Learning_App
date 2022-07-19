@@ -4,7 +4,7 @@ import { QUERY_MESSAGES } from "../../../utils/queries";
 import BadgeAvatar from "./BadgeAvatar";
 
 const LastMessage = ({ convo, handleClick }: any) => {
-  const { loading, data } = useQuery(QUERY_MESSAGES, {
+  const { data } = useQuery(QUERY_MESSAGES, {
     variables: {
       convoId: convo?._id,
     },

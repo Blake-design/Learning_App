@@ -6,7 +6,7 @@ import BadgeAvatar from "./BadgeAvatar";
 import { FriendType } from "../../../types";
 
 const CurrentUser = ({ _id, username, avatar }: FriendType) => {
-  const [createConvo, { error, data }] = useMutation(CREATE_CONVO, {
+  const [createConvo] = useMutation(CREATE_CONVO, {
     refetchQueries: [{ query: QUERY_CONVOS }, "Convos"],
   });
   const handleClick = async () => {

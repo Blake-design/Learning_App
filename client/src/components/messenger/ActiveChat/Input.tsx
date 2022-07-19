@@ -5,7 +5,7 @@ import { SEND_MESSAGE } from "../../../utils/mutations";
 const Input = ({ currentConvo }: any) => {
   const [formState, setFormState] = useState("");
 
-  const [sendMessage, { error }] = useMutation(SEND_MESSAGE);
+  const [sendMessage] = useMutation(SEND_MESSAGE);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState(e.target.value);
   };

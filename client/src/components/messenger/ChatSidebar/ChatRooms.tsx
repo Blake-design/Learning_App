@@ -1,9 +1,9 @@
 import React from "react";
-import { Convos, Search } from ".";
+import { Convos } from ".";
 import { QUERY_CONVOS } from "../../../utils/queries";
 import { useQuery } from "@apollo/client";
 const ChatRooms = ({ selectConvo }: any) => {
-  const { loading, data } = useQuery(QUERY_CONVOS);
+  const { data } = useQuery(QUERY_CONVOS);
 
   return (
     <div className="sb-convos-wrapper">

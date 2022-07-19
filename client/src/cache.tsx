@@ -1,4 +1,4 @@
-import { InMemoryCache, ReactiveVar, makeVar } from "@apollo/client";
+import { InMemoryCache, makeVar } from "@apollo/client";
 
 export const themeVar = makeVar(localStorage.getItem("preferred-theme"));
 

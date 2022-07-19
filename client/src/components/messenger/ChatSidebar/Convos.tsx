@@ -1,11 +1,11 @@
 import React from "react";
 import { LastMessage } from ".";
 import { useMutation } from "@apollo/client";
-import { QUERY_CONVOS, QUERY_MESSAGES } from "../../../utils/queries";
+import { QUERY_CONVOS } from "../../../utils/queries";
 import { DELETE_CONVO } from "../../../utils/mutations";
 
 const Convos = ({ convos, handleClick }: any) => {
-  const [deleteConvo, { error }] = useMutation(DELETE_CONVO, {
+  const [deleteConvo] = useMutation(DELETE_CONVO, {
     refetchQueries: [{ query: QUERY_CONVOS }, "Convos"],
   });
   const handleDelete = async (_id: any) => {

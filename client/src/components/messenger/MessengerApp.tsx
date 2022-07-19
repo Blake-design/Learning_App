@@ -12,7 +12,7 @@ const MessengerApp = ({ users }: UsersQueryProp) => {
   const selectConvo = (convo: any) => {
     setCurrentConvo(convo._id);
   };
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
 
   return (
     <div className="messenger-app-wrapper">

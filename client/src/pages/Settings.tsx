@@ -1,15 +1,15 @@
 import React from "react";
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { MeQueryProps } from "../types";
 import { ThemeButton } from "../components";
 import { REMOVE_USER } from "../utils/mutations";
 import auth from "../utils/auth";
 import Requests from "../components/Requests";
-import { request } from "http";
+
 import LoggedIn from "./LoggedIn";
 
 const Settings = ({ me }: MeQueryProps) => {
-  const [removeUser, { error }] = useMutation(REMOVE_USER);
+  const [removeUser] = useMutation(REMOVE_USER);
 
   const handleRemove = async () => {
     await removeUser();

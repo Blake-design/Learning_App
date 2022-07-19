@@ -1,5 +1,4 @@
 import React from "react";
-import { ACHeaderProps } from "../../../types";
 
 const ActiveChatHeader = ({ currentConvo }: any) => {
   return (

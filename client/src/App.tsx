@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import {
   Home,
   Login,
@@ -18,9 +18,8 @@ import { useSubscription } from "@apollo/client";
 
 function App() {
   const { loading, data } = useQuery(QUERY_USERS);
-  const { loading: loading1, data: m } = useQuery(QUERY_ME);
-  const { data: activeUsers, loading: activeUsersLoading } =
-    useSubscription(GET_ACTIVE_USERS);
+  const { data: m } = useQuery(QUERY_ME);
+  const { data: activeUsers } = useSubscription(GET_ACTIVE_USERS);
 
   if (loading) {
     return <div>loading...</div>;

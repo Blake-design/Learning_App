@@ -1,7 +1,6 @@
 import React from "react";
 import { Friends, ChatRooms } from ".";
 import "./msg-sidebar.css";
-import { UsersQueryProp } from "../../../types";
 
 const ChatSidebar = ({ me, selectConvo }: any) => {
   return (

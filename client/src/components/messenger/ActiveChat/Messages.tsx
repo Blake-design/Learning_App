@@ -6,7 +6,7 @@ import SenderBubble from "./SenderBubble";
 const Messages = ({ messages, me, subscribeToMessages }: any) => {
   useEffect(() => {
     subscribeToMessages();
-  }, []);
+  }, [subscribeToMessages]); /// If 'subscribeToMessages' changes too often, find the parent component that defines it and wrap that definition in useCallback
 
   const ref = useRef<HTMLDivElement>(null);
   const formatTime = (time: number) => {

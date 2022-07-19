@@ -1,5 +1,5 @@
 import { LoginButton } from "../components";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MeQueryProps } from "../types";
 import "./layout.css";
 

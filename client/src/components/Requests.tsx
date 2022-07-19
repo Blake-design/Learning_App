@@ -5,8 +5,8 @@ import { ACCEPT_REQUEST } from "../utils/mutations";
 import { MeQueryProps } from "../types";
 
 function Requests({ me }: MeQueryProps) {
-  const { loading, data } = useQuery(QUERY_REQUESTS);
-  const [acceptRequest, { error }] = useMutation(ACCEPT_REQUEST, {
+  const { data } = useQuery(QUERY_REQUESTS);
+  const [acceptRequest] = useMutation(ACCEPT_REQUEST, {
     refetchQueries: [
       { query: QUERY_REQUESTS }, // DocumentNode object parsed with gql
       "Requests", // Query name
