@@ -2,9 +2,9 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_REQUESTS } from "../utils/queries";
 import { ACCEPT_REQUEST } from "../utils/mutations";
-import { MeQueryProps } from "../types";
+import { QueryMeData, RequestObj } from "../types/types";
 
-function Requests({ me }: MeQueryProps) {
+function Requests({ me }: QueryMeData) {
   const { data } = useQuery(QUERY_REQUESTS);
   const [acceptRequest] = useMutation(ACCEPT_REQUEST, {
     refetchQueries: [
@@ -13,9 +13,12 @@ function Requests({ me }: MeQueryProps) {
     ],
   });
 
-  const handleAccept = async (e: any) => {
+  const handleAccept = async (e: React.MouseEvent<HTMLButtonElement>) => {
     await acceptRequest({
-      variables: { userId: e.target.value, requestId: e.target.name },
+      variables: {
+        userId: e.currentTarget.value,
+        requestId: e.currentTarget.name,
+      },
     });
   };
 
@@ -23,7 +26,7 @@ function Requests({ me }: MeQueryProps) {
     <li>
       friend requests pending
       {!data?.requests?.includes(null) ? (
-        data?.requests?.map((request: any, i: number) => {
+        data?.requests?.map((request: RequestObj, i: number) => {
           return (
             <button
               key={i}

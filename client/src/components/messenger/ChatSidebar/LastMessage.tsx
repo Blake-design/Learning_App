@@ -2,8 +2,9 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_MESSAGES } from "../../../utils/queries";
 import BadgeAvatar from "./BadgeAvatar";
+import { ConvoTypeProp } from "../../../types/types";
 
-const LastMessage = ({ convo, handleClick }: any) => {
+const LastMessage = ({ convo }: ConvoTypeProp) => {
   const { data } = useQuery(QUERY_MESSAGES, {
     variables: {
       convoId: convo?._id,

@@ -1,6 +1,6 @@
 import React from "react";
 import { MessengerApp } from "../components/messenger";
-import { UsersQueryProp } from "../types";
+import { UsersQueryProp } from "../types/types";
 import auth from "../utils/auth";
 const Messenger = ({ users }: UsersQueryProp) => {
   return (

@@ -3,8 +3,9 @@ import { ActiveChatHeader, Messages, Input } from ".";
 import "./activeChat.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_MESSAGES, SUBSCRIBE_MESSAGES } from "../../../utils/queries";
+import { ActiveChatProp } from "../../../types/types";
 
-const ActiveChat = ({ currentConvo, me }: any) => {
+const ActiveChat = ({ currentConvo, me }: ActiveChatProp) => {
   const { subscribeToMore, data } = useQuery(QUERY_MESSAGES, {
     variables: {
       convoId: currentConvo,

@@ -1,5 +1,5 @@
 import React from "react";
-import { BadgeAvatarType } from "../../../types";
+import { BadgeAvatarType } from "../../../types/types";
 
 const BadgeAvatar = ({ src }: BadgeAvatarType) => {
   return (

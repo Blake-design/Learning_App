@@ -1,8 +1,8 @@
 import React from "react";
 import { CurrentUser } from ".";
-import { FriendType } from "../../../types";
+import { FriendsProp, FriendType } from "../../../types/types";
 
-const Friends = ({ friends }: any) => {
+const Friends = ({ friends }: FriendsProp) => {
   return (
     <div className="chat-friends-wrapper">
       <h4 className="sb-title">

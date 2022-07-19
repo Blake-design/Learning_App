@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useLayoutEffect } from "react";
+import { Message, MessagesProp } from "../../../types/types";
 
 import OtherUserBubble from "./OtherUserBubble";
 import SenderBubble from "./SenderBubble";
 
-const Messages = ({ messages, me, subscribeToMessages }: any) => {
+const Messages = ({ messages, me, subscribeToMessages }: MessagesProp) => {
   useEffect(() => {
     subscribeToMessages();
   }, [subscribeToMessages]); /// If 'subscribeToMessages' changes too often, find the parent component that defines it and wrap that definition in useCallback
@@ -22,7 +23,7 @@ const Messages = ({ messages, me, subscribeToMessages }: any) => {
   return (
     messages && (
       <div className="messages" ref={ref}>
-        {messages.map((message: any, i: number) => {
+        {messages.map((message: Message, i: number) => {
           return message.senderId._id === me?._id ? (
             <SenderBubble
               key={i}
@@ -34,7 +35,7 @@ const Messages = ({ messages, me, subscribeToMessages }: any) => {
             <OtherUserBubble
               key={i}
               text={message.text}
-              time={message.createdAt}
+              time={+message.createdAt}
               formatTime={formatTime}
             />
           );

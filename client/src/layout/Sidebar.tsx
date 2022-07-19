@@ -6,9 +6,9 @@ import {
   leaderboardIcon,
 } from "../assets/icons";
 import { NavIcon } from "../components";
-import { MeQueryProps } from "../types";
+import { QueryMeData } from "../types/types";
 
-const Sidebar = ({ me }: MeQueryProps) => {
+const Sidebar = ({ me }: QueryMeData) => {
   return (
     <aside>
       <NavIcon to="/" icon={dashboardIcon} alt="dashboard" />

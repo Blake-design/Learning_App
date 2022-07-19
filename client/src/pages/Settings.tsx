@@ -1,6 +1,6 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
-import { MeQueryProps } from "../types";
+import { QueryMeData } from "../types/types";
 import { ThemeButton } from "../components";
 import { REMOVE_USER } from "../utils/mutations";
 import auth from "../utils/auth";
@@ -8,7 +8,7 @@ import Requests from "../components/Requests";
 
 import LoggedIn from "./LoggedIn";
 
-const Settings = ({ me }: MeQueryProps) => {
+const Settings = ({ me }: QueryMeData) => {
   const [removeUser] = useMutation(REMOVE_USER);
 
   const handleRemove = async () => {

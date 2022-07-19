@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navIcon.css";
-import { NavIconType } from "../types";
+import { NavIconType } from "../types/types";
 
 const NavIcon = ({ icon, alt, to }: NavIconType) => {
   return (

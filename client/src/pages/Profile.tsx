@@ -1,12 +1,12 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_SINGLE_USER } from "../utils/queries";
-import { MeQueryProps } from "../types";
+import { FriendType, QueryMeData, RequestObj } from "../types/types";
 import { useParams } from "react-router-dom";
 import { SEND_REQUEST } from "../utils/mutations";
 import { LoggedIn } from ".";
 
-const Profile = ({ me }: MeQueryProps) => {
+const Profile = ({ me }: QueryMeData) => {
   // params are used to query for user
   let { username } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
@@ -36,11 +36,11 @@ const Profile = ({ me }: MeQueryProps) => {
 
   // destructure info from request senders
   const userRequests = data?.user?.requests?.map(
-    (request: any) => request.sender._id
+    (request: RequestObj) => request.sender._id
   );
 
   // destructure info from friends
-  const friends = me?.friends?.map((friend: any) => friend._id);
+  const friends = me?.friends?.map((friend: FriendType) => friend._id);
 
   return username !== "undefined" ? (
     <section className="page-container">

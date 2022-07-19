@@ -1,7 +1,7 @@
 import React from "react";
 import { UnderConstruction } from ".";
-import { MeQueryProps } from "../types";
-const Leaderboard = ({ me }: MeQueryProps) => {
+import { QueryMeData } from "../types/types";
+const Leaderboard = ({ me }: QueryMeData) => {
   return (
     <div>
       <UnderConstruction />

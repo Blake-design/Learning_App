@@ -1,9 +1,9 @@
 import { LoginButton } from "../components";
 import { Link } from "react-router-dom";
-import { MeQueryProps } from "../types";
+import { QueryMeData } from "../types/types";
 import "./layout.css";
 
-const Header = ({ me }: MeQueryProps) => {
+const Header = ({ me }: QueryMeData) => {
   return (
     <header>
       <h1>

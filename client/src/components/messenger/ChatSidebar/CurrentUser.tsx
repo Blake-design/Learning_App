@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_CONVO } from "../../../utils/mutations";
 import { QUERY_CONVOS } from "../../../utils/queries";
 import BadgeAvatar from "./BadgeAvatar";
-import { FriendType } from "../../../types";
+import { FriendType } from "../../../types/types";
 
 const CurrentUser = ({ _id, username, avatar }: FriendType) => {
   const [createConvo] = useMutation(CREATE_CONVO, {

@@ -2,13 +2,13 @@ import { useMutation } from "@apollo/client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NavIcon } from ".";
-import { MeQueryProps } from "../types";
+import { QueryMeData } from "../types/types";
 import Auth from "../utils/auth";
 
 import { LOGOUT_USER } from "../utils/mutations";
 import auth from "../utils/auth";
 
-const LoginButton = ({ me }: MeQueryProps) => {
+const LoginButton = ({ me }: QueryMeData) => {
   const navigate = useNavigate();
 
   const [logout] = useMutation(LOGOUT_USER);

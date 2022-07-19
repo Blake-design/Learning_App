@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE } from "../../../utils/mutations";
+import { CurrentConvoProp } from "../../../types/types";
 
-const Input = ({ currentConvo }: any) => {
+const Input = ({ currentConvo }: CurrentConvoProp) => {
   const [formState, setFormState] = useState("");
 
   const [sendMessage] = useMutation(SEND_MESSAGE);

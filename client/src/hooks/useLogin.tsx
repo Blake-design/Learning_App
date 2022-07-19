@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
-import { LoginFormType } from "../types";
+import { LoginFormType } from "../types/types";
 
 const useLogin = () => {
   const [login, { error }] = useMutation(LOGIN_USER, {

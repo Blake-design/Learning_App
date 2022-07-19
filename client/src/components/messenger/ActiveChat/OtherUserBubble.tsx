@@ -1,6 +1,7 @@
 import React from "react";
+import { TextBubbleProp } from "../../../types/types";
 
-const OtherUserBubble = ({ text, time, formatTime }: any) => {
+const OtherUserBubble = ({ text, time, formatTime }: TextBubbleProp) => {
   return (
     <div style={{ display: "flex" }}>
       <div className="msg-avatar">🙂</div>
