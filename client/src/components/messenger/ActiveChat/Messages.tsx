@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
 
 import OtherUserBubble from "./OtherUserBubble";
 import SenderBubble from "./SenderBubble";
@@ -8,13 +8,20 @@ const Messages = ({ messages, me, subscribeToMessages }: any) => {
     subscribeToMessages();
   }, []);
 
+  const ref = useRef<HTMLDivElement>(null);
   const formatTime = (time: number) => {
     return new Date(time).toLocaleTimeString();
   };
 
+  useLayoutEffect(() => {
+    if (ref.current) {
+      ref.current.scrollTop = ref.current.scrollHeight;
+    }
+  });
+
   return (
     messages && (
-      <div className="messages">
+      <div className="messages" ref={ref}>
         {messages.map((message: any, i: number) => {
           return message.senderId._id === me?._id ? (
             <SenderBubble

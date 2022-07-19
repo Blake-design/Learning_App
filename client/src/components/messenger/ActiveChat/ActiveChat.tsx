@@ -1,11 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { ActiveChatHeader, Messages, Input } from ".";
 import "./activeChat.css";
-import { useQuery, useSubscription } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { QUERY_MESSAGES, SUBSCRIBE_MESSAGES } from "../../../utils/queries";
 
 const ActiveChat = ({ currentConvo, me }: any) => {
-  const ref = useRef<HTMLDivElement>(null);
   const { subscribeToMore, data } = useQuery(QUERY_MESSAGES, {
     variables: {
       convoId: currentConvo,
@@ -15,7 +14,7 @@ const ActiveChat = ({ currentConvo, me }: any) => {
   return (
     <section className="chat-window-wrapper">
       <ActiveChatHeader currentConvo={currentConvo} />
-      <div className="messages-container" ref={ref}>
+      <div className="messages-container">
         <Messages
           messages={data.messages}
           me={me}
