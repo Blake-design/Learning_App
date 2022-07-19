@@ -13,6 +13,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build",
+    "test": "cd client && npm run test",
     "heroku-postbuid": "npm run build",
     "debug": "concurrently \"cd server && npm run watch\" \"cd client && npm start\" \\inspect"
   },
