@@ -5,7 +5,7 @@ import { useQuery, useSubscription } from "@apollo/client";
 import { QUERY_MESSAGES, SUBSCRIBE_MESSAGES } from "../../../utils/queries";
 
 const ActiveChat = ({ currentConvo, me }: any) => {
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const { subscribeToMore, data } = useQuery(QUERY_MESSAGES, {
     variables: {
       convoId: currentConvo,
