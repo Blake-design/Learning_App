@@ -5,6 +5,11 @@ class AuthService {
     return localStorage.getItem("id_token");
   }
 
+  // get user data from JSON web token by decoding it
+  getUser(): any {
+    return decode(this.getToken()!);
+  }
+
   // return `true` or `false` if token exists and not expired
   loggedin(): boolean {
     const token = this.getToken();

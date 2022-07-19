@@ -58,6 +58,7 @@ const typeDefs = gql`
   type Subscription {
     message(convoId: ID!): Message
     userActive: [User]
+    convo(_id: ID!): Conversation
   }
 
   type Query {
@@ -67,7 +68,7 @@ const typeDefs = gql`
     settings: Settings
     friends: User
     requests: [Request]
-    convos: [Conversation]
+    convos(_id: ID!): [Conversation]
     messages(convoId: ID!): [Message]
   }
 

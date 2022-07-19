@@ -16,6 +16,8 @@ type FormatTimeFn = (time: number) => string;
 
 type SubscribeToMessagesFn = () => void;
 
+type SubscribeToConvosFn = () => void;
+
 // form types
 
 export interface SignupFormType {
@@ -183,6 +185,7 @@ export interface SelectConvoProp {
 export interface ConvosProp {
   convos: Conversation[];
   selectConvo: SelectConvoFn;
+  subscribeToConvos: SubscribeToConvosFn;
 }
 export interface ConvoTypeProp {
   convo: ConvoType;

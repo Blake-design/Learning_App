@@ -47,11 +47,12 @@ const resolvers = {
       }
     },
 
-    convos: async (parent, args, context) => {
+    convos: async (parent, { _id }, context) => {
       if (context.user) {
-        return Conversation.find({ participants: context.user._id });
+        return Conversation.find({ participants: _id });
       }
     },
+
     messages: async (parent, { convoId }, context) => {
       if (context.user) {
         return Message.find({ convoId })
@@ -236,9 +237,17 @@ const resolvers = {
       //TODO:  try to find convo first
       //TODO:  set room name index by default
 
-      await Conversation.create({
+      const convo = await Conversation.create({
         groupAdmin: context.user._id,
         participants: [_id, context.user._id],
+      });
+
+      pubsub.publish("CONVO_CREATED", {
+        convo: {
+          _id: convo._id,
+          groupAdmin: convo.groupAdmin,
+          participants: convo.participants,
+        },
       });
     },
 
@@ -266,7 +275,15 @@ const resolvers = {
       subscribe: withFilter(
         () => pubsub.asyncIterator("MESSAGE_CREATED"),
         (payload, variables) => {
-          return payload.message.convoId === variables.convoId;
+          return payload.message._id === variables.convoId;
+        }
+      ),
+    },
+    convo: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("CONVO_CREATED"),
+        (payload, variables) => {
+          return payload.convo.participants.includes(variables._id);
         }
       ),
     },
