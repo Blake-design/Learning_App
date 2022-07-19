@@ -8,7 +8,7 @@ const Messages = ({ messages, me, subscribeToMessages }: any) => {
     subscribeToMessages();
   }, []);
 
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const formatTime = (time: number) => {
     return new Date(time).toLocaleTimeString();
   };
