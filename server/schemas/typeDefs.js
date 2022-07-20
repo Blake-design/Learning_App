@@ -55,10 +55,18 @@ const typeDefs = gql`
     user: User!
   }
 
+  type ConvoSubPayload {
+    action: String
+    _id: ID
+    roomName: String
+    groupAdmin: String
+    participants: [User]
+  }
+
   type Subscription {
     message(convoId: ID!): Message
     userActive: [User]
-    convo(_id: ID!): Conversation
+    convo(_id: ID!): ConvoSubPayload
   }
 
   type Query {
@@ -68,7 +76,7 @@ const typeDefs = gql`
     settings: Settings
     friends: User
     requests: [Request]
-    convos(_id: ID!): [Conversation]
+    convos: [Conversation]
     messages(convoId: ID!): [Message]
   }
 
@@ -87,7 +95,7 @@ const typeDefs = gql`
     sendRequest(_id: ID!): User
     acceptRequest(userId: ID!, requestId: ID!): User
     sendMessage(text: String!, convoId: ID!): Message
-    createConvo(_id: ID!): Conversation
+    createConvo(_id: ID!, roomName: String!): Conversation
     deleteConvo(_id: ID!): Conversation
   }
 `;

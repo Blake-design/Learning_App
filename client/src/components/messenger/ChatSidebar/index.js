@@ -6,3 +6,4 @@ export { default as Search } from "./Search";
 export { default as ChatSidebar } from "./ChatSidebar";
 export { default as Friends } from "./Friends";
 export { default as CurrentUser } from "./CurrentUser";
+export { default as ConvoForm } from "./ConvoForm";

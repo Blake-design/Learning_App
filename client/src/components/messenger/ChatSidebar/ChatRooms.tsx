@@ -1,6 +1,6 @@
 import React from "react";
 import { Convos } from ".";
-import { QUERY_CONVOS, SUBSCRIBE_CONVO } from "../../../utils/queries";
+import { QUERY_CONVOS, SUBSCRIBE_CONVOS } from "../../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { SelectConvoProp } from "../../../types/types";
 import auth from "../../../utils/auth";
@@ -9,11 +9,7 @@ const ChatRooms = ({ selectConvo }: SelectConvoProp) => {
     data: { _id },
   } = auth.getUser();
 
-  const { subscribeToMore, data } = useQuery(QUERY_CONVOS, {
-    variables: {
-      _id,
-    },
-  });
+  const { subscribeToMore, data } = useQuery(QUERY_CONVOS);
 
   return (
     <div className="sb-convos-wrapper">
@@ -24,10 +20,12 @@ const ChatRooms = ({ selectConvo }: SelectConvoProp) => {
         selectConvo={selectConvo}
         subscribeToConvos={() => {
           subscribeToMore({
-            document: SUBSCRIBE_CONVO,
+            document: SUBSCRIBE_CONVOS,
             variables: { _id: _id },
             updateQuery: (prev, { subscriptionData }) => {
               if (!subscriptionData.data) return prev;
+
+              console.log(subscriptionData.data);
               const newConvo = subscriptionData.data.convo;
               return Object.assign(
                 {},

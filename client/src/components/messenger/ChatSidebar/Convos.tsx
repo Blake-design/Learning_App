@@ -19,16 +19,15 @@ const Convos = ({ convos, selectConvo, subscribeToConvos }: ConvosProp) => {
 
   return (
     <div className="sb-chat-container">
-      {convos?.map((convo: ConvoType) => {
+      {convos?.map((convo: ConvoType, i: number) => {
         return (
-          <div className="sb-chat-item-container">
+          <div className="sb-chat-item-container" key={`chatRoom ${i}`}>
             <div
-              key={convo._id}
               className="sb-chat-content-container"
               onClick={() => selectConvo(convo)}
             >
               <div className={"sb-chat-content-container-top"}>
-                <h5>roomName: {convo.roomName}</h5>
+                <h5>{convo.roomName}</h5>
               </div>
               <LastMessage convo={convo} />
             </div>

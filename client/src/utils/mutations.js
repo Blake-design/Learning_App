@@ -85,8 +85,8 @@ export const ACCEPT_REQUEST = gql`
   }
 `;
 export const CREATE_CONVO = gql`
-  mutation createConvo($_id: ID!) {
-    createConvo(_id: $_id) {
+  mutation createConvo($_id: ID!, $roomName: String!) {
+    createConvo(_id: $_id, roomName: $roomName) {
       roomName
       participants {
         _id

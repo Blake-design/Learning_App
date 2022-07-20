@@ -1,23 +1,18 @@
-import React from "react";
-import { useMutation } from "@apollo/client";
-import { CREATE_CONVO } from "../../../utils/mutations";
-import { QUERY_CONVOS } from "../../../utils/queries";
+import React, { useState } from "react";
+
 import BadgeAvatar from "./BadgeAvatar";
 import { FriendType } from "../../../types/types";
+import { ConvoForm } from ".";
 
 const CurrentUser = ({ _id, username, avatar }: FriendType) => {
-  const [createConvo] = useMutation(CREATE_CONVO, {
-    refetchQueries: [{ query: QUERY_CONVOS }, "Convos"],
-  });
+  const [openConvo, setOpenConvo] = useState(false);
+
   const handleClick = async () => {
     //TODO: on click this will add user to conversation
-
-    await createConvo({
-      variables: { _id },
-    });
+    setOpenConvo(!openConvo);
   };
 
-  return (
+  return !openConvo ? (
     <div className="sb-currentUser-container">
       <BadgeAvatar src={`./avatars/${avatar}`} />
       <div className="sb-currentUser-subContainer">
@@ -25,6 +20,8 @@ const CurrentUser = ({ _id, username, avatar }: FriendType) => {
         <button onClick={handleClick}>start chat</button>
       </div>
     </div>
+  ) : (
+    <ConvoForm _id={_id} setOpenConvo={setOpenConvo} />
   );
 };
 

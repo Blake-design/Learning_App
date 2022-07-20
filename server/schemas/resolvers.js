@@ -47,9 +47,9 @@ const resolvers = {
       }
     },
 
-    convos: async (parent, { _id }, context) => {
+    convos: async (parent, args, context) => {
       if (context.user) {
-        return Conversation.find({ participants: _id });
+        return Conversation.find({ participants: context.user._id });
       }
     },
 
@@ -231,24 +231,28 @@ const resolvers = {
     },
 
     // finds a convo with participants or creates one
-    createConvo: async (parent, { _id }, context) => {
+    createConvo: async (parent, { _id, roomName }, context) => {
       // find a conversation with the logged in users id
 
       //TODO:  try to find convo first
       //TODO:  set room name index by default
+      if (context.user) {
+        const convo = await Conversation.create({
+          roomName,
+          groupAdmin: context.user._id,
+          participants: [_id, context.user._id],
+        });
 
-      const convo = await Conversation.create({
-        groupAdmin: context.user._id,
-        participants: [_id, context.user._id],
-      });
-
-      pubsub.publish("CONVO_CREATED", {
-        convo: {
-          _id: convo._id,
-          groupAdmin: convo.groupAdmin,
-          participants: convo.participants,
-        },
-      });
+        pubsub.publish("CONVO_CREATED", {
+          convo: {
+            action: "create",
+            roomName: convo.roomName,
+            _id: convo._id,
+            groupAdmin: convo.groupAdmin,
+            participants: convo.participants,
+          },
+        });
+      }
     },
 
     // deletes conversation

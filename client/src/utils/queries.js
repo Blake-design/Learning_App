@@ -90,8 +90,8 @@ export const QUERY_REQUESTS = gql`
 `;
 
 export const QUERY_CONVOS = gql`
-  query Convos($_id: ID!) {
-    convos(_id: $_id) {
+  query Convos {
+    convos {
       _id
       roomName
     }
@@ -134,13 +134,12 @@ export const SUBSCRIBE_MESSAGES = gql`
     }
   }
 `;
-export const SUBSCRIBE_CONVO = gql`
+export const SUBSCRIBE_CONVOS = gql`
   subscription Convo($_id: ID!) {
     convo(_id: $_id) {
+      action
+      roomName
       _id
-      participants {
-        _id
-      }
     }
   }
 `;
