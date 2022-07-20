@@ -7,7 +7,7 @@ const Home = ({ users, activeUsers }: UsersQueryProp) => {
       <p>Join the already {users?.length} users by signing up today! </p>
 
       {activeUsers?.length ? (
-        activeUsers.map((u) => <div>{u.username}</div>)
+        activeUsers.map((u) => <div key={u.username}>{u.username}</div>)
       ) : (
         <h4>There are no active users</h4>
       )}

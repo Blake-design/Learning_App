@@ -6,6 +6,7 @@ const ThemeButton = () => {
 
   const handleClick = () => {
     setDarkMode(!darkMode);
+    window.location.reload();
   };
 
   return <button onClick={handleClick}>{darkMode ? "Dark" : "Light"}</button>;
