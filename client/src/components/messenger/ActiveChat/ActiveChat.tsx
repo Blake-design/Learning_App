@@ -11,7 +11,7 @@ const ActiveChat = ({ currentConvo, me }: ActiveChatProp) => {
       convoId: currentConvo,
     },
   });
-
+  console.log(currentConvo);
   return (
     <section className="chat-window-wrapper">
       <ActiveChatHeader currentConvo={currentConvo} />
@@ -20,10 +20,12 @@ const ActiveChat = ({ currentConvo, me }: ActiveChatProp) => {
           messages={data.messages}
           me={me}
           subscribeToMessages={() => {
+            console.log("hit 1");
             subscribeToMore({
               document: SUBSCRIBE_MESSAGES,
               variables: { convoId: currentConvo },
               updateQuery: (prev, { subscriptionData }) => {
+                console.log("hit 2");
                 if (!subscriptionData.data) return prev;
                 const newMessage = subscriptionData.data.message;
                 return Object.assign(

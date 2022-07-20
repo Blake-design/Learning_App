@@ -133,7 +133,6 @@ export const SUBSCRIBE_MESSAGES = gql`
       text
       senderId {
         _id
-        username
       }
       convoId
       createdAt

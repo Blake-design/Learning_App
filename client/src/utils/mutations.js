@@ -111,7 +111,6 @@ export const SEND_MESSAGE = gql`
       text
       senderId {
         _id
-        username
       }
       convoId
       createdAt

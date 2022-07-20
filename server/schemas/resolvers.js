@@ -218,6 +218,7 @@ const resolvers = {
         convoId,
         senderId: context.user._id,
       });
+
       pubsub.publish("MESSAGE_CREATED", {
         message: {
           text,
@@ -288,7 +289,7 @@ const resolvers = {
       subscribe: withFilter(
         () => pubsub.asyncIterator("MESSAGE_CREATED"),
         (payload, variables) => {
-          return payload.message._id === variables.convoId;
+          return payload.message.convoId === variables.convoId;
         }
       ),
     },
