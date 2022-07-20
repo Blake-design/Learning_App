@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { LastMessage } from ".";
 import { useMutation } from "@apollo/client";
 import { QUERY_CONVOS } from "../../../utils/queries";
@@ -7,8 +7,9 @@ import { ConvosProp, ConvoType } from "../../../types/types";
 
 const Convos = ({ convos, selectConvo, subscribeToConvos }: ConvosProp) => {
   useEffect(() => {
+    console.log("use effect ran");
     subscribeToConvos();
-  }, [subscribeToConvos]);
+  }, []);
 
   const [deleteConvo] = useMutation(DELETE_CONVO, {
     refetchQueries: [{ query: QUERY_CONVOS }, "Convos"],

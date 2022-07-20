@@ -243,7 +243,7 @@ const resolvers = {
           participants: [_id, context.user._id],
         });
 
-        pubsub.publish("CONVO_CREATED", {
+        pubsub.publish("CONVOS_UPDATED", {
           convo: {
             action: "create",
             roomName: convo.roomName,
@@ -260,6 +260,15 @@ const resolvers = {
     deleteConvo: async (parent, { _id }) => {
       const convo = await Conversation.findOneAndDelete({ _id });
       await Message.deleteMany({ convoId: convo.convoId });
+      pubsub.publish("CONVOS_UPDATED", {
+        convo: {
+          action: "delete",
+          roomName: convo.roomName,
+          _id: convo._id,
+          groupAdmin: convo.groupAdmin,
+          participants: convo.participants,
+        },
+      });
     },
   },
 
@@ -285,7 +294,7 @@ const resolvers = {
     },
     convo: {
       subscribe: withFilter(
-        () => pubsub.asyncIterator("CONVO_CREATED"),
+        () => pubsub.asyncIterator("CONVOS_UPDATED"),
         (payload, variables) => {
           return payload.convo.participants.includes(variables._id);
         }

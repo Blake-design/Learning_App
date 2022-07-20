@@ -92,8 +92,14 @@ export const QUERY_REQUESTS = gql`
 export const QUERY_CONVOS = gql`
   query Convos {
     convos {
-      _id
       roomName
+      _id
+      groupAdmin {
+        _id
+      }
+      participants {
+        _id
+      }
     }
   }
 `;
@@ -140,6 +146,12 @@ export const SUBSCRIBE_CONVOS = gql`
       action
       roomName
       _id
+      groupAdmin {
+        _id
+      }
+      participants {
+        _id
+      }
     }
   }
 `;

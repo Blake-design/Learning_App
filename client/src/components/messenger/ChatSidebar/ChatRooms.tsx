@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Convos } from ".";
 import { QUERY_CONVOS, SUBSCRIBE_CONVOS } from "../../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { SelectConvoProp } from "../../../types/types";
 import auth from "../../../utils/auth";
+import { doSubscriptionAction } from "../../../utils/subscribeToMoreActions";
+
 const ChatRooms = ({ selectConvo }: SelectConvoProp) => {
   const {
     data: { _id },
@@ -18,24 +20,16 @@ const ChatRooms = ({ selectConvo }: SelectConvoProp) => {
       <Convos
         convos={data?.convos}
         selectConvo={selectConvo}
-        subscribeToConvos={() => {
+        subscribeToConvos={useCallback(() => {
           subscribeToMore({
             document: SUBSCRIBE_CONVOS,
             variables: { _id: _id },
             updateQuery: (prev, { subscriptionData }) => {
               if (!subscriptionData.data) return prev;
-
-              console.log(subscriptionData.data);
-              const newConvo = subscriptionData.data.convo;
-              return Object.assign(
-                {},
-                {
-                  convos: [...prev.convos, newConvo],
-                }
-              );
+              return doSubscriptionAction(prev, { subscriptionData });
             },
           });
-        }}
+        }, [_id, subscribeToMore])}
       />
     </div>
   );

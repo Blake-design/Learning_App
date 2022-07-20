@@ -59,7 +59,7 @@ const typeDefs = gql`
     action: String
     _id: ID
     roomName: String
-    groupAdmin: String
+    groupAdmin: User
     participants: [User]
   }
 
