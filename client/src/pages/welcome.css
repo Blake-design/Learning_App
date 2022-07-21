@@ -5,9 +5,109 @@
   border-radius: 15px;
   width: 500px;
   height: 300px;
-  padding: 2em;
-  margin-top: 2em;
-  margin-bottom: 2em;
   background-color: var(--secondary-bg-color);
   color: var(--secondary-text-color);
+  text-align: center;
+}
+.welcome-card h2 {
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.welcome-card p {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+.welcome-card span {
+  font-weight: 600;
+  color: var(--primary-btn-color);
+}
+
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: end;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.welcome-card .content {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.welcome-card .content .prompt {
+  font-size: 1em;
+}
+
+.tip {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: start;
+  align-items: center;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+.title-section p {
+  font-size: 1em;
+  font-weight: 200;
+}
+
+.up {
+  transform: rotate(-90deg);
+}
+.down {
+  transform: rotate(90deg);
+}
+.left {
+  transform: rotate(180deg);
+}
+
+.split-page {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1em;
+  height: 100%;
+}
+
+.title-section p {
+  font-size: 2em;
+  font-weight: 200;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  flex-direction: column;
+  height: 100%;
+}
+.nav-list li {
+  font-style: none;
+}
+.arrow {
+  font-size: 3em;
 }

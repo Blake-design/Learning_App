@@ -1,37 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { WelcomeCard, Tip } from "../components";
 import "./welcome.css";
+
 const Welcome = ({ me, users }: any) => {
+  const [welcomeCardOpen, setWelcomeCardOpen] = useState(true);
+
+  const handleClick = () => {
+    setWelcomeCardOpen(!welcomeCardOpen);
+  };
+
   return (
     <section className="page-container">
-      <div className="welcome-card">
-        <h1>Welcome {me?.name}, </h1>
-        <p>This is your first time logging in so let me show you around.</p>
-        <p>
-          top right is your avatar if you click this you will be taken to your
-          settings page on the left is the navigation menu the book shelf will
-          take you home to select and play your favorite games the Quill pen is
-          where you go to tell us more about yourself the message bubble is
-          where you can chat with friends and shar all the new things you have
-          learned and last but not least the trophy is where you can check to
-          how well you measure up to the other learners.
-        </p>
-      </div>
+      {welcomeCardOpen ? (
+        <WelcomeCard handleClick={handleClick} me={me} />
+      ) : (
+        <div className="split-page">
+          <div className="title-section">
+            <Tip arrow="up">
+              <h3>Profile Settings</h3>
+              <p>The avatar will take you to the settings page</p>
+            </Tip>
+            <Tip arrow="left">
+              <h3>Navigation</h3>
+              <p>The icons on the left will take you around the site</p>
+            </Tip>
+            <Tip arrow="down">
+              <h3>Live Updates</h3>
+              <p>Keep an eye below for live updates</p>
+            </Tip>
+          </div>
 
-      {/* 
-
-      <p>over here we have our navigation menu</p>
-      <p>
-        the book shelf will take you home to select and play your favorite games
-      </p>
-      <p>the Quill pen is where you go to tell us more about yourself</p>
-      <p>
-        the message bubble is where you can chat with friends and shar all the
-        new things you have learned
-      </p>
-      <p>
-        and last but not least the trophy is where you can check to how well you
-        measure up to the other learners.
-      </p> */}
+          <ul className="nav-list">
+            <li>&larr; The Bookshelf is where you find new lessons</li>
+            <li>
+              &larr; The Quill Pen is where you go to tell us more about
+              yourself
+            </li>
+            <li>
+              &larr; The Message Bubbles are where you can chat with friends and
+              share all the new things you learned
+            </li>
+            <li>
+              &larr; The Trophy is where you can keep track of the fastest
+              learners
+            </li>
+          </ul>
+        </div>
+      )}
     </section>
   );
 };
