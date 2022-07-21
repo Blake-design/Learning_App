@@ -31,6 +31,12 @@
   --primary-btn-color: rgb(166, 164, 179);
 }
 
+.disabled:hover {
+  color: var(--secondary-text-color);
+  box-shadow: inset 0 var(--secondary-text-color);
+  background: rgb(166, 164, 179);
+}
+
 .error {
   color: var(--warning-color);
 }

@@ -34,9 +34,7 @@ form label {
   background-color: var(--input-focus-bg-color);
 }
 
-form button:hover,
-form button:focus,
-.disabled {
+.disabled:hover {
   color: var(--secondary-text-color);
   box-shadow: inset 0 var(--secondary-text-color);
   background: rgb(166, 164, 179);
