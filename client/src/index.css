@@ -12,7 +12,7 @@
   --warning-color: #f9ebeb;
   --primary-btn-color: #efb777;
   --secondary-btn-color: #efefef;
-  --primary-btn-shadow: 2px 0px 3px 0.5px rgba(71, 71, 71, 0.5);
+  --primary-shadow: rgba(71, 71, 71, 0.5);
   --input-focus-bg-color: white;
   --input-outline-color: lightgray;
   --primary-outline-color: rgb(255, 255, 255);

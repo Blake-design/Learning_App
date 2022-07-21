@@ -29,9 +29,9 @@ const Login = () => {
   ) : (
     <section className="page-container">
       <div className="form-card">
-        <h3> Log In </h3>
+        <h2>Login</h2>
         <hr />
-        <form onSubmit={handleSubmit}>
+        <form className="form-flex" onSubmit={handleSubmit}>
           <input
             className="form-input"
             placeholder="EMAIL"

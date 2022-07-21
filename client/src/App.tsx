@@ -10,7 +10,6 @@ import {
   Leaderboard,
   Welcome,
 } from "./pages/";
-import "./App.css";
 import { Footer, Header, Sidebar } from "./layout";
 import { themeVar } from "./cache";
 import { useQuery } from "@apollo/client";
@@ -27,7 +26,7 @@ function App() {
   }
 
   return (
-    <div className={themeVar() === "dark" ? "dark" : ""}>
+    <div className={themeVar() === "dark" ? "wrapper dark" : "wrapper"}>
       <Header me={m?.me} />
       <main>
         <Sidebar me={m?.me} />
