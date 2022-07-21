@@ -14,6 +14,15 @@
 }
 .form-flex {
   display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.submit {
+  height: 400px;
+}
+.submit-flex {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .form-input {
@@ -22,6 +31,7 @@
   margin: 1em;
   margin-left: 0;
   padding: 0.5em;
+  height: 38px;
 }
 
 form label {

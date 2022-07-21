@@ -75,6 +75,7 @@ aside {
 button {
   font-family: "poppins";
   font-weight: 700;
+  height: 38px;
   color: var(--secondary-text-color);
   background-color: var(--primary-btn-color);
   border-radius: 8px;

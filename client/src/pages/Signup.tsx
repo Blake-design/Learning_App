@@ -33,44 +33,54 @@ const Signup = () => {
 
   return !Auth.loggedin() ? (
     <section className="page-container">
-      <div className="form-card">
-        <h3>Sign Up</h3>
+      <div className="form-card submit">
+        <h2>Sign Up</h2>
         <hr />
-        <form onSubmit={handleSubmit}>
-          <input
-            className="form-input"
-            placeholder="FULL NAME"
-            name="name"
-            type="text"
-            value={formState.name}
-            onChange={handleChange}
-          />
+        <form className="form-flex" onSubmit={handleSubmit}>
+          <div className="submit-flex">
+            <input
+              className="form-input"
+              placeholder="FULL NAME"
+              name="name"
+              type="text"
+              value={formState.name}
+              onChange={handleChange}
+            />
 
-          <input
-            className="form-input"
-            placeholder="USER NAME"
-            name="username"
-            type="text"
-            value={formState.username}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="EMAIL"
-            name="email"
-            type="text"
-            value={formState.email}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="PASSWORD"
-            name="password"
-            type="text"
-            value={formState.password}
-            onChange={handleChange}
-          />
-          <button type="submit">Submit</button>
+            <input
+              className="form-input"
+              placeholder="USER NAME"
+              name="username"
+              type="text"
+              value={formState.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="submit-flex">
+            <input
+              className="form-input"
+              placeholder="EMAIL"
+              name="email"
+              type="text"
+              value={formState.email}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="PASSWORD"
+              name="password"
+              type="text"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </div>
+          <button
+            type="submit"
+            className={formState.password.length < 3 ? "disabled" : ""}
+            disabled={formState.password.length < 3 ? true : false}
+          >
+            Submit
+          </button>
         </form>
         {!error ? (
           <p className="error-placeholder">place holder error message</p>
