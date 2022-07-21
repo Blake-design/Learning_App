@@ -21,7 +21,7 @@ const Home = ({ users, activeUsers }: UsersQueryProp) => {
         <b>password:</b> password01
       </p>
       <p>
-        I also recomend you check out the
+        I also recommend you check out the
         <a href="https://github.com/Blake-design/Learning_app"> github Repo</a>
       </p>
       {/* <p>Join the already {users?.length} users by signing up today! </p>
