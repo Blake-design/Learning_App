@@ -17,8 +17,12 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "username required"],
       trim: true,
+      match: [
+        /^(\d|\w)+$/g,
+        "username can not have spaces or special charaters",
+      ],
       unique: [true, "sorry that username is already taken"],
-      maxLength: [14, "Password must be <= 14 characters"],
+      maxLength: [14, "UserName must be less than 14 characters"],
     },
 
     email: {
@@ -36,8 +40,8 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-      minLength: [8, "Password must be >= 8 characters"],
-      maxLength: [25, "Password must be <= 25 characters"],
+      minLength: [8, "Password must be greater than 8 characters"],
+      maxLength: [25, "Password must be less than 25 characters"],
     },
     bio: {
       type: String,
