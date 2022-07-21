@@ -25,6 +25,7 @@ const LoginButton = ({ me }: QueryMeData) => {
           icon={`/avatars/${me?.avatar}`}
           alt={"Settings"}
           to="/settings"
+          title="settings"
         />
         <button onClick={handleLogout}>LOG OUT</button>
       </nav>

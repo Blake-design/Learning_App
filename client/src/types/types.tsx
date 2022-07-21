@@ -2,6 +2,7 @@ export interface NavIconType {
   icon: string;
   alt: string;
   to: string;
+  title: string;
 }
 
 export interface BadgeAvatarType {

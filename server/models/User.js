@@ -5,31 +5,44 @@ const UserSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "name required"],
       trim: true,
+      match: [
+        /^[a-z ,.'-]+$/i,
+        "Name can only contain A-Z, comma, period, apostrophe, space, and hyphen",
+      ],
     },
+
     username: {
       type: String,
-      required: true,
+      required: [true, "username required"],
       trim: true,
-      unique: true,
+      unique: [true, "sorry that username is already taken"],
+      maxLength: [14, "Password must be <= 14 characters"],
     },
+
     email: {
       type: String,
-      required: true,
+      required: [true, "Please enter Email Address"],
       trim: true,
+      match: [
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        "Please enter a valid email address.",
+      ],
       unique: true,
+      lowercase: true,
     },
     password: {
       type: String,
       required: true,
       trim: true,
-      min: [8, "Password must be >= 8 characters"],
-      max: [25, "Password must be <= 25 characters"],
+      minLength: [8, "Password must be >= 8 characters"],
+      maxLength: [25, "Password must be <= 25 characters"],
     },
     bio: {
       type: String,
       trim: true,
+      maxLength: [150, "Bio can only be up to 150 characters"],
     },
     avatar: {
       type: String,
@@ -61,6 +74,7 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
+/// hash password before saving
 UserSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
@@ -69,10 +83,23 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
+/// check password for login
 UserSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model("User", UserSchema);
+/// custom error for unique errors
+UserSchema.post("save", (error, doc, next) => {
+  console.log("enter function");
+  if (error.name === "MongoServerError" && error.code === 11000) {
+    console.log(error);
+    next(new Error(`${JSON.stringify(error.keyValue)} already exist`));
+  } else {
+    console.log("next");
+    next();
+  }
+});
 
+// exporting user model
+const User = model("User", UserSchema);
 module.exports = User;

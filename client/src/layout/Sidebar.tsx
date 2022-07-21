@@ -11,13 +11,28 @@ import { QueryMeData } from "../types/types";
 const Sidebar = ({ me }: QueryMeData) => {
   return (
     <aside>
-      <NavIcon to="/" icon={dashboardIcon} alt="dashboard" />
+      <NavIcon to="/" icon={dashboardIcon} alt="lessons" title="lessons" />
 
-      <NavIcon to={`/${me?.username}`} icon={profileIcon} alt="profile" />
+      <NavIcon
+        to={`/${me?.username}`}
+        icon={profileIcon}
+        alt="profile"
+        title="profile"
+      />
 
-      <NavIcon to="/messenger" icon={convoIcon} alt="messenger" />
+      <NavIcon
+        to="/messenger"
+        icon={convoIcon}
+        alt="messenger"
+        title="messenger"
+      />
 
-      <NavIcon to="/leaderboard" icon={leaderboardIcon} alt="leaderboard" />
+      <NavIcon
+        to="/leaderboard"
+        icon={leaderboardIcon}
+        alt="leaderboard"
+        title="leaderboard"
+      />
     </aside>
   );
 };

@@ -8,6 +8,7 @@ import {
   Settings,
   Messenger,
   Leaderboard,
+  Welcome,
 } from "./pages/";
 import "./App.css";
 import { Footer, Header, Sidebar } from "./layout";
@@ -42,6 +43,10 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/welcome"
+            element={<Welcome me={m?.me} users={data?.users} />}
+          />
           <Route path="/:username" element={<Profile me={m?.me} />} />
           <Route path="/settings" element={<Settings me={m?.me} />} />
 
