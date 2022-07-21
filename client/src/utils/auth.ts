@@ -31,7 +31,6 @@ class AuthService {
   // Saves user token to localStorage and loads the homepage for logged in status to take effect
   login(signedToken: string): void {
     localStorage.setItem("id_token", signedToken);
-    window.location.assign("/");
   }
 
   // Clear user token and profile data from localStorage

@@ -16,6 +16,7 @@ const useLogin = () => {
     try {
       const { data } = await login({ variables: { ...formState } });
       Auth.login(data.login.token);
+      window.location.assign("/");
     } catch (err) {
       console.log(err);
     }

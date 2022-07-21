@@ -105,9 +105,7 @@
   flex-direction: column;
   height: 100%;
 }
-.nav-list li {
-  font-style: none;
-}
+
 .arrow {
   font-size: 3em;
 }

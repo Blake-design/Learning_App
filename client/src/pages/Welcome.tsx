@@ -37,12 +37,10 @@ const Welcome = ({ me, users }: any) => {
               yourself
             </li>
             <li>
-              &larr; The Message Bubbles are where you can chat with friends and
-              share all the new things you learned
+              &larr; The Message Bubbles are where you can chat with friends
             </li>
             <li>
-              &larr; The Trophy is where you can keep track of the fastest
-              learners
+              &larr; The Trophy is where you keep track of the fastest learners
             </li>
           </ul>
         </div>
