@@ -88,8 +88,8 @@ button {
   cursor: pointer;
 }
 
-button:hover,
-button:focus {
+.wipe:hover,
+.wipe:focus {
   color: var(--primary-btn-color);
   background-color: var(--secondary-text-color);
   box-shadow: inset 100px 0 0 0 var(--secondary-text-color);

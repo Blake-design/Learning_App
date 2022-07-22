@@ -27,14 +27,20 @@ const LoginButton = ({ me }: QueryMeData) => {
           to="/settings"
           title="settings"
         />
-        <button onClick={handleLogout}>LOG OUT</button>
+        <button className="wipe" onClick={handleLogout}>
+          LOG OUT
+        </button>
       </nav>
     );
   } else {
     return (
       <div>
-        <button onClick={() => navigate("/login")}>LOG IN</button>
-        <button onClick={() => navigate("/signup")}>SIGN UP</button>
+        <button className="wipe" onClick={() => navigate("/login")}>
+          LOG IN
+        </button>
+        <button className="wipe" onClick={() => navigate("/signup")}>
+          SIGN UP
+        </button>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-.welcome-card {
+.info-card {
   display: flex;
   flex-direction: column;
   border: 5px solid white;
@@ -9,18 +9,18 @@
   color: var(--secondary-text-color);
   text-align: center;
 }
-.welcome-card h2 {
+.info-card h2 {
   font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
-.welcome-card p {
+.info-card p {
   font-size: 1.5em;
   font-weight: 400;
   margin-bottom: 1em;
 }
 
-.welcome-card span {
+.info-card span {
   font-weight: 600;
   color: var(--primary-btn-color);
 }
@@ -34,11 +34,11 @@
   height: 20px;
   border-radius: 50%;
 }
-.welcome-card .content {
+.info-card .content {
   padding-left: 1em;
   padding-right: 1em;
 }
-.welcome-card .content .prompt {
+.info-card .content .prompt {
   font-size: 1em;
 }
 
@@ -73,7 +73,7 @@
 .split-page {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -89,7 +89,7 @@
 }
 
 .title-section p {
-  font-size: 2em;
+  font-size: 1em;
   font-weight: 200;
 }
 
@@ -97,9 +97,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: ease 0.5s;
 }
+
+.hidden {
+  opacity: 0;
+}
+
 .nav-list {
   display: flex;
+
   justify-content: space-around;
   align-items: flex-start;
   flex-direction: column;
